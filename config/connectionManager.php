@@ -9,7 +9,7 @@
 class connectionManager {
 
     static $devParams = array(
-        'dbname' => 'milesbanch',
+        'dbname' => 'milesbench',
         'user' => 'milesbenchdb',
         'password' => 'Milesbench2@15',
         'host' => 'localhost:3306',
