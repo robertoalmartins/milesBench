@@ -139,4 +139,67 @@ class Milesbench
     {
         return $this->businesspartner;
     }
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="due_date", type="datetime", nullable=false)
+     */
+    private $dueDate;
+
+    /**
+     * @var \Cards
+     *
+     * @ORM\ManyToOne(targetEntity="Cards")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cards_id", referencedColumnName="id")
+     * })
+     */
+    private $cards;
+
+
+    /**
+     * Set dueDate
+     *
+     * @param \DateTime $dueDate
+     * @return Milesbench
+     */
+    public function setDueDate($dueDate)
+    {
+        $this->dueDate = $dueDate;
+
+        return $this;
+    }
+
+    /**
+     * Get dueDate
+     *
+     * @return \DateTime 
+     */
+    public function getDueDate()
+    {
+        return $this->dueDate;
+    }
+
+    /**
+     * Set cards
+     *
+     * @param \Cards $cards
+     * @return Milesbench
+     */
+    public function setCards(\Cards $cards = null)
+    {
+        $this->cards = $cards;
+
+        return $this;
+    }
+
+    /**
+     * Get cards
+     *
+     * @return \Cards 
+     */
+    public function getCards()
+    {
+        return $this->cards;
+    }
 }
