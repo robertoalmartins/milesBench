@@ -6,7 +6,7 @@
  * Time: 6:09 PM
  */
 
-require '/../bootstrap.php';
+require 'bootstrap.php';
 
 use Doctrine\ORM\Tools\EntityGenerator;
 ini_set("display_errors", "On");
@@ -39,6 +39,6 @@ $generator = new EntityGenerator();
 $generator->setUpdateEntityIfExists(true);
 $generator->setGenerateStubMethods(true);
 $generator->setGenerateAnnotations(true);
-$generator->generate($metadata, __DIR__ . '/../Model/entitiesBase');
+$generator->generate($metadata, __DIR__ . '/../MilesBench/Model/entitiesBase');
 print 'Done!';
 ?>

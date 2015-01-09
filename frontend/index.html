@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<title>Pedidos</title>
+	<title>Banco de Milhas</title>
 
 	<link rel="stylesheet" type="text/css" href="./assets/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./assets/bootstrap/css/bootstrap-theme.min.css">
@@ -25,7 +25,7 @@
 	<div class="container">
 
             <form class="form-signin" role="form"  onsubmit="login(); return false;">
-    		<h2 class="form-signin-heading">Pedidos</h2>
+    		<h2 class="form-signin-heading">Banco de Milhas</h2>
     		<hr />
     		<input name="email" type="text" class="form-control" placeholder="email" required autofocus><br />
     		<input name="senha" type="password" class="form-control" placeholder="senha" required>
@@ -50,7 +50,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "../backend/login",
+                url: "../backend/application/index.php?rota=/login",
                 data: getFormData($('.form-signin')),
                 success: success
             });

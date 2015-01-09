@@ -6,5 +6,5 @@
  * Time: 10:59 PM
  */
 
-require '/../vendor/autoload.php';
-require '/../config/connectionManager.php';
+require '/../../vendor/autoload.php';
+require '/../../config/connectionManager.php';
