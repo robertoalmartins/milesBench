@@ -2,33 +2,75 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/collections" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/common" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/dbal" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/inflector" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzle/guzzle" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/satooshi/php-coveralls" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/config" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/filesystem" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/stopwatch" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/annotations" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/common" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/guzzle/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/satooshi/php-coveralls" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/config" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/stopwatch" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/yaml" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
-          <root url="phar://$MODULE_DIR$/composer.phar" />
+          <root url="phar://$MODULE_DIR$/backend/composer.phar" />
         </CLASSES>
         <SOURCES>
-          <root url="phar://$MODULE_DIR$/composer.phar" />
+          <root url="phar://$MODULE_DIR$/backend/composer.phar" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHP">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/annotations" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/yaml" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/filesystem" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/stopwatch" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/dbal" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/config" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/inflector" />
+          <root url="file://$MODULE_DIR$/backend/vendor/composer" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/lexer" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/common" />
+          <root url="file://$MODULE_DIR$/backend/vendor/psr/log" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/cache" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/collections" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/console" />
+          <root url="file://$MODULE_DIR$/backend/vendor/guzzle/guzzle" />
+          <root url="file://$MODULE_DIR$/backend/vendor/satooshi/php-coveralls" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/event-dispatcher" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/annotations" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/yaml" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/filesystem" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/stopwatch" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/dbal" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/config" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/inflector" />
+          <root url="file://$MODULE_DIR$/backend/vendor/composer" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/lexer" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/common" />
+          <root url="file://$MODULE_DIR$/backend/vendor/psr/log" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/cache" />
+          <root url="file://$MODULE_DIR$/backend/vendor/doctrine/collections" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/console" />
+          <root url="file://$MODULE_DIR$/backend/vendor/guzzle/guzzle" />
+          <root url="file://$MODULE_DIR$/backend/vendor/satooshi/php-coveralls" />
+          <root url="file://$MODULE_DIR$/backend/vendor/symfony/event-dispatcher" />
         </SOURCES>
       </library>
     </orderEntry>

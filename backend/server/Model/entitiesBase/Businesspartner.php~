@@ -274,4 +274,34 @@ class Businesspartner
     {
         return $this->city;
     }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone_number", type="string", length=45, nullable=false)
+     */
+    private $phoneNumber;
+
+
+    /**
+     * Set phoneNumber
+     *
+     * @param string $phoneNumber
+     * @return Businesspartner
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get phoneNumber
+     *
+     * @return string 
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
 }
