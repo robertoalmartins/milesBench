@@ -60,7 +60,7 @@ Processes the schema and either create it directly on EntityManager Storage Conn
 by the ORM, you can use a DBAL functionality to filter the tables and sequences down
 on a global level:
 
-    \$config->setFilterSchemaAssetsExpression(\$regexp);
+    \$Config->setFilterSchemaAssetsExpression(\$regexp);
 EOT
         );
     }

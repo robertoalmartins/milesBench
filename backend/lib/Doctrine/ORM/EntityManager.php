@@ -44,9 +44,9 @@ use Doctrine\Common\Util\ClassUtils;
  *
  *     $paths = array('/path/to/entity/mapping/files');
  *
- *     $config = Setup::createAnnotationMetadataConfiguration($paths);
+ *     $Config = Setup::createAnnotationMetadataConfiguration($paths);
  *     $dbParams = array('driver' => 'pdo_sqlite', 'memory' => true);
- *     $entityManager = EntityManager::create($dbParams, $config);
+ *     $entityManager = EntityManager::create($dbParams, $Config);
  *
  * For more information see
  * {@link http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/configuration.html}

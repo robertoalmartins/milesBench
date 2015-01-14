@@ -98,7 +98,7 @@ class ConsoleRunner
     static public function printCliConfigTemplate()
     {
         echo <<<'HELP'
-You are missing a "cli-config.php" or "config/cli-config.php" file in your
+You are missing a "cli-Config.php" or "Config/cli-Config.php" file in your
 project, which is required to get the Doctrine Console working. You can use the
 following sample as a template:
 

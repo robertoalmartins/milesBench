@@ -22,7 +22,7 @@ class Response {
 
     /**
      * 
-     * @param \Pedidos\Message $message
+     * @param \MilesBench\Message $message
      */
     public function addMessage(\MilesBench\Message $message) {
         $this->messages[] = $message;

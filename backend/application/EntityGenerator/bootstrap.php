@@ -7,4 +7,4 @@
  */
 
 require '/../../vendor/autoload.php';
-require '/../../config/connectionManager.php';
+require '/MilesBench/Config/connectionManager.php';

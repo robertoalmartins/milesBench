@@ -1,6 +1,6 @@
 <?php
-namespace MilesBench;
 
+namespace MilesBench;
 /**
  * Description of Application
  *
@@ -16,16 +16,20 @@ class Application {
 
     /**
      *
-     * @var \MilesBench\Db\EntityManager
+     * @var \Doctrine\DBAL\Connection
      */
-    private $entityManager;
+    private $connectionManager;
 
     /**
      * Singleton Pattern
      * 
-     * @param \MilesBench\Db\EntityManager $entityManager
+     * @param \Doctrine\DBAL\Connection $connectionManager
      */
-    private function __construct() {}
+    private function __construct() {
+        $config = new \Doctrine\DBAL\Configuration();
+        $conn = \Doctrine\DBAL\DriverManager::getConnection(\MilesBench\Config\connectionManager::$devParams, $config);
+        $this->connectionManager = $conn;
+    }
 
     /**
      * 
@@ -41,18 +45,18 @@ class Application {
 
     /**
      * 
-     * @return \MilesBench\Db\EntityManager
+     * @return \Doctrine\ORM\ConnectionManager
      */
-    public function getEntityManager() {
-        return $this->entityManager;
+    public function getConnectionManager() {
+        return $this->connectionManager;
     }
 
     /**
      * 
-     * @param \MilesBench\Db\EntityManager $entityManager
+     * @param \Doctrine\ORM\ConnectionManager $connectionManager
      */
-    //public function setEntityManager(\MilesBench\Db\EntityManager $entityManager) {
-      //  $this->entityManager = $entityManager;
-    //}
+    public function setConnectionManager(\Doctrine\DBAL\Connection $connectionManager) {
+        $this->connectionManager = $connectionManager;
+    }
 
 }

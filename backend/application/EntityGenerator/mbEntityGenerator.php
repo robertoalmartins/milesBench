@@ -11,7 +11,7 @@ require 'bootstrap.php';
 use Doctrine\ORM\Tools\EntityGenerator;
 ini_set("display_errors", "On");
 
-// config
+// Config
 $config = new \Doctrine\ORM\Configuration();
 $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/Entities'));
 $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
@@ -39,6 +39,6 @@ $generator = new EntityGenerator();
 $generator->setUpdateEntityIfExists(true);
 $generator->setGenerateStubMethods(true);
 $generator->setGenerateAnnotations(true);
-$generator->generate($metadata, __DIR__ . '/../MilesBench/Model/entitiesBase');
+$generator->generate($metadata, __DIR__ . '/../MilesBench/Model/EntitiesBase');
 print 'Done!';
 ?>
