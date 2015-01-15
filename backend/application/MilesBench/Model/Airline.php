@@ -1,15 +1,64 @@
 <?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Created by PhpStorm.
- * User: robertomartins
- * Date: 1/12/2015
- * Time: 10:41 PM
+ * Airline
+ *
+ * @ORM\Table(name="airline")
+ * @ORM\Entity
  */
-
-namespace MilesBench\Model;
-
-
-class Airline extends \Airline
+class Airline
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Airline
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }

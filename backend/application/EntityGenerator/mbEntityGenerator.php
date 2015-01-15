@@ -16,11 +16,9 @@ $config = new \Doctrine\ORM\Configuration();
 $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/Entities'));
 $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
 $config->setProxyDir(__DIR__ . '/Proxies');
-$config->setProxyNamespace('Proxies');
+$config->setProxyNamespace('\MilesBench\Model');
 
-$connectionManager = new connectionManager();
-
-$em = \Doctrine\ORM\EntityManager::create($connectionManager->getParams(), $config);
+$em = \Doctrine\ORM\EntityManager::create(\MilesBench\Config\connectionManager::$devParams, $config);
 
 // custom datatypes (not mapped for reverse engineering)
 $em->getConnection()->getDatabasePlatform()->registerDoctrineTypeMapping('set', 'string');
@@ -39,6 +37,6 @@ $generator = new EntityGenerator();
 $generator->setUpdateEntityIfExists(true);
 $generator->setGenerateStubMethods(true);
 $generator->setGenerateAnnotations(true);
-$generator->generate($metadata, __DIR__ . '/../MilesBench/Model/EntitiesBase');
+$generator->generate($metadata, __DIR__ . '/../MilesBench/Model');
 print 'Done!';
 ?>

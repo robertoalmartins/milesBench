@@ -16,10 +16,10 @@ class Login {
     public function login(Request $request, Response $response) {
         $dados = $request->getRow();
 
-        $conn = Application::getInstance()->getConnectionManager();
-        $BusinessPartner = $conn->query('select password from businesspartner where email = '.$dados['email']);
+        $em = Application::getInstance()->getEntityManager();
+        $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('email' => $dados['email']));
 
-        if($dados['email'] == 'admin' && $dados['senha'] == '123') {
+        if (($BusinessPartner) && ($dados['email'] == $BusinessPartner->getEmail() && $dados['password'] == $BusinessPartner->getPassword())) {
             $message = new \MilesBench\Message();
             $message->setType(\MilesBench\Message::SUCCESS);
             $message->setText('Login efetuado com sucesso.');

@@ -16,19 +16,23 @@ class Application {
 
     /**
      *
-     * @var \Doctrine\DBAL\Connection
+     * @var \Doctrine\ORM\EntityManager
      */
-    private $connectionManager;
+    private $entityManager;
 
     /**
      * Singleton Pattern
      * 
-     * @param \Doctrine\DBAL\Connection $connectionManager
+     * @param \Doctrine\ORM\EntityManager $entityManager
      */
     private function __construct() {
-        $config = new \Doctrine\DBAL\Configuration();
-        $conn = \Doctrine\DBAL\DriverManager::getConnection(\MilesBench\Config\connectionManager::$devParams, $config);
-        $this->connectionManager = $conn;
+        
+        $config = new \Doctrine\ORM\Configuration();
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/MilesBench/Model', false));
+        //$config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
+        $config->setProxyDir(__DIR__ . '/MilesBench/Model');
+        $config->setProxyNamespace('Model');
+        $this->entityManager = \Doctrine\ORM\EntityManager::create(\MilesBench\Config\connectionManager::$devParams, $config);
     }
 
     /**
@@ -45,18 +49,18 @@ class Application {
 
     /**
      * 
-     * @return \Doctrine\ORM\ConnectionManager
+     * @return \Doctrine\ORM\EntityManager
      */
-    public function getConnectionManager() {
-        return $this->connectionManager;
+    public function getEntityManager() {
+        return $this->entityManager;
     }
 
     /**
      * 
-     * @param \Doctrine\ORM\ConnectionManager $connectionManager
+     * @param \Doctrine\ORM\EntityManager $entityManager
      */
-    public function setConnectionManager(\Doctrine\DBAL\Connection $connectionManager) {
-        $this->connectionManager = $connectionManager;
+    public function setEntityManager(\Doctrine\ORM\EntityManager $entityManager) {
+        $this->entityManager = $entityManager;
     }
 
 }
