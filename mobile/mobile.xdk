@@ -5,14 +5,22 @@
       "type": "App Designer",
       "src": "appDesigner",
       "projectGuid": "bb193f3e-64bd-46b3-b37f-dfd4dd8c21dc",
-      "lastModifiedDate": 1421281650536,
+      "lastModifiedDate": 1421717954648,
       "creationDate": 1421281650444
     },
     "XDK-app-designer": "true",
     "sourceDirectory": "www",
     "startFile": "index.html",
     "projectFiles": {},
-    "projectDirectories": {},
+    "projectDirectories": {
+      "xdk/services/iodocs": {
+        "settings": {
+          "project": {
+            "XDK-generated": "true"
+          }
+        }
+      }
+    },
     "libraries": [
       {
         "name": "Cordova",

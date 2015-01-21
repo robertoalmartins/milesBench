@@ -4,7 +4,6 @@
 function login() {
     var success = function(response) {
         var message = jQuery.parseJSON(response).message;
-        alert(message['text']);
         if(message['type'] == 'S') {
             activate_page("#mb_mainpage")
         }

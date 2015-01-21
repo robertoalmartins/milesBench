@@ -572,9 +572,167 @@ label:empty {
 }
 @media all {
   .header-bg {
+    background-color: #555555;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+}
+@media all and (min-width: 0px) {
+  .row-height-5 > .col > .content-area {
+    min-height: 100px;
+  }
+}
+.uib_row_6:not(.cright) > .col {
+  padding-right: 20px;
+}
+.uib_row_6.cright > .col {
+  padding-left: 20px;
+}
+@media all {
+  .col-0_12-12 {
+    width: auto;
+    float: none !important;
+  }
+  .urow:not(.cright) > .col-0_12-12 {
+    padding-right: 0px !important;
+  }
+  .urow.cright > .col-0_12-12 {
+    padding-left: 0px !important;
+  }
+}
+@media all {
+  .bar-bg {
     background-color: #666666;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: scroll;
+  }
+}
+@media all {
+  .thumb-bg > .sidebar-thumb {
+    background-image: url('../sidebar/css/images/gripper.png');
+  }
+  .thumb-bg > .sidebar-thumb:hover,
+  .thumb-bg > .sidebar-thumb:active {
+    background-color: #eeeeee;
+  }
+}
+@media all {
+  .bar-gutter .sidebar-content > .grid-pad {
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+.uib_row_7:not(.cright) > .col {
+  padding-right: 20px;
+}
+.uib_row_7.cright > .col {
+  padding-left: 20px;
+}
+@media all {
+  .col-0_12-12 {
+    width: auto;
+    float: none !important;
+  }
+  .urow:not(.cright) > .col-0_12-12 {
+    padding-right: 0px !important;
+  }
+  .urow.cright > .col-0_12-12 {
+    padding-left: 0px !important;
+  }
+}
+@media all and (min-width: 0px) {
+  .row-height-7 > .col > .content-area {
+    min-height: 100px;
+  }
+}
+.allow-badge > .badge.glyphicon {
+  display: inline-block;
+}
+.list-group .d-margins {
+  margin: 0;
+}
+/*
+	.Menu_Style
+	.Menu_Style > .panel-heading
+	.Menu_Style > .panel-heading > .panel-title
+	.Menu_Style > .panel-collapse > .panel-body
+*/
+.Menu_Style {
+  background-color: #343434 !important;
+  border-color: #343434 !important;
+  color: white !important;
+}
+/*
+	.Border-color > .narrow-control - affects control label
+	.Border-color > .wide-control - affects input
+*/
+.Border-color {
+  border-color: #D40202;
+}
+.button_icon {
+  background-color: #555 !important;
+  border-color: #555 !important;
+}
+.left-receptacle {
+  float: left;
+}
+.right-receptacle {
+  float: right;
+}
+.uib_row_8:not(.cright) > .col {
+  padding-right: 20px;
+}
+.uib_row_8.cright > .col {
+  padding-left: 20px;
+}
+@media all {
+  .col-0_12-12 {
+    width: auto;
+    float: none !important;
+  }
+  .urow:not(.cright) > .col-0_12-12 {
+    padding-right: 0px !important;
+  }
+  .urow.cright > .col-0_12-12 {
+    padding-left: 0px !important;
+  }
+}
+#afui .panel > .upage {
+  overflow: hidden;
+}
+@media all and (min-width: 0px) {
+  .row-height-9 > .col > .content-area {
+    min-height: 100px;
+  }
+}
+@media all and (min-width: 0px) {
+  .row-height-10 > .col > .content-area {
+    min-height: 28px;
+  }
+}
+.uib_row_11 > .col {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media all {
+  .col-0 {
+    width: auto;
+    float: none !important;
+    clear: both;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+@media all and (min-width: 0px) {
+  .row-height-11 > .col > .content-area {
+    min-height: 100px;
+  }
+}
+@media all and (min-width: 0px) {
+  .row-height-8 > .col > .content-area {
+    min-height: 100px;
   }
 }
