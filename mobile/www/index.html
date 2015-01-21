@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="flatly/css/flatly.min.css" class="uib-framework-theme">
         <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+        <link rel="stylesheet" type="text/css" href="bootstrap-table/dist/bootstrap-table.min.css" class="uib-framework-theme">
         <link rel="shortcut icon" href="img/favicon.ico">
         <title>Uai Milhas - Banco de Milhas</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -16,8 +17,6 @@
             			input, textarea  { -webkit-user-select:text; }
         </style>
         <script src="intelxdk.js"></script>
-        <script src="src/controller/Login.js"></script>
-        <script src="src/controller/Provider.js"></script>
         <script src="src/util/functions.js"></script>
         <script type="text/javascript">
             /* Intel native bridge is available */
@@ -37,6 +36,10 @@
         <script type="application/javascript" src="sidebar/js/jquery.event.swipe.js"></script>
         <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
         <script type="application/javascript" src="sidebar/js/swipe.js"></script>
+        <script type="application/javascript" src="bootstrap-table/dist/bootstrap-table.js"></script>
+
+        <script type="application/javascript" src="src/controller/Login.js"></script>
+        <script type="application/javascript" src="src/controller/Provider.js"></script>
     </head>
 
     <body>
@@ -120,18 +123,9 @@
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
 
-                                    <table id="providerlist" data-toggle="table" data-cache="false" data-height="299">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="id">ID</th>
-                                                <th data-field="name">Nome</th>
-                                                <th data-field="price">Cidade</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        </tbody>
-                                    </table>
+                                    <div class="bootstrap-table" id="providerTable">
+                                        <div></div>
+                                    </div>
 
                                     <div class="list-group widget uib_w_23 d-margins" data-uib="twitter%20bootstrap/list_group" data-ver="0">
                                         </div>
