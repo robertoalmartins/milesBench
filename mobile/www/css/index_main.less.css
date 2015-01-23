@@ -224,7 +224,7 @@ body:not(#afui) .upage-outer {
   padding-left: 10px;
   padding-right: 10px;
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .uib_col_4 {
     width: 17%;
   }
@@ -249,7 +249,7 @@ body:not(#afui) .upage-outer {
     padding-right: 0px !important;
   }
 }
-@media all and (min-width: 0px) and (max-width: 0px) {
+@media all and (min-width: 0px) and (max-width: 598px) {
   .uib_col_4.uib_col_4 {
     width: auto;
     float: none !important;
@@ -309,12 +309,12 @@ body:not(#afui) .upage-outer {
     padding-right: 20px;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .row-height-1 > .col > .content-area {
     min-height: 100px;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .row-height-2 > .col > .content-area {
     min-height: 100px;
   }
@@ -337,7 +337,7 @@ body:not(#afui) .upage-outer {
     padding-left: 0px !important;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .row-height-3 > .col > .content-area {
     min-height: 133px;
   }
@@ -473,7 +473,7 @@ label:empty {
     padding-left: 0px !important;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .row-height-4 > .col > .content-area {
     min-height: 124px;
   }
@@ -578,7 +578,7 @@ label:empty {
     background-attachment: scroll;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .row-height-5 > .col > .content-area {
     min-height: 100px;
   }
@@ -643,7 +643,7 @@ label:empty {
     padding-left: 0px !important;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .row-height-7 > .col > .content-area {
     min-height: 100px;
   }
@@ -703,14 +703,14 @@ label:empty {
 #afui .panel > .upage {
   overflow: hidden;
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .row-height-9 > .col > .content-area {
-    min-height: 100px;
+    min-height: 443px;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .row-height-10 > .col > .content-area {
-    min-height: 28px;
+    min-height: 0px;
   }
 }
 .uib_row_11 > .col {
@@ -726,13 +726,61 @@ label:empty {
     padding-right: 0px !important;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .row-height-11 > .col > .content-area {
     min-height: 100px;
   }
 }
-@media all and (min-width: 0px) {
+@media all and (min-width: 598px) {
   .row-height-8 > .col > .content-area {
     min-height: 100px;
   }
+}
+.uib_row_9:not(.cright) > .col {
+  padding-right: 20px;
+}
+.uib_row_9.cright > .col {
+  padding-left: 20px;
+}
+@media all {
+  .col-0_12-12 {
+    width: auto;
+    float: none !important;
+  }
+  .urow:not(.cright) > .col-0_12-12 {
+    padding-right: 0px !important;
+  }
+  .urow.cright > .col-0_12-12 {
+    padding-left: 0px !important;
+  }
+}
+.uib_row_10:not(.cright) > .col {
+  padding-right: 20px;
+}
+.uib_row_10.cright > .col {
+  padding-left: 20px;
+}
+@media all {
+  .col-0_12-12 {
+    width: auto;
+    float: none !important;
+  }
+  .urow:not(.cright) > .col-0_12-12 {
+    padding-right: 0px !important;
+  }
+  .urow.cright > .col-0_12-12 {
+    padding-left: 0px !important;
+  }
+}
+@media all {
+  .footer-bg {
+    background-color: #BC0505;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+}
+.button_footer {
+  background-color: #BC0505 !important;
+  border-color: #BC0505 !important;
 }

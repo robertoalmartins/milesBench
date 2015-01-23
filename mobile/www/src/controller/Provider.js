@@ -1,61 +1,105 @@
 /**
  * Created by robertomartins on 1/19/2015.
  */
-function loadProvider() {
-    var success = function(response) {
-        var providerList = jQuery.parseJSON(response);
+    var providerRow;
 
-        $('#providerTable').bootstrapTable({
-            data: providerList.dataset,
-            cache: false,
-            height: 400,
-            striped: true,
-            pagination: false,
-            pageSize: 50,
-            pageList: [10, 25, 50, 100, 200],
-            search: true,
-            showColumns: true,
-            showRefresh: true,
-            minimumCountColumns: 2,
-            clickToSelect: true,
-            smartDisplay: true,
-            clickToSelect: true,
-            singleSelect: true,
-            columns: [{
-                field: 'id',
-                title: 'ID',
-                align: 'right',
-                valign: 'bottom',
-                sortable: true
-            }, {
-                field: 'name',
-                title: 'Nome',
-                align: 'left',
-                valign: 'middle',
-                sortable: true
-            }, {
-                field: 'city',
-                title: 'Cidade',
-                align: 'left',
-                valign: 'top',
-                sortable: true
-            }]
+    function loadProvider() {
+        var success = function(response) {
+            var data = jQuery.parseJSON(response);
+
+            for(var i in data.dataset){
+                var provider = data.dataset[i];
+                $('#providerTable tbody'). append(
+                    '<tr id="tr_id'+provider.id+'" class="tr-class-'+provider.id+'">'+
+                    '<td id="td_id_'+provider.id+'" class="td-class-'+provider.id+'">'+provider.id+'</td>'+
+                    '<td>'+provider.name+'</td>'+
+                    '<td>'+provider.email+'</td>'+
+                    '<td>'+provider.phoneNumber+'</td>'+
+                    '<td>'+provider.registrationCode+'</td>'+
+                    '<td>'+provider.adress+'</td>'+
+                    '<td>'+provider.city+'</td>'+
+                    '</tr>'
+                );
+            }
+            var $table = $('#providerTable');
+            var $result = $('#events-result');
+
+            $table.bootstrapTable({
+            }).on('all.bs.table', function (e, name, args) {
+                console.log('Event:', name, ', data:', args);
+            }).on('click-row.bs.table', function (e, row, $element) {
+                activate_page("#provider_form");
+                loadform(row);
+            }).on('dbl-click-row.bs.table', function (e, row, $element) {
+                $result.text('Event: dbl-click-row.bs.table, data: ' + JSON.stringify(row));
+            }).on('sort.bs.table', function (e, name, order) {
+                $result.text('Event: sort.bs.table, data: ' + name + ', ' + order);
+            }).on('check.bs.table', function (e, row) {
+                $result.text('Event: check.bs.table, data: ' + JSON.stringify(row));
+            }).on('uncheck.bs.table', function (e, row) {
+                $result.text('Event: uncheck.bs.table, data: ' + JSON.stringify(row));
+            }).on('check-all.bs.table', function (e) {
+                $result.text('Event: check-all.bs.table');
+            }).on('uncheck-all.bs.table', function (e) {
+                $result.text('Event: uncheck-all.bs.table');
+            }).on('load-success.bs.table', function (e, data) {
+                $result.text('Event: load-success.bs.table');
+            }).on('load-error.bs.table', function (e, status) {
+                $result.text('Event: load-error.bs.table, data: ' + status);
+            }).on('column-switch.bs.table', function (e, field, checked) {
+                $result.text('Event: column-switch.bs.table, data: ' +
+                field + ', ' + checked);
+            }).on('page-change.bs.table', function (e, size, number) {
+                $result.text('Event: page-change.bs.table, data: ' + number + ', ' + size);
+            }).on('search.bs.table', function (e, text) {
+                $result.text('Event: search.bs.table, data: ' + text);
+            });
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "../../backend/application/index.php?rota=/loadProvider",
+            success: success
         });
+    }
 
-        //for(var i in data.dataset){
-        //    var provider = data.dataset[i];
-        //    $('#providerlist tbody'). append(
-        //        '<tr id="tr_id'+provider.id+'" class="tr-class-'+provider.id+'">'+
-        //        '<td id="td_id_'+provider.id+'" class="td-class-'+provider.id+'">'+provider.id+'</td>'+
-        //        '<td>'+provider.name+'</td>'+
-        //        '<td>'+provider.city+'</td>'+
-        //        '</tr>'
-        //    );
-    };
+    function loadform(datarow) {
+        $providerRow = datarow;
 
-    $.ajax({
-        type: "POST",
-        url: "../../backend/application/index.php?rota=/loadProvider",
-        success: success
-    });
-};
+        var $provider_name = $('#provider_name');
+        var $provider_code = $('#provider_code');
+        var $provider_adress = $('#provider_adress');
+        var $provider_city = $('#provider_city');
+        var $provider_email = $('#provider_email');
+        var $provider_phone = $('#provider_phone');
+
+        $provider_name.val(datarow.name);
+        $provider_code.val(datarow.registrationCode);
+        $provider_adress.val(datarow.adress);
+        $provider_city.val(datarow.city);
+        $provider_email.val(datarow.email);
+        $provider_phone.val(datarow.phoneNumber);
+    }
+
+    function saveProvider() {
+        $providerRow.name = $('#provider_name')[0].value;
+        $providerRow.registrationCode = $('#provider_code')[0].value;
+        $providerRow.adress = $('#provider_adress')[0].value;
+        //$providerRow.city = $('#provider_city')[0].value;
+        $providerRow.email = $('#provider_email')[0].value;
+        $providerRow.phoneNumber = $('#provider_phone')[0].value;
+
+        var success = function(response) {
+            var message = jQuery.parseJSON(response).message;
+            if(message['type'] == 'S') {
+               alert(message['text']);
+            }
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "../../backend/application/index.php?rota=/saveProvider",
+            data: $providerRow,
+            success: success
+        });
+    }

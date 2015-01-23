@@ -30,6 +30,17 @@
             activate_page("#provider");
             loadProvider();
         });
+
+        $(document).on("click", "#save_provider", function(evt){
+            saveProvider();
+            activate_page("#provider");
+            loadProvider();
+        });
+
+        $(document).on("click", "#cancel_provider", function(evt){
+            activate_page("#provider");
+            loadProvider();
+        });
     }
 
     $(document).ready(register_event_handlers);

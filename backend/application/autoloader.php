@@ -13,6 +13,7 @@ function __autoload($class)
         'Doctrine\\ORM\\Mapping' => '/../lib/',
         'Doctrine\\ORM\\Mapping\\Driver' => '/../lib/',
         'Doctrine\\ORM\\Internal\\Hydration' => '/../lib/',
+        'Doctrine\\ORM\\Internal' => '/../lib/',
         'Doctrine\\DBAL' => $vendorDir . '/doctrine/dbal/lib/',
         'Doctrine\\DBAL\\Driver' => $vendorDir . '/doctrine/dbal/lib/',
         'Doctrine\\DBAL\\Driver\\PDOMySql' => $vendorDir . '/doctrine/dbal/lib/',
