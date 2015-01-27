@@ -16,8 +16,6 @@ use MilesBench\Request\Response;
 class Provider {
 
     public function load(Request $request, Response $response) {
-        $dados = $request->getRow();
-
         $em = Application::getInstance()->getEntityManager();
         $BusinessPartner = $em->getRepository('Businesspartner')->findAll(array('partnerType' => 'P'));
 
@@ -43,10 +41,14 @@ class Provider {
 
         try {
             $em = Application::getInstance()->getEntityManager();
-            $BusinessPartner = $em->getRepository('Businesspartner')->find(1);
+            if ($dados['id']) {
+                $BusinessPartner = $em->getRepository('Businesspartner')->find(1);
+            } else {
+                $BusinessPartner = new \Businesspartner();
+            }
             $BusinessPartner->setName($dados['name']);
             $BusinessPartner->setPhoneNumber($dados['phoneNumber']);
-            //$BusinessPartner->setCity($dados['city']);
+            $BusinessPartner->setCity($em->getRepository('City')->findOneBy(array('name' => substr($dados['city'],0,strrpos($dados['city'],',')))));
             $BusinessPartner->setRegistrationCode($dados['registrationCode']);
             $BusinessPartner->setAdress($dados['adress']);
             $BusinessPartner->setEmail($dados['email']);

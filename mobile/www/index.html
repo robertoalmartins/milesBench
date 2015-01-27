@@ -40,6 +40,7 @@
 
         <script type="application/javascript" src="src/controller/Login.js"></script>
         <script type="application/javascript" src="src/controller/Provider.js"></script>
+        <script type="application/javascript" src="src/controller/City.js"></script>
     </head>
 
     <body>
@@ -146,7 +147,6 @@
                                     <div class="table-thing widget uib_w_27 d-margins" data-uib="twitter%20bootstrap/select" data-ver="0">
                                         <label class="narrow-control label-top-left">Cidade</label>
                                         <select class="wide-control form-control" id="provider_city">
-                                            <option>Belo Borizonte</option>
                                         </select>
                                     </div>
                                     <div class="table-thing widget uib_w_28 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -205,7 +205,7 @@
                                                 <th data-field="city" data-halign="left" data-align="left" data-sortable="true">Cidade</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tb_provider">
 
                                         </tbody>
                                     </table>
@@ -218,7 +218,7 @@
                     <div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_35" data-uib="layout/footer" data-ver="0">
                         <h2></h2>
                         <div class="widget-container wrapping-col single-centered">
-                            <button type="button" class="btn widget uib_w_36 d-margins button_footer btn-default" data-uib="twitter%20bootstrap/button" data-ver="0"><i class="glyphicon glyphicon-plus button-icon-left" data-position="left"></i>
+                            <button id="insert_provider" type="button" class="btn widget uib_w_36 d-margins button_footer btn-default" data-uib="twitter%20bootstrap/button" data-ver="0"><i class="glyphicon glyphicon-plus button-icon-left" data-position="left"></i>
                             </button>
                         </div>
                         <div class="widget-container content-area horiz-area wrapping-col left"></div>

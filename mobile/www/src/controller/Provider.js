@@ -7,6 +7,16 @@
         var success = function(response) {
             var data = jQuery.parseJSON(response);
 
+            var $init = $('#providerTable td');
+            if ($init.length > 0) {
+                $('#providerTable').bootstrapTable('destroy');
+
+                $ParentNode = document.getElementById("tb_provider")
+                while ($ParentNode.hasChildNodes()) {
+                    $ParentNode.removeChild($ParentNode.firstChild);
+                }
+            }
+
             for(var i in data.dataset){
                 var provider = data.dataset[i];
                 $('#providerTable tbody'). append(
@@ -81,11 +91,29 @@
         $provider_phone.val(datarow.phoneNumber);
     }
 
+    function newform() {
+        $providerRow = {};
+
+        $providerRow['name'] = '';
+        $providerRow['registrationCode'] = '';
+        $providerRow['adress'] = '';
+        $providerRow['city'] = '';
+        $providerRow['email'] = '';
+        $providerRow['phoneNumber'] = '';
+
+        $('#provider_name').val('');
+        $('#provider_code').val('');
+        $('#provider_adress').val('');
+        $('#provider_city').val('');
+        $('#provider_email').val('');
+        $('#provider_phone').val('');
+    }
+
     function saveProvider() {
         $providerRow.name = $('#provider_name')[0].value;
         $providerRow.registrationCode = $('#provider_code')[0].value;
         $providerRow.adress = $('#provider_adress')[0].value;
-        //$providerRow.city = $('#provider_city')[0].value;
+        $providerRow.city = $('#provider_city')[0].value;
         $providerRow.email = $('#provider_email')[0].value;
         $providerRow.phoneNumber = $('#provider_phone')[0].value;
 

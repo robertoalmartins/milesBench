@@ -28,6 +28,7 @@
         $(document).on("click", "#mnu_fornecedor", function(evt){
             uib_sb.toggle_sidebar($(".uib_w_6"));
             activate_page("#provider");
+            loadCity('#provider_city');
             loadProvider();
         });
 
@@ -40,6 +41,11 @@
         $(document).on("click", "#cancel_provider", function(evt){
             activate_page("#provider");
             loadProvider();
+        });
+
+        $(document).on("click", "#insert_provider", function(evt){
+            activate_page("#provider_form");
+            newform();
         });
     }
 
