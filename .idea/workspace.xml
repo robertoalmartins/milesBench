@@ -1,22 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="694bf5d7-d107-4ae9-8605-661c793f101c" name="Default" comment="Changes in backend directories">
+    <list default="true" id="694bf5d7-d107-4ae9-8605-661c793f101c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile/www/src/controller/City.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/application/MilesBench/Controller/City.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/application/MilesBench/MilesBench/Model/__CG__City.php.54c1b5bed33a30.23368575" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/application/MilesBench/MilesBench/Model/__CG__City.php.54c1b6476f40f3.24763790" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/application/MilesBench/MilesBench/Model/__CG__City.php.54c1b6d0288055.16637877" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/application/MilesBench/MilesBench/Model/__CG__City.php.54c1b97ced1a65.08000728" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/application/MilesBench/MilesBench/Model/__CG__City.php.54c1b9fb202871.42259135" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/application/MilesBench/MilesBench/Model/__CG__City.php.54c1bdf60f2455.80797779" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/application/MilesBench/MilesBench/Model/__CG__City.php.54c6ea5280f959.93844444" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile/www/css/index/.ignore/styles/button_footer -- custom.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile/www/css/index/styles/button_footer -- custom.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile/www/data1.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile/www/css/index/.ignore/styles/footer-bg -- background.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile/www/css/index/styles/footer-bg -- background.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/src/controller/Provider.js" afterPath="$PROJECT_DIR$/mobile/www/src/controller/Provider.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/application/MilesBench/Controller/Provider.php" afterPath="$PROJECT_DIR$/backend/application/MilesBench/Controller/Provider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/application/autoloader.php" afterPath="$PROJECT_DIR$/backend/application/autoloader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/.ignore/styles/d-margins -- margins.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/.ignore/styles/d-margins -- margins.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/styles/d-margins -- margins.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/styles/d-margins -- margins.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/index.html" afterPath="$PROJECT_DIR$/mobile/www/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index_main.less.css" afterPath="$PROJECT_DIR$/mobile/www/css/index_main.less.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/index_main.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/index_main.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/.ignore/index_main.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/.ignore/index_main.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/js/index_user_scripts.js" afterPath="$PROJECT_DIR$/mobile/www/js/index_user_scripts.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/application/routes.php" afterPath="$PROJECT_DIR$/backend/application/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/.ignore/styles/row-height-10 -- row_height.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/.ignore/styles/row-height-10 -- row_height.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/styles/row-height-10 -- row_height.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/styles/row-height-10 -- row_height.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/.ignore/styles/row-height-9 -- row_height.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/.ignore/styles/row-height-9 -- row_height.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/styles/row-height-9 -- row_height.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/styles/row-height-9 -- row_height.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/uib_row_10.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/uib_row_10.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/.ignore/uib_row_10.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/.ignore/uib_row_10.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/uib_row_1.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/uib_row_1.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/.ignore/uib_row_1.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/.ignore/uib_row_1.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile/www/css/index/uib_row_11.less" afterPath="$PROJECT_DIR$/mobile/www/css/index/uib_row_11.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="milesBanch.iws" />
@@ -64,20 +76,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="City.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mobile/www/src/controller/City.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc;n#loadCity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mobile/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="6154">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-8.509091" vertical-offset="4547" max-vertical-offset="9146">
+              <caret line="295" column="70" selection-start-line="295" selection-start-column="70" selection-end-line="295" selection-end-column="70" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Provider.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index_user_scripts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mobile/www/js/index_user_scripts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wizardPurchase.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mobile/www/src/controller/wizardPurchase.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.17894737" vertical-offset="0" max-vertical-offset="570">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#49#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Provider.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mobile/www/src/controller/Provider.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1887">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2737">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -87,8 +133,8 @@
       <file leaf-file-name="Provider.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/application/MilesBench/Controller/Provider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615" vertical-offset="612" max-vertical-offset="1156">
-              <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="965" max-vertical-offset="1564">
+              <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
               <folding>
                 <element signature="e#134#161#0#PHP" expanded="true" />
               </folding>
@@ -99,38 +145,28 @@
       <file leaf-file-name="autoloader.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/application/autoloader.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="969">
-              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="426" max-vertical-offset="969">
+              <caret line="41" column="92" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/application/MilesBench/Controller/Login.php">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/application/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.461538" vertical-offset="30" max-vertical-offset="629">
-              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index_user_scripts.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile/www/js/index_user_scripts.js">
+      <file leaf-file-name="php_error.log" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Program Files (x86)/Zend/ZendServer/logs/php_error.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="901">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Businesspartner.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/application/MilesBench/Model/Businesspartner.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846" vertical-offset="4573" max-vertical-offset="5321">
-              <caret line="283" column="0" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2193" max-vertical-offset="2312">
+              <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -190,14 +226,17 @@
         <option value="$PROJECT_DIR$/mobile/www/src/controller/Login.js" />
         <option value="$PROJECT_DIR$/mobile/www/src/controller/Fornecedor.js" />
         <option value="$PROJECT_DIR$/mobile/www/bootstrap-table/dist/bootstrap-table.js" />
-        <option value="$PROJECT_DIR$/backend/application/routes.php" />
         <option value="$PROJECT_DIR$/mobile/www/css/index_main.less.css" />
-        <option value="$PROJECT_DIR$/mobile/www/index.html" />
         <option value="$PROJECT_DIR$/backend/application/autoloader.php" />
-        <option value="$PROJECT_DIR$/mobile/www/js/index_user_scripts.js" />
-        <option value="$PROJECT_DIR$/backend/application/MilesBench/Controller/Provider.php" />
         <option value="C:/Program Files (x86)/Zend/ZendServer/logs/php_error.log" />
+        <option value="$PROJECT_DIR$/backend/application/MilesBench/Controller/City.php" />
+        <option value="$PROJECT_DIR$/mobile/www/src/controller/City.js" />
+        <option value="$PROJECT_DIR$/backend/application/routes.php" />
+        <option value="$PROJECT_DIR$/backend/application/MilesBench/Controller/Provider.php" />
         <option value="$PROJECT_DIR$/mobile/www/src/controller/Provider.js" />
+        <option value="$PROJECT_DIR$/mobile/www/js/index_user_scripts.js" />
+        <option value="$PROJECT_DIR$/mobile/www/index.html" />
+        <option value="$PROJECT_DIR$/mobile/www/src/controller/wizardPurchase.js" />
       </list>
     </option>
   </component>
@@ -253,6 +292,20 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="milesBench" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.jetbrains.php.config.PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -436,6 +489,28 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="mobile">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="www">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bootstrap-table/dist">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="milesBench">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT USER_OBJECT="Root">
@@ -487,6 +562,32 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="MilesBench">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="milesBench">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="backend">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="application">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MilesBench">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Model">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -515,20 +616,6 @@
             <PATH_ELEMENT USER_OBJECT="Controller">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="milesBench" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.jetbrains.php.config.PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -679,7 +766,19 @@
       <option name="project" value="LOCAL" />
       <updated>1421810327535</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Changes in backend directories">
+      <created>1421983307658</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1421983307658</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Changes in backend directories">
+      <created>1422320096712</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1422320096712</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -692,7 +791,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1883614" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19448699" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -746,6 +845,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
@@ -778,27 +878,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/backend/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4230769" vertical-offset="727" max-vertical-offset="2397">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.730769" vertical-offset="1660" max-vertical-offset="19414">
-          <caret line="111" column="32" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/vendor/doctrine/common/lib/Doctrine/Common/Proxy/AbstractProxyFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.8461537" vertical-offset="104" max-vertical-offset="3910">
-          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/vendor/doctrine/common/lib/Doctrine/Common/Util/ClassUtils.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.8461537" vertical-offset="342" max-vertical-offset="1683">
@@ -981,13 +1060,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/application/MilesBench/Model/City.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4257603" vertical-offset="0" max-vertical-offset="1700">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/web-forms2.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="9461" max-vertical-offset="14212">
@@ -997,13 +1069,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../bootstrap-table/docs/examples.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../bootstrap-table/src/bootstrap-table.css">
@@ -1017,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="121091">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1025,19 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.504363" vertical-offset="21726" max-vertical-offset="28135">
           <caret line="1295" column="67" selection-start-line="1295" selection-start-column="67" selection-end-line="1295" selection-end-column="67" />
-          <folding>
-            <marker date="1421799464421" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/www/bootstrap-table/dist/bootstrap-table.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7854" max-vertical-offset="28135">
-          <caret line="474" column="4" selection-start-line="474" selection-start-column="4" selection-end-line="474" selection-end-column="4" />
-          <folding>
-            <marker date="1421973578198" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1045,7 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.153846" vertical-offset="4573" max-vertical-offset="5321">
           <caret line="283" column="0" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1053,7 +1110,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="1054">
           <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1061,15 +1117,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03125" vertical-offset="0" max-vertical-offset="1207">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/application/router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="629">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1093,47 +1140,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.50701755" vertical-offset="0" max-vertical-offset="570">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/application/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09375" vertical-offset="0" max-vertical-offset="544">
-          <caret line="3" column="63" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6154">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/application/autoloader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="969">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile/www/js/index_user_scripts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="901">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files (x86)/Zend/ZendServer/logs/php_error.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21364452" vertical-offset="0" max-vertical-offset="557">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1145,21 +1151,113 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/backend/application/MilesBench/Model/City.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4383057" vertical-offset="527" max-vertical-offset="1700">
+          <caret line="45" column="7" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/application/router.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="629">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Zend/ZendServer/logs/php_error.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2193" max-vertical-offset="2312">
+          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/application/autoloader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="426" max-vertical-offset="969">
+          <caret line="41" column="92" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/application/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/application/MilesBench/Controller/City.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="561">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="e#133#160#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backend/application/MilesBench/Controller/Provider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615" vertical-offset="612" max-vertical-offset="1156">
-          <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="965" max-vertical-offset="1564">
+          <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
           <folding>
             <element signature="e#134#161#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/www/bootstrap-table/dist/bootstrap-table.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10738" max-vertical-offset="28135">
+          <caret line="642" column="52" selection-start-line="642" selection-start-column="45" selection-end-line="642" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/www/src/controller/City.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc;n#loadCity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mobile/www/src/controller/Provider.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1887">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2737">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.509091" vertical-offset="4547" max-vertical-offset="9146">
+          <caret line="295" column="70" selection-start-line="295" selection-start-column="70" selection-end-line="295" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/www/js/index_user_scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile/www/src/controller/wizardPurchase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17894737" vertical-offset="0" max-vertical-offset="570">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#49#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

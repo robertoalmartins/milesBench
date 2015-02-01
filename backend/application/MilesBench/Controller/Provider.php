@@ -21,10 +21,11 @@ class Provider {
 
         $dataset = array();
         foreach($BusinessPartner as $Provider){
+            $City = $Provider->getCity();
             $dataset[] = array(
                 'id' => $Provider->getId(),
                 'name' => $Provider->getName(),
-                'city' => $Provider->getCity()->getName(),
+                'city' => $City->getName() . ', ' . $City->getState(),
                 'registrationCode' => $Provider->getRegistrationCode(),
                 'adress' => $Provider->getAdress(),
                 'partnerType' => $Provider->getPartnerType(),
@@ -42,7 +43,7 @@ class Provider {
         try {
             $em = Application::getInstance()->getEntityManager();
             if ($dados['id']) {
-                $BusinessPartner = $em->getRepository('Businesspartner')->find(1);
+                $BusinessPartner = $em->getRepository('Businesspartner')->find($dados['id']);
             } else {
                 $BusinessPartner = new \Businesspartner();
             }
@@ -58,6 +59,27 @@ class Provider {
             $message = new \MilesBench\Message();
             $message->setType(\MilesBench\Message::SUCCESS);
             $message->setText('Registro alterado com sucesso');
+            $response->addMessage($message);
+
+        } catch (Exception $e) {
+            $message = new \MilesBench\Message();
+            $message->setType(\MilesBench\Message::ERROR);
+            $message->setText($e->getMessage());
+            $response->addMessage($message);
+        }
+    }
+
+    public function remove(Request $request, Response $response) {
+        $dados = $request->getRow();
+        try {
+            $em = Application::getInstance()->getEntityManager();
+            $BusinessPartner = $em->getRepository('Businesspartner')->find($dados['id']);
+            $em->remove($BusinessPartner);
+            $em->flush($BusinessPartner);
+
+            $message = new \MilesBench\Message();
+            $message->setType(\MilesBench\Message::SUCCESS);
+            $message->setText('Registro removido com sucesso');
             $response->addMessage($message);
 
         } catch (Exception $e) {

@@ -1,12 +1,14 @@
 /**
  * Created by robertomartins on 1/19/2015.
  */
-    var providerRow;
+var providerRow;
+var provider;
 
     function loadProvider() {
         var success = function(response) {
             var data = jQuery.parseJSON(response);
 
+            activate_page("#provider");
             var $init = $('#providerTable td');
             if ($init.length > 0) {
                 $('#providerTable').bootstrapTable('destroy');
@@ -18,7 +20,7 @@
             }
 
             for(var i in data.dataset){
-                var provider = data.dataset[i];
+                provider = data.dataset[i];
                 $('#providerTable tbody'). append(
                     '<tr id="tr_id'+provider.id+'" class="tr-class-'+provider.id+'">'+
                     '<td id="td_id_'+provider.id+'" class="td-class-'+provider.id+'">'+provider.id+'</td>'+
@@ -74,6 +76,7 @@
     }
 
     function loadform(datarow) {
+        $('#remove_provider').show();
         $providerRow = datarow;
 
         var $provider_name = $('#provider_name');
@@ -91,7 +94,8 @@
         $provider_phone.val(datarow.phoneNumber);
     }
 
-    function newform() {
+    function newProvider() {
+        $('#remove_provider').hide();
         $providerRow = {};
 
         $providerRow['name'] = '';
@@ -120,13 +124,31 @@
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;
             if(message['type'] == 'S') {
-               alert(message['text']);
+                alert(message['text']);
             }
+            loadProvider();
         };
 
         $.ajax({
             type: "POST",
             url: "../../backend/application/index.php?rota=/saveProvider",
+            data: $providerRow,
+            success: success
+        });
+    }
+
+    function removeProvider() {
+        var success = function(response) {
+            var message = jQuery.parseJSON(response).message;
+            if(message['type'] == 'S') {
+                alert(message['text']);
+            }
+            loadProvider();
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "../../backend/application/index.php?rota=/removeProvider",
             data: $providerRow,
             success: success
         });
