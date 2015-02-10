@@ -41,7 +41,9 @@
         <script type="application/javascript" src="src/controller/Login.js"></script>
         <script type="application/javascript" src="src/controller/Provider.js"></script>
         <script type="application/javascript" src="src/controller/City.js"></script>
+        <script type="application/javascript" src="src/controller/Miles.js"></script>
         <script type="application/javascript" src="src/controller/wizardPurchase.js"></script>
+        <script type="application/javascript" src="src/controller/wizardSales.js"></script>
     </head>
 
     <body>
@@ -367,7 +369,7 @@
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
 
-                                    <table id="providerTable" data-height="500" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
+                                    <table id="providerTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
                                         <thead>
                                             <tr>
                                                 <th data-field="id" data-halign="left" data-align="left" data-sortable="true">ID</th>
@@ -401,6 +403,155 @@
                         </div>
                     </div><span class="uib_shim"></span>
                 </div>
+            </div>
+            <div class="upage hidden" id="miles">
+                <div class="upage-outer">
+                    <div class="uib-header header-bg container-group inner-element uib_w_22" data-uib="layout/header" data-ver="0">
+                        <h2>UAI Milhas - Banco de Milhas</h2>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col left">
+                            <button type="button" class="btn widget uib_w_21 d-margins button_icon btn-default" data-uib="twitter%20bootstrap/button" data-ver="0" id="menu_provider"><i class="glyphicon glyphicon-th-list button-icon-left" data-position="left"></i> 
+                            </button>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                    </div>
+                    <div id="milessub" class="upage-content ">
+
+                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <table id="milesTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
+                                        <thead>
+                                            <tr>
+                                                <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
+                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
+                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
+                                                <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
+                                                <th data-field="card_number" data-halign="left" data-align="left" data-sortable="true">Número Cartão</th>
+                                                <th data-field="leftover" data-halign="left" data-align="right" data-sortable="true">Saldo Milhas</th>
+                                                <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Vencimento</th>
+                                                <th data-field="cost_per_thousand" data-halign="left" data-align="right" data-sortable="true">Custo por 1000</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_miles">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div><span class="uib_shim"></span>
+                        </div>
+                    </div>
+
+                    <div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_35" data-uib="layout/footer" data-ver="0">
+                        <h2></h2>
+                        <div class="widget-container wrapping-col single-centered">
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col left"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col right">
+                        </div>
+                    </div><span class="uib_shim"></span>
+                </div>
+            </div>
+            <div class="upage hidden" id="wizard_sales_1">
+                <div class="upage-outer">
+                    <div class="uib-header header-bg container-group inner-element uib_w_44" data-uib="layout/header" data-ver="0">
+                        <h2>Uai Milhar - Registro de Emissão</h2>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col left"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                    </div>
+
+                    <div id="wizard_sales_1sub" class="upage-content ">
+                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <table id="sales1Table" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
+                                        <thead>
+                                            <tr>
+                                                <th data-field="status" data-halign="left" data-align="left" data-sortable="true">Status</th>
+                                                <th data-field="client" data-halign="left" data-align="left" data-sortable="true">Agência</th>
+                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
+                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
+                                                <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
+                                                <th data-field="from" data-halign="left" data-align="left" data-sortable="true">De</th>
+                                                <th data-field="to" data-halign="left" data-align="right" data-sortable="true">Para</th>
+                                                <th data-field="miles_used" data-halign="left" data-align="left" data-sortable="true">Total de Milhas</th>
+                                                <th data-field="boarding_date" data-halign="left" data-align="right" data-sortable="true">Data Embarque</th>
+                                                <th data-field="issue_date" data-halign="left" data-align="right" data-sortable="true">Data Pedido</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_sales1">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><span class="uib_shim"></span>
+                        </div>
+                    </div>
+
+                    <div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_45 button_footer" data-uib="layout/footer" data-ver="0">
+                        <h2>Passo 1 de 4</h2>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col left">
+
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col right">
+                            <button type="button" class="btn widget uib_w_48 d-margins button_footer btn-default" data-uib="twitter%20bootstrap/button" data-ver="0" id="sales1_next"><i class="glyphicon button-icon-left" data-position="left"></i>Próximo</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /upage-outer -->
+            </div>
+            <div class="upage hidden" id="wizard_sales_2">
+                <div class="upage-outer">
+                    <div class="uib-header header-bg container-group inner-element uib_w_67" data-uib="layout/header" data-ver="0">
+                        <h2>Uai Milhas - Registrar Emissão</h2>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col left"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                    </div>
+                    <div id="wizard_sales_2sub" class="upage-content ">
+                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <table id="sales_milesTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true" data-click-to-select="true">
+                                        <thead>
+                                            <tr>
+                                                <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
+                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
+                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
+                                                <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
+                                                <th data-field="card_number" data-halign="left" data-align="left" data-sortable="true">Número Cartão</th>
+                                                <th data-field="leftover" data-halign="left" data-align="right" data-sortable="true">Saldo Milhas</th>
+                                                <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Vencimento</th>
+                                                <th data-field="cost_per_thousand" data-halign="left" data-align="right" data-sortable="true">Custo por 1000</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_salesmiles">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div><span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_68" data-uib="layout/footer" data-ver="0">
+                        <h2>Passo 2 de 4</h2>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col left">
+                            <button type="button" class="btn widget uib_w_69 d-margins btn-default button_footer" data-uib="twitter%20bootstrap/button" data-ver="0" id="sales2_prior"><i class="glyphicon button-icon-left" data-position="left"></i>Anterior</button>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col right">
+                            <button type="button" class="btn widget uib_w_70 d-margins btn-default button_footer" data-uib="twitter%20bootstrap/button" data-ver="0" id="sales2_next"><i class="glyphicon button-icon-left" data-position="left"></i>Próximo</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /upage-outer -->
             </div>
         </div>
         <!-- /upage-outer -->
@@ -457,7 +608,7 @@
                                                         <a class="list-group-item allow-badge widget uib_w_13 Menu_Style" data-uib="twitter%20bootstrap/list_item" data-ver="0" id="mnu_compra">
                                                             <p class="list-group-item-text">Compra</p>
                                                         </a>
-                                                        <a class="list-group-item allow-badge widget uib_w_14 Menu_Style" data-uib="twitter%20bootstrap/list_item" data-ver="0">
+                                                        <a class="list-group-item allow-badge widget uib_w_14 Menu_Style" data-uib="twitter%20bootstrap/list_item" data-ver="0" id="mnu_milesbench">
                                                             <p class="list-group-item-text">Banco de Milhas</p>
                                                         </a>
                                                         <a class="list-group-item allow-badge widget uib_w_12 Menu_Style" data-uib="twitter%20bootstrap/list_item" data-ver="0" id="mnu_fornecedor">
@@ -484,8 +635,8 @@
                                                         <a class="list-group-item allow-badge widget uib_w_16 Menu_Style" data-uib="twitter%20bootstrap/list_item" data-ver="0">
                                                             <p class="list-group-item-text">Pedidos</p>
                                                         </a>
-                                                        <a class="list-group-item allow-badge widget uib_w_17 Menu_Style" data-uib="twitter%20bootstrap/list_item" data-ver="0">
-                                                            <p class="list-group-item-text">Emissão</p>
+                                                        <a class="list-group-item allow-badge widget uib_w_17 Menu_Style" data-uib="twitter%20bootstrap/list_item" data-ver="0" id="mnu_registrar_emissao">
+                                                            <p class="list-group-item-text">Registrar Emissão</p>
                                                         </a>
 
                                                         <a class="list-group-item allow-badge widget uib_w_18 d-margins Menu_Style" data-uib="twitter%20bootstrap/list_item" data-ver="0">
