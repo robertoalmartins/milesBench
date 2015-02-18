@@ -21,8 +21,9 @@ var order;
 
             for(var i in data.dataset){
                 order = data.dataset[i];
-                $('#tb_order tbody'). append(
+                $('#orderTable tbody'). append(
                     '<tr>'+
+                    '<td>'+order.id+'</td>'+
                     '<td>'+order.status+'</td>'+
                     '<td>'+order.client+'</td>'+
                     '<td>'+order.email+'</td>'+
@@ -31,6 +32,7 @@ var order;
                     '<td>'+order.from+'</td>'+
                     '<td>'+order.to+'</td>'+
                     '<td>'+order.milesUsed+'</td>'+
+                    '<td>'+order.description+'</td>'+
                     '<td>'+order.issueDate+'</td>'+
                     '<td>'+order.boardingDate+'</td>'+
                     '<td>'+order.returnDate+'</td>'+
@@ -44,7 +46,8 @@ var order;
             }).on('all.bs.table', function (e, name, args) {
                 console.log('Event:', name, ', data:', args);
             }).on('click-row.bs.table', function (e, row, $element) {
-                loadOrder_Form();
+                activate_page("#order_form");
+                loadOrder_Form(row);
             }).on('dbl-click-row.bs.table', function (e, row, $element) {
                 $result.text('Event: dbl-click-row.bs.table, data: ' + JSON.stringify(row));
             }).on('sort.bs.table', function (e, name, order) {
@@ -78,29 +81,31 @@ var order;
         });
     }
 
-    function loadform(datarow) {
+    function loadOrder_Form(datarow) {
         $('#remove_order').show();
         $orderRow = datarow;
 
-        var $order_status = ('#$order_status');
-        var $order_client = ('#$order_client');
-        var $order_airline = ('#$order_airline');
-        var $order_from = ('#$order_from');
-        var $order_to = ('#$order_to');
-        var $order_milesUsed = ('#$order_milesUsed');
-        var $order_issueDate = ('#$order_issueDate');
-        var $order_boardingDate = ('#$order_boardingDate');
-        var $order_returnDate = ('#$order_returnDate');
+        var $order_status = $('#order_status');
+        var $order_client = $('#order_client');
+        var $order_airline = $('#order_airline');
+        var $order_from = $('#order_from');
+        var $order_to = $('#order_to');
+        var $order_milesUsed = $('#order_milesUsed');
+        var $order_description = $('#order_description');
+        var $order_issueDate = $('#order_issueDate');
+        var $order_boardingDate = $('#order_boardingDate');
+        var $order_returnDate = $('#order_returnDate');
 
-        $order_status.val(datarow.order_status);
-        $order_client.val(datarow.order_client);
-        $order_airline.val(datarow.order_airline);
-        $order_from.val(datarow.order_from);
-        $order_to.val(datarow.order_to);
-        $order_milesUsed.val(datarow.order_milesUsed);
-        $order_issueDate.val(datarow.order_issueDate);
-        $order_boardingDate.val(datarow.order_boardingDate);
-        $order_returnDate.val(datarow.order_returnDate);
+        $order_status.val(datarow.status);
+        $order_client.val(datarow.client);
+        $order_airline.val(datarow.airline);
+        $order_from.val(datarow.from);
+        $order_to.val(datarow.to);
+        $order_milesUsed.val(datarow.miles_used);
+        $order_description.val(datarow.description);
+        $order_issueDate.val(datarow.issue_date);
+        $order_boardingDate.val(datarow.boarding_date);
+        $order_returnDate.val(datarow.return_date);
     }
 
     function newOrder() {
@@ -113,6 +118,7 @@ var order;
         $orderRow['from'] = '';
         $orderRow['to'] = '';
         $orderRow['milesUsed'] = '';
+        $orderRow['description'] = '';
         $orderRow['issueDate'] = '';
         $orderRow['boardingDate'] = '';
         $orderRow['returnDate'] = '';
@@ -124,6 +130,7 @@ var order;
         $('#order_from').val('');
         $('#order_to').val('');
         $('#order_milesUsed').val('');
+        $('#order_description').val('');
         $('#order_issueDate').val('');
         $('#order_boardingDate').val('');
         $('#order_returnDate').val('');
@@ -136,6 +143,7 @@ var order;
         $orderRow['from'] = $('#order_from')[0].value;
         $orderRow['to'] = $('#order_to')[0].value;
         $orderRow['milesUsed'] = $('#order_milesUsed')[0].value;
+        $orderRow['description'] = $('#order_description')[0].value;
         $orderRow['issueDate'] = $('#order_issueDate')[0].value;
         $orderRow['boardingDate'] = $('#order_boardingDate')[0].value;
         $orderRow['returnDate'] = $('#order_returnDate')[0].value;
@@ -150,7 +158,7 @@ var order;
 
         $.ajax({
             type: "POST",
-            url: "../../backend/application/index.php?rota=/saveorder",
+            url: "../../backend/application/index.php?rota=/saveOrder",
             data: $orderRow,
             success: success
         });
@@ -167,7 +175,7 @@ var order;
 
         $.ajax({
             type: "POST",
-            url: "../../backend/application/index.php?rota=/removeorder",
+            url: "../../backend/application/index.php?rota=/removeOrder",
             data: $orderRow,
             success: success
         });

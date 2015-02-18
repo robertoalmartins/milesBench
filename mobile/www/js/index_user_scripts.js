@@ -23,6 +23,10 @@
         /****_________________________________________________________________________________________________****/
         $(document).on("click", "#mnu_order", function(evt){
             uib_sb.toggle_sidebar($(".uib_w_6"));
+            loadClient('#order_client');
+            loadAirport('#order_from');
+            loadAirport('#order_to');
+            loadAirline('#order_airline');
             loadOrder();
         });
 

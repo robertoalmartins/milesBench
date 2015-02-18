@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Airport
  *
- * @ORM\Table(name="airport", indexes={@ORM\Index(name="fk_airport_city1_idx", columns={"city_id"})})
+ * @ORM\Table(name="airport")
  * @ORM\Entity
  */
 class Airport
@@ -24,7 +24,7 @@ class Airport
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     * @ORM\Column(name="name", type="string", length=500, nullable=false)
      */
     private $name;
 
@@ -34,16 +34,6 @@ class Airport
      * @ORM\Column(name="code", type="string", length=45, nullable=false)
      */
     private $code;
-
-    /**
-     * @var \City
-     *
-     * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="city_id", referencedColumnName="id")
-     * })
-     */
-    private $city;
 
 
     /**
@@ -100,28 +90,5 @@ class Airport
     public function getCode()
     {
         return $this->code;
-    }
-
-    /**
-     * Set city
-     *
-     * @param \City $city
-     * @return Airport
-     */
-    public function setCity(\City $city = null)
-    {
-        $this->city = $city;
-    
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return \City 
-     */
-    public function getCity()
-    {
-        return $this->city;
     }
 }

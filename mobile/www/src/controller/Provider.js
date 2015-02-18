@@ -41,7 +41,7 @@ var provider;
                 console.log('Event:', name, ', data:', args);
             }).on('click-row.bs.table', function (e, row, $element) {
                 activate_page("#provider_form");
-                loadform(row);
+                Providerloadform(row);
             }).on('dbl-click-row.bs.table', function (e, row, $element) {
                 $result.text('Event: dbl-click-row.bs.table, data: ' + JSON.stringify(row));
             }).on('sort.bs.table', function (e, name, order) {
@@ -75,7 +75,7 @@ var provider;
         });
     }
 
-    function loadform(datarow) {
+    function Providerloadform(datarow) {
         $('#remove_provider').show();
         $providerRow = datarow;
 
@@ -104,6 +104,7 @@ var provider;
         $providerRow['city'] = '';
         $providerRow['email'] = '';
         $providerRow['phoneNumber'] = '';
+        $providerRow['partnerType'] = 'P';
 
         $('#provider_name').val('');
         $('#provider_code').val('');
@@ -120,6 +121,7 @@ var provider;
         $providerRow.city = $('#provider_city')[0].value;
         $providerRow.email = $('#provider_email')[0].value;
         $providerRow.phoneNumber = $('#provider_phone')[0].value;
+        $providerRow.partnerType = 'P';
 
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;

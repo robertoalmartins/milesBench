@@ -43,6 +43,9 @@
         <script type="application/javascript" src="src/controller/City.js"></script>
         <script type="application/javascript" src="src/controller/Miles.js"></script>
         <script type="application/javascript" src="src/controller/Order.js"></script>
+        <script type="application/javascript" src="src/controller/Airline.js"></script>
+        <script type="application/javascript" src="src/controller/Airport.js"></script>
+        <script type="application/javascript" src="src/controller/Client.js"></script>
         <script type="application/javascript" src="src/controller/wizardPurchase.js"></script>
         <script type="application/javascript" src="src/controller/wizardSales.js"></script>
     </head>
@@ -247,7 +250,7 @@
             </div>
             <div class="upage hidden" id="wizard_purchase_1">
                 <div class="upage-outer">
-                    <div class="uib-header header-bg container-group inner-element uib_w_44" data-uib="layout/header" data-ver="0">
+                    <div class="uib-header header-bg container-group inner-element uib_w_5" data-uib="layout/header" data-ver="0">
                         <h2>Uai Milhar - Compra de Milhas</h2>
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left">
@@ -358,7 +361,7 @@
             </div>
             <div class="upage hidden" id="provider">
                 <div class="upage-outer">
-                    <div class="uib-header header-bg container-group inner-element uib_w_22" data-uib="layout/header" data-ver="0">
+                    <div class="uib-header header-bg container-group inner-element uib_w_5" data-uib="layout/header" data-ver="0">
                         <h2>UAI Milhas - Fornecedor</h2>
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left">
@@ -410,7 +413,7 @@
             </div>
             <div class="upage hidden" id="miles">
                 <div class="upage-outer">
-                    <div class="uib-header header-bg container-group inner-element uib_w_22" data-uib="layout/header" data-ver="0">
+                    <div class="uib-header header-bg container-group inner-element uib_w_5" data-uib="layout/header" data-ver="0">
                         <h2>UAI Milhas - Banco de Milhas</h2>
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left">
@@ -460,7 +463,7 @@
             </div>
             <div class="upage hidden" id="wizard_sales_1">
                 <div class="upage-outer">
-                    <div class="uib-header header-bg container-group inner-element uib_w_44" data-uib="layout/header" data-ver="0">
+                    <div class="uib-header header-bg container-group inner-element uib_w_5" data-uib="layout/header" data-ver="0">
                         <h2>Uai Milhar - Registro de Emissão</h2>
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left">
@@ -478,6 +481,7 @@
                                     <table id="sales1Table" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
                                         <thead>
                                             <tr>
+                                                <th data-field="id" data-halign="left" data-align="left" data-sortable="true">ID</th>
                                                 <th data-field="status" data-halign="left" data-align="left" data-sortable="true">Status</th>
                                                 <th data-field="client" data-halign="left" data-align="left" data-sortable="true">Agência</th>
                                                 <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
@@ -486,9 +490,10 @@
                                                 <th data-field="from" data-halign="left" data-align="left" data-sortable="true">De</th>
                                                 <th data-field="to" data-halign="left" data-align="right" data-sortable="true">Para</th>
                                                 <th data-field="miles_used" data-halign="left" data-align="left" data-sortable="true">Total de Milhas</th>
+                                                <th data-field="description" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Observação</th>
                                                 <th data-field="issue_date" data-halign="left" data-align="right" data-sortable="true">Data Pedido</th>
                                                 <th data-field="boarding_date" data-halign="left" data-align="right" data-sortable="true">Data Embarque</th>
-                                                <th data-field="boarding_date" data-halign="left" data-align="right" data-sortable="true">Data Retorno</th>
+                                                <th data-field="return_date" data-halign="left" data-align="right" data-sortable="true">Data Retorno</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tb_sales1">
@@ -672,15 +677,6 @@
                         <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-                                    <div class="table-thing widget uib_w_24 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Status</label>
-                                        <select class="wide-control form-control" id="order_status">
-                                            <option>Pendente</option>
-                                            <option>Emitido</option>
-                                            <option>Encerrado</option>
-                                            <option>Cancelado</option>
-                                        </select>
-                                    </div>
                                     <div class="table-thing widget uib_w_25 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                         <label class="narrow-control label-top-left">Cliente</label>
                                         <select class="wide-control form-control" id="order_client">
@@ -691,19 +687,54 @@
                                         <select class="wide-control form-control" id="order_airline">
                                         </select>
                                     </div>
-                                    <div class="table-thing widget uib_w_27 d-margins" data-uib="twitter%20bootstrap/select" data-ver="0">
-                                        <label class="narrow-control label-top-left">Origem</label>
-                                        <select class="wide-control form-control" id="order_from">
-                                        </select>
+                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Origem</label>
+                                                    <select class="wide-control form-control" id="order_from">
+                                                    </select>
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_37 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Destino</label>
+                                                    <select class="wide-control form-control" id="order_to">
+                                                    </select>
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
                                     </div>
-                                    <div class="table-thing widget uib_w_28 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Destino</label>
-                                        <select class="wide-control form-control" id="order_to">
-                                        </select>
+                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Total de Milhas</label>
+                                                    <input class="wide-control form-control" type="number" id="order_milesUsed">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_37 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Status</label>
+                                                    <select class="wide-control form-control" id="order_status">
+                                                        <option>Pendente</option>
+                                                        <option>Emitido</option>
+                                                        <option>Encerrado</option>
+                                                        <option>Cancelado</option>
+                                                    </select>
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
                                     </div>
-                                    <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Total de Milhas</label>
-                                        <input class="wide-control form-control" type="number" id="order_milesUsed">
+                                    <div class="table-thing widget uib_w_25 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                        <label class="narrow-control label-top-left">Observação</label>
+                                        <input class="wide-control form-control" type="text" id="order_description">
                                     </div>
                                     <div class="grid urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_42 col-1_4-12_4-4" data-uib="layout/col" data-ver="0">
@@ -763,7 +794,7 @@
             </div>
             <div class="upage hidden" id="order">
                 <div class="upage-outer">
-                    <div class="uib-header header-bg container-group inner-element uib_w_22" data-uib="layout/header" data-ver="0">
+                    <div class="uib-header header-bg container-group inner-element uib_w_5" data-uib="layout/header" data-ver="0">
                         <h2>UAI Milhas - Pedidos</h2>
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left">
@@ -780,6 +811,7 @@
                                     <table id="orderTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
                                         <thead>
                                             <tr>
+                                                <th data-field="id" data-halign="left" data-align="left" data-sortable="true">ID</th>
                                                 <th data-field="status" data-halign="left" data-align="left" data-sortable="true">Status</th>
                                                 <th data-field="client" data-halign="left" data-align="left" data-sortable="true">Agência</th>
                                                 <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
@@ -788,9 +820,10 @@
                                                 <th data-field="from" data-halign="left" data-align="left" data-sortable="true">De</th>
                                                 <th data-field="to" data-halign="left" data-align="right" data-sortable="true">Para</th>
                                                 <th data-field="miles_used" data-halign="left" data-align="left" data-sortable="true">Total de Milhas</th>
+                                                <th data-field="description" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Observação</th>
                                                 <th data-field="issue_date" data-halign="left" data-align="right" data-sortable="true">Data Pedido</th>
                                                 <th data-field="boarding_date" data-halign="left" data-align="right" data-sortable="true">Data Embarque</th>
-                                                <th data-field="boarding_date" data-halign="left" data-align="right" data-sortable="true">Data Retorno</th>
+                                                <th data-field="return_date" data-halign="left" data-align="right" data-sortable="true">Data Retorno</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tb_order">

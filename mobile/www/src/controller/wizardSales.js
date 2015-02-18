@@ -19,8 +19,9 @@
 
             for(var i in data.dataset){
                 order = data.dataset[i];
-                $('#tb_sales1 tbody'). append(
+                $('#sales1Table tbody'). append(
                     '<tr>'+
+                    '<td>'+order.id+'</td>'+
                     '<td>'+order.status+'</td>'+
                     '<td>'+order.client+'</td>'+
                     '<td>'+order.email+'</td>'+
@@ -28,11 +29,11 @@
                     '<td>'+order.airline+'</td>'+
                     '<td>'+order.from+'</td>'+
                     '<td>'+order.to+'</td>'+
-                    '<td>'+order.to+'</td>'+
                     '<td>'+order.milesUsed+'</td>'+
+                    '<td>'+order.description+'</td>'+
                     '<td>'+order.issueDate+'</td>'+
                     '<td>'+order.boardingDate+'</td>'+
-                    '<td>'+order.ReturnDate+'</td>'+
+                    '<td>'+order.returnDate+'</td>'+
                     '</tr>'
                 );
             }

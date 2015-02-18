@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Sale
  *
- * @ORM\Table(name="sale", indexes={@ORM\Index(name="fk_sale_businesspartner1_idx", columns={"pax_id"}), @ORM\Index(name="fk_sale_businesspartner2_idx", columns={"client_id"}), @ORM\Index(name="fk_sale_airline1_idx", columns={"airline_id"}), @ORM\Index(name="fk_sale_Cards1_idx", columns={"cards_id"}), @ORM\Index(name="fk_sale_airport1_idx", columns={"from"}), @ORM\Index(name="fk_sale_airport2_idx", columns={"to"})})
+ * @ORM\Table(name="sale", uniqueConstraints={@ORM\UniqueConstraint(name="client_id_UNIQUE", columns={"client_id"}), @ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_sale_businesspartner1_idx", columns={"pax_id"}), @ORM\Index(name="fk_sale_airline1_idx", columns={"airline_id"}), @ORM\Index(name="fk_sale_Cards1_idx", columns={"cards_id"}), @ORM\Index(name="fk_sale_airport1_idx", columns={"airport_from"}), @ORM\Index(name="fk_sale_airport2_idx", columns={"airport_to"})})
  * @ORM\Entity
  */
 class Sale
@@ -24,16 +24,16 @@ class Sale
     /**
      * @var string
      *
-     * @ORM\Column(name="flight_locator", type="string", length=45, nullable=false)
+     * @ORM\Column(name="flight_locator", type="string", length=45, nullable=true)
      */
     private $flightLocator;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="checkin_state", type="string", length=1, nullable=false)
+     * @ORM\Column(name="checkin_state", type="string", length=20, nullable=true)
      */
-    private $checkinState = 'P';
+    private $checkinState;
 
     /**
      * @var \DateTime
@@ -99,6 +99,13 @@ class Sale
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=20, nullable=true)
+     */
+    private $status;
+
+    /**
      * @var \Cards
      *
      * @ORM\ManyToOne(targetEntity="Cards")
@@ -123,20 +130,20 @@ class Sale
      *
      * @ORM\ManyToOne(targetEntity="Airport")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="from", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="airport_from", referencedColumnName="id")
      * })
      */
-    private $from;
+    private $airportFrom;
 
     /**
      * @var \Airport
      *
      * @ORM\ManyToOne(targetEntity="Airport")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="to", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="airport_to", referencedColumnName="id")
      * })
      */
-    private $to;
+    private $airportTo;
 
     /**
      * @var \Businesspartner
@@ -423,6 +430,29 @@ class Sale
     }
 
     /**
+     * Set status
+     *
+     * @param string $status
+     * @return Sale
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
      * Set cards
      *
      * @param \Cards $cards
@@ -469,49 +499,49 @@ class Sale
     }
 
     /**
-     * Set from
+     * Set airportFrom
      *
-     * @param \Airport $from
+     * @param \Airport $airportFrom
      * @return Sale
      */
-    public function setFrom(\Airport $from = null)
+    public function setAirportFrom(\Airport $airportFrom = null)
     {
-        $this->from = $from;
+        $this->airportFrom = $airportFrom;
     
         return $this;
     }
 
     /**
-     * Get from
+     * Get airportFrom
      *
      * @return \Airport 
      */
-    public function getFrom()
+    public function getAirportFrom()
     {
-        return $this->from;
+        return $this->airportFrom;
     }
 
     /**
-     * Set to
+     * Set airportTo
      *
-     * @param \Airport $to
+     * @param \Airport $airportTo
      * @return Sale
      */
-    public function setTo(\Airport $to = null)
+    public function setAirportTo(\Airport $airportTo = null)
     {
-        $this->to = $to;
+        $this->airportTo = $airportTo;
     
         return $this;
     }
 
     /**
-     * Get to
+     * Get airportTo
      *
      * @return \Airport 
      */
-    public function getTo()
+    public function getAirportTo()
     {
-        return $this->to;
+        return $this->airportTo;
     }
 
     /**
@@ -558,35 +588,5 @@ class Sale
     public function getClient()
     {
         return $this->client;
-    }
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="status", type="string", length=1, nullable=false)
-     */
-    private $status = 'P';
-
-
-    /**
-     * Set status
-     *
-     * @param string $status
-     * @return Sale
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string 
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 }
