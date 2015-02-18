@@ -2,7 +2,82 @@
  * Created by robertomartins on 2/1/2015.
  */
 
-    function loadSalesMiles_CheckedGrid() {
+    function loadSalesMiles_Order() {
+        var success = function(response) {
+            var data = jQuery.parseJSON(response);
+
+            activate_page("#wizard_sales_1");
+            var $init = $('#sales1Table td');
+            if ($init.length > 0) {
+                $('#sales1Table').bootstrapTable('destroy');
+
+                $ParentNode = document.getElementById("tb_sales1")
+                while ($ParentNode.hasChildNodes()) {
+                    $ParentNode.removeChild($ParentNode.firstChild);
+                }
+            }
+
+            for(var i in data.dataset){
+                order = data.dataset[i];
+                $('#tb_sales1 tbody'). append(
+                    '<tr>'+
+                    '<td>'+order.status+'</td>'+
+                    '<td>'+order.client+'</td>'+
+                    '<td>'+order.email+'</td>'+
+                    '<td>'+order.phoneNumber+'</td>'+
+                    '<td>'+order.airline+'</td>'+
+                    '<td>'+order.from+'</td>'+
+                    '<td>'+order.to+'</td>'+
+                    '<td>'+order.to+'</td>'+
+                    '<td>'+order.milesUsed+'</td>'+
+                    '<td>'+order.issueDate+'</td>'+
+                    '<td>'+order.boardingDate+'</td>'+
+                    '<td>'+order.ReturnDate+'</td>'+
+                    '</tr>'
+                );
+            }
+            var $table = $('#sales1Table');
+            var $result = $('#events-result');
+
+            $table.bootstrapTable({
+            }).on('all.bs.table', function (e, name, args) {
+                console.log('Event:', name, ', data:', args);
+            }).on('click-row.bs.table', function (e, row, $element) {
+                loadSalesMiles_Grid();
+            }).on('dbl-click-row.bs.table', function (e, row, $element) {
+                $result.text('Event: dbl-click-row.bs.table, data: ' + JSON.stringify(row));
+            }).on('sort.bs.table', function (e, name, order) {
+                $result.text('Event: sort.bs.table, data: ' + name + ', ' + order);
+            }).on('check.bs.table', function (e, row) {
+                $result.text('Event: check.bs.table, data: ' + JSON.stringify(row));
+            }).on('uncheck.bs.table', function (e, row) {
+                $result.text('Event: uncheck.bs.table, data: ' + JSON.stringify(row));
+            }).on('check-all.bs.table', function (e) {
+                $result.text('Event: check-all.bs.table');
+            }).on('uncheck-all.bs.table', function (e) {
+                $result.text('Event: uncheck-all.bs.table');
+            }).on('load-success.bs.table', function (e, data) {
+                $result.text('Event: load-success.bs.table');
+            }).on('load-error.bs.table', function (e, status) {
+                $result.text('Event: load-error.bs.table, data: ' + status);
+            }).on('column-switch.bs.table', function (e, field, checked) {
+                $result.text('Event: column-switch.bs.table, data: ' +
+                field + ', ' + checked);
+            }).on('page-change.bs.table', function (e, size, number) {
+                $result.text('Event: page-change.bs.table, data: ' + number + ', ' + size);
+            }).on('search.bs.table', function (e, text) {
+                $result.text('Event: search.bs.table, data: ' + text);
+            });
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "../../backend/application/index.php?rota=/loadOpenedOrder",
+            success: success
+        });
+    }
+
+    function loadSalesMiles_Grid() {
         var success = function(response) {
             var data = jQuery.parseJSON(response);
 
