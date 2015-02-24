@@ -1,6 +1,9 @@
 /**
  * Created by robertomartins on 2/1/2015.
  */
+var salesOrderRow;
+var milesCardRow;
+var salesRow;
 
     function loadSalesMiles_Order() {
         var success = function(response) {
@@ -41,33 +44,9 @@
             var $result = $('#events-result');
 
             $table.bootstrapTable({
-            }).on('all.bs.table', function (e, name, args) {
-                console.log('Event:', name, ', data:', args);
             }).on('click-row.bs.table', function (e, row, $element) {
+                $salesOrderRow = row;
                 loadSalesMiles_Grid();
-            }).on('dbl-click-row.bs.table', function (e, row, $element) {
-                $result.text('Event: dbl-click-row.bs.table, data: ' + JSON.stringify(row));
-            }).on('sort.bs.table', function (e, name, order) {
-                $result.text('Event: sort.bs.table, data: ' + name + ', ' + order);
-            }).on('check.bs.table', function (e, row) {
-                $result.text('Event: check.bs.table, data: ' + JSON.stringify(row));
-            }).on('uncheck.bs.table', function (e, row) {
-                $result.text('Event: uncheck.bs.table, data: ' + JSON.stringify(row));
-            }).on('check-all.bs.table', function (e) {
-                $result.text('Event: check-all.bs.table');
-            }).on('uncheck-all.bs.table', function (e) {
-                $result.text('Event: uncheck-all.bs.table');
-            }).on('load-success.bs.table', function (e, data) {
-                $result.text('Event: load-success.bs.table');
-            }).on('load-error.bs.table', function (e, status) {
-                $result.text('Event: load-error.bs.table, data: ' + status);
-            }).on('column-switch.bs.table', function (e, field, checked) {
-                $result.text('Event: column-switch.bs.table, data: ' +
-                field + ', ' + checked);
-            }).on('page-change.bs.table', function (e, size, number) {
-                $result.text('Event: page-change.bs.table, data: ' + number + ', ' + size);
-            }).on('search.bs.table', function (e, text) {
-                $result.text('Event: search.bs.table, data: ' + text);
             });
         };
 
@@ -112,39 +91,58 @@
             var $result = $('#events-result');
 
             $table.bootstrapTable({
-            }).on('all.bs.table', function (e, name, args) {
-                console.log('Event:', name, ', data:', args);
             }).on('click-row.bs.table', function (e, row, $element) {
-                console.log('Event:', name, ', data:', args);
-            }).on('dbl-click-row.bs.table', function (e, row, $element) {
-                $result.text('Event: dbl-click-row.bs.table, data: ' + JSON.stringify(row));
-            }).on('sort.bs.table', function (e, name, order) {
-                $result.text('Event: sort.bs.table, data: ' + name + ', ' + order);
-            }).on('check.bs.table', function (e, row) {
-                $result.text('Event: check.bs.table, data: ' + JSON.stringify(row));
-            }).on('uncheck.bs.table', function (e, row) {
-                $result.text('Event: uncheck.bs.table, data: ' + JSON.stringify(row));
-            }).on('check-all.bs.table', function (e) {
-                $result.text('Event: check-all.bs.table');
-            }).on('uncheck-all.bs.table', function (e) {
-                $result.text('Event: uncheck-all.bs.table');
-            }).on('load-success.bs.table', function (e, data) {
-                $result.text('Event: load-success.bs.table');
-            }).on('load-error.bs.table', function (e, status) {
-                $result.text('Event: load-error.bs.table, data: ' + status);
-            }).on('column-switch.bs.table', function (e, field, checked) {
-                $result.text('Event: column-switch.bs.table, data: ' +
-                field + ', ' + checked);
-            }).on('page-change.bs.table', function (e, size, number) {
-                $result.text('Event: page-change.bs.table, data: ' + number + ', ' + size);
-            }).on('search.bs.table', function (e, text) {
-                $result.text('Event: search.bs.table, data: ' + text);
+                $milesCardRow = row;
+                loadSalesWizard_Form();
             });
         };
 
         $.ajax({
             type: "POST",
             url: "../../backend/application/index.php?rota=/loadMiles",
+            success: success
+        });
+    }
+
+    function loadSalesWizard_Form() {
+        activate_page("#wizard_sales_3");
+        var $sales_miles_used = $('#sales_miles_used');
+        var $sales_total_cost = $('#sales_total_cost');
+        $sales_miles_used.val($salesOrderRow.miles_used);
+        $sales_total_cost.val($milesCardRow.cost_per_thousand/1000 * $salesOrderRow.miles_used);
+    }
+
+    function setKickback(){
+        $('#sales_kickback').val($('#sales_amount_paid')[0].value - $('#sales_total_cost')[0].value - $('#sales_tax')[0].value);
+    }
+
+    function saveSale(){
+        $salesRow = {};
+        $salesRow['id'] = $salesOrderRow.id;
+        $salesRow['cardNumber'] = $milesCardRow.card_number;
+        $salesRow['dueDate'] = $milesCardRow.due_date;
+        $salesRow['paxName'] = $('#sales_pax_name')[0].value;
+        $salesRow['paxRegistrationCode'] = $('#sales_registration_code')[0].value;
+        $salesRow['flightLocator'] = $('#sales_flight_locator')[0].value;
+        $salesRow['checkinState'] = $('#sales_checkin_state')[0].value;
+        $salesRow['tax'] = $('#sales_tax')[0].value;
+        $salesRow['milesUsed'] = $('#sales_miles_used')[0].value;
+        $salesRow['totalCost'] = $('#sales_total_cost')[0].value;
+        $salesRow['amountPaid'] = $('#sales_amount_paid')[0].value;
+        $salesRow['kickback'] = $('#sales_kickback')[0].value;
+
+        var success = function(response) {
+            var message = jQuery.parseJSON(response).message;
+            if(message['type'] == 'S') {
+                alert(message['text']);
+            }
+            loadOrder();
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "../../backend/application/index.php?rota=/saveSale",
+            data: $salesRow,
             success: success
         });
     }

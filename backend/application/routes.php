@@ -14,7 +14,8 @@ $routes = array(
     '/saveClient' => '\MilesBench\Controller\Businesspartner::save',
     '/removeClient' => '\MilesBench\Controller\Businesspartner::remove',
     '/loadAirport' => '\MilesBench\Controller\Airport::load',
-    '/loadAirline' => '\MilesBench\Controller\Airline::load'
+    '/loadAirline' => '\MilesBench\Controller\Airline::load',
+    '/saveSale' => '\MilesBench\Controller\Sale::save'
 );
 
 

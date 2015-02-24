@@ -531,7 +531,7 @@
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
 
-                                    <table id="sales_milesTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true" data-click-to-select="true">
+                                    <table id="sales_milesTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
                                         <thead>
                                             <tr>
                                                 <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
@@ -584,6 +584,11 @@
                                         <input class="wide-control form-control" type="text" id="sales_pax_name">
                                     </div>
 
+                                    <div class="table-thing widget uib_w_24 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                        <label class="narrow-control label-top-left">Documento</label>
+                                        <input class="wide-control form-control" type="text" id="sales_registration_code">
+                                    </div>
+
                                     <div class="grid urow uib_row_16" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_36 col-1_8-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
@@ -606,7 +611,7 @@
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_72 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Valor Taxa</label>
-                                                    <input class="wide-control form-control" type="number" id="sales-tax">
+                                                    <input class="wide-control form-control" type="number" id="sales_tax" onBlur="setKickback()">
                                                 </div><span class="uib_shim"></span>
                                             </div>
                                         </div>
@@ -625,7 +630,7 @@
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Custo Milhas</label>
-                                                    <input class="wide-control form-control" type="number" id="sales_total_cost">
+                                                    <input class="wide-control form-control" type="number" id="sales_total_cost" onBlur="setKickback()">
                                                 </div><span class="uib_shim"></span>
                                             </div>
                                         </div>
@@ -633,14 +638,14 @@
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Valor Cobrado</label>
-                                                    <input class="wide-control form-control" type="number" id="sales_amount_paid">
+                                                    <input class="wide-control form-control" type="number" id="sales_amount_paid" onBlur="setKickback()">
                                                 </div><span class="uib_shim"></span>
                                             </div>
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
                                     <div class="table-thing widget uib_w_25 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Valor Retorno</label>
+                                        <label class="narrow-control label-top-left">Valor de Retorno</label>
                                         <input class="wide-control form-control" type="number" id="sales_kickback">
                                     </div>
 
