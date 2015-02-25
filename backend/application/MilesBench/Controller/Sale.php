@@ -22,21 +22,21 @@ class sale {
         try {
             $em->getConnection()->beginTransaction();
 
-            $BusinessPartner = $em->getRepository('Businesspartner')->findBy(array('name' => $dados['paxName']));
+            $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['paxName']));
             if (!$BusinessPartner) {
                 $BusinessPartner = new \Businesspartner();
                 $BusinessPartner->setName($dados['paxName']);
-                $BusinessPartner->setRegistrationCode('paxRegistrationCode');
+                $BusinessPartner->setRegistrationCode($dados['paxRegistrationCode']);
                 $BusinessPartner->setPartnerType('X');
             } else {
-                if (!strpos($BusinessPartner->getPartnerType, 'X')) {
-                    $BusinessPartner->setPartnerType($BusinessPartner->getPartnerType+'_X');
+                if (strpos($BusinessPartner->getPartnerType(),'X')) {
+                    $BusinessPartner->setPartnerType($BusinessPartner->getPartnerType()+'_X');
                 }
             }
             $em->persist($BusinessPartner);
             $em->flush($BusinessPartner);
 
-            $Cards = $em->getRepository('Cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
+            $Cards = $em->getRepository('cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
             
             $Sale = $em->getRepository('Sale')->find($dados['id']);
             $Sale->setFlightLocator($dados['flightLocator']);
@@ -52,10 +52,8 @@ class sale {
             $em->persist($Sale);
             $em->flush($Sale);
 
-            var_dump($Cards);die;
-            
-            $MilesBench = $em->getRepository('Milesbench')->findBy(array('card_id' => $Cards->getId()));
-            $MilesBench->setLeftOver($MilesBench->getLeftOver() - $Sale->setMilesUsed());
+            $MilesBench = $em->getRepository('Milesbench')->findOneBy(array('cards' => $Cards));
+            $MilesBench->setLeftOver($MilesBench->getLeftOver() - $Sale->getMilesUsed());
             $em->persist($MilesBench);
             $em->flush($MilesBench);
 

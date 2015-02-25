@@ -99,21 +99,18 @@ class Sale
     private $description;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="cards_id", type="integer", nullable=true)
+     */
+    private $cardsId;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=20, nullable=true)
      */
     private $status;
-
-    /**
-     * @var \Cards
-     *
-     * @ORM\ManyToOne(targetEntity="Cards")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cards_id", referencedColumnName="id")
-     * })
-     */
-    private $cards;
 
     /**
      * @var \Airline
@@ -430,6 +427,29 @@ class Sale
     }
 
     /**
+     * Set cardsId
+     *
+     * @param integer $cardsId
+     * @return Sale
+     */
+    public function setCardsId($cardsId)
+    {
+        $this->cardsId = $cardsId;
+    
+        return $this;
+    }
+
+    /**
+     * Get cardsId
+     *
+     * @return integer 
+     */
+    public function getCardsId()
+    {
+        return $this->cardsId;
+    }
+
+    /**
      * Set status
      *
      * @param string $status
@@ -450,29 +470,6 @@ class Sale
     public function getStatus()
     {
         return $this->status;
-    }
-
-    /**
-     * Set cards
-     *
-     * @param \Cards $cards
-     * @return Sale
-     */
-    public function setCards(\Cards $cards = null)
-    {
-        $this->cards = $cards;
-    
-        return $this;
-    }
-
-    /**
-     * Get cards
-     *
-     * @return \Cards 
-     */
-    public function getCards()
-    {
-        return $this->cards;
     }
 
     /**
@@ -588,5 +585,38 @@ class Sale
     public function getClient()
     {
         return $this->client;
+    }
+    /**
+     * @var \Cards
+     *
+     * @ORM\ManyToOne(targetEntity="Cards")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cards_id", referencedColumnName="id")
+     * })
+     */
+    private $cards;
+
+
+    /**
+     * Set cards
+     *
+     * @param \Cards $cards
+     * @return Sale
+     */
+    public function setCards(\Cards $cards = null)
+    {
+        $this->cards = $cards;
+    
+        return $this;
+    }
+
+    /**
+     * Get cards
+     *
+     * @return \Cards 
+     */
+    public function getCards()
+    {
+        return $this->cards;
     }
 }

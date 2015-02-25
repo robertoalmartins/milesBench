@@ -73,7 +73,7 @@ class Businesspartner
     /**
      * @var string
      *
-     * @ORM\Column(name="phone_number", type="string", length=45, nullable=false)
+     * @ORM\Column(name="phone_number", type="string", length=45, nullable=true)
      */
     private $phoneNumber;
 

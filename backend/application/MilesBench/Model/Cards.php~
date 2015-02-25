@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Cards
  *
- * @ORM\Table(name="cards", indexes={@ORM\Index(name="fk_Cards_airline1_idx", columns={"airline_id"}), @ORM\Index(name="fk_Cards_businesspartner1_idx", columns={"businesspartner_id"})})
+ * @ORM\Table(name="cards", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_Cards_airline1_idx", columns={"airline_id"}), @ORM\Index(name="fk_Cards_businesspartner1_idx", columns={"businesspartner_id"})})
  * @ORM\Entity
  */
 class Cards
@@ -22,9 +22,9 @@ class Cards
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="card_number", type="integer", nullable=false)
+     * @ORM\Column(name="card_number", type="string", length=45, nullable=false)
      */
     private $cardNumber;
 
@@ -83,7 +83,7 @@ class Cards
     /**
      * Set cardNumber
      *
-     * @param integer $cardNumber
+     * @param string $cardNumber
      * @return Cards
      */
     public function setCardNumber($cardNumber)
@@ -96,7 +96,7 @@ class Cards
     /**
      * Get cardNumber
      *
-     * @return integer 
+     * @return string 
      */
     public function getCardNumber()
     {

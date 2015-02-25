@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Milesbench
  *
- * @ORM\Table(name="milesbench", indexes={@ORM\Index(name="fk_milesbench_Cards1_idx", columns={"cards_id"})})
+ * @ORM\Table(name="milesbench", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_milesbench_Cards1_idx", columns={"cards_id"})})
  * @ORM\Entity
  */
 class Milesbench
@@ -41,6 +41,13 @@ class Milesbench
      * @ORM\Column(name="due_date", type="datetime", nullable=false)
      */
     private $dueDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cost_per_thousand", type="decimal", precision=10, scale=0, nullable=false)
+     */
+    private $costPerThousand = '0';
 
     /**
      * @var \Cards
@@ -133,36 +140,6 @@ class Milesbench
     }
 
     /**
-     * Set cards
-     *
-     * @param \Cards $cards
-     * @return Milesbench
-     */
-    public function setCards(\Cards $cards = null)
-    {
-        $this->cards = $cards;
-    
-        return $this;
-    }
-
-    /**
-     * Get cards
-     *
-     * @return \Cards 
-     */
-    public function getCards()
-    {
-        return $this->cards;
-    }
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cost_per_thousand", type="decimal", precision=10, scale=0, nullable=false)
-     */
-    private $costPerThousand = '0';
-
-
-    /**
      * Set costPerThousand
      *
      * @param string $costPerThousand
@@ -183,5 +160,28 @@ class Milesbench
     public function getCostPerThousand()
     {
         return $this->costPerThousand;
+    }
+
+    /**
+     * Set cards
+     *
+     * @param \Cards $cards
+     * @return Milesbench
+     */
+    public function setCards(\Cards $cards = null)
+    {
+        $this->cards = $cards;
+    
+        return $this;
+    }
+
+    /**
+     * Get cards
+     *
+     * @return \Cards 
+     */
+    public function getCards()
+    {
+        return $this->cards;
     }
 }
