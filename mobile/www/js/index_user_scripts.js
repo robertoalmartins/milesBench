@@ -51,7 +51,7 @@
         /****_________________________________________________________________________________________________****/
         $(document).on("click", "#mnu_provider", function(evt){
             uib_sb.toggle_sidebar($(".uib_w_6"));
-            loadCity('#provider_city');
+            loadState('#provider_state');
             loadProvider();
         });
 
@@ -76,6 +76,8 @@
         /****_________________________________________________________________________________________________****/
         $(document).on("click", "#mnu_purchase", function(evt){
             uib_sb.toggle_sidebar($(".uib_w_6"));
+            loadSelectProvider('#wizard_selectprovider');
+            loadAirline('#purchase_airline');
             activate_page("#wizard_purchase_1");
         });
 
@@ -88,6 +90,7 @@
         });
 
         $(document).on("click", "#purchase2_next", function(evt){
+            savelocal_provider();
             activate_page("#wizard_purchase_3");
         });
 
@@ -100,11 +103,16 @@
         });
 
         $(document).on("click", "#purchase3_next", function(evt) {
+            savelocal_purchase();
             activate_page("#wizard_purchase_4");
         });
 
         $(document).on("click", "#purchase4_prior", function(evt){
             activate_page("#wizard_purchase_3");
+        });
+
+        $(document).on("click", "#purchase4_save", function(evt){
+            saveserver_wizard();
         });
 
         /****_________________________________________________________________________________________________****/

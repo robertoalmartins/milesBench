@@ -5,6 +5,7 @@ $routes = array(
     '/saveProvider' => '\MilesBench\Controller\Businesspartner::save',
     '/removeProvider' => '\MilesBench\Controller\Businesspartner::remove',
     '/loadCity' => '\MilesBench\Controller\City::load',
+    '/loadState' => '\MilesBench\Controller\City::loadState',
     '/loadMiles' => '\MilesBench\Controller\Miles::load',
     '/loadOpenedOrder' => '\MilesBench\Controller\Order::loadOpened',
     '/loadOrder' => '\MilesBench\Controller\Order::load',
@@ -15,7 +16,8 @@ $routes = array(
     '/removeClient' => '\MilesBench\Controller\Businesspartner::remove',
     '/loadAirport' => '\MilesBench\Controller\Airport::load',
     '/loadAirline' => '\MilesBench\Controller\Airline::load',
-    '/saveSale' => '\MilesBench\Controller\Sale::save'
+    '/saveSale' => '\MilesBench\Controller\Sale::save',
+    '/savePurchase' => '\MilesBench\Controller\Purchase::save'
 );
 
 

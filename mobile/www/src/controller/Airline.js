@@ -12,6 +12,7 @@
                     '<option>'+Airline.name+'</option>'
                 );
             }
+            $($component).selectpicker('refresh');
         }
 
         $.ajax({

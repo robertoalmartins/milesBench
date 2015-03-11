@@ -12,6 +12,7 @@
                     '<option>'+Airport.code+'</option>'
                 );
             }
+            $($component).selectpicker('refresh');
         }
 
         $.ajax({

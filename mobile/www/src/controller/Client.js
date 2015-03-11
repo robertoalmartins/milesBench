@@ -12,6 +12,7 @@
                     '<option>'+city.name+'</option>'
                 );
             }
+            $($component).selectpicker('refresh');
         }
 
         $.ajax({
