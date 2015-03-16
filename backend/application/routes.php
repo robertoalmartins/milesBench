@@ -7,6 +7,7 @@ $routes = array(
     '/loadCity' => '\MilesBench\Controller\City::load',
     '/loadState' => '\MilesBench\Controller\City::loadState',
     '/loadMiles' => '\MilesBench\Controller\Miles::load',
+    '/loadSalesMiles' => '\MilesBench\Controller\Miles::loadByMilesUsed',
     '/loadOpenedOrder' => '\MilesBench\Controller\Order::loadOpened',
     '/loadOrder' => '\MilesBench\Controller\Order::load',
     '/saveOrder' => '\MilesBench\Controller\Order::save',

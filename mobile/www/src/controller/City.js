@@ -2,7 +2,9 @@
  * Created by robertomartins on 1/26/2015.
  */
 
-    function loadCity($component, $componentState, $value) {
+var CityName;
+
+    function loadCity($component, $componentState) {
         $data = {};
         $data.state = $('#'+$componentState)[0].value;
         $('#'+$component).val('');
@@ -22,8 +24,9 @@
                 );
             }
             $('#'+$component).selectpicker('refresh');
-            if ($value) {
-                $('#'+$component).selectpicker('val',$value);                
+            if ($CityName) {
+                $('#'+$component).selectpicker('val',$CityName);                
+                $CityName = '';
             }
         }
 
@@ -54,4 +57,8 @@
             url: "../../backend/application/index.php?rota=/loadState",
             success: success
         });
+    }
+
+    function setCityNameEnviroment(city) {
+        $CityName = city;        
     }

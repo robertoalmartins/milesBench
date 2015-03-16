@@ -6,10 +6,17 @@
         var success = function(response) {
             var data = jQuery.parseJSON(response);
 
+            $ParentNode = document.getElementById($component)
+            if ($ParentNode) {
+                while ($ParentNode.hasChildNodes()) {
+                    $ParentNode.removeChild($ParentNode.firstChild);
+                }            
+            }
+
             for(var i in data.dataset){
                 var Airport = data.dataset[i];
                 $($component). append(
-                    '<option>'+Airport.code+'</option>'
+                    '<option>'+Airport.code+' '+Airport.name+'</option>'
                 );
             }
             $($component).selectpicker('refresh');

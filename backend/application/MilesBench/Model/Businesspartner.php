@@ -304,4 +304,94 @@ class Businesspartner
     {
         return $this->city;
     }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone_number2", type="string", length=45, nullable=true)
+     */
+    private $phoneNumber2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone_number3", type="string", length=45, nullable=true)
+     */
+    private $phoneNumber3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=45, nullable=true)
+     */
+    private $status;
+
+
+    /**
+     * Set phoneNumber2
+     *
+     * @param string $phoneNumber2
+     * @return Businesspartner
+     */
+    public function setPhoneNumber2($phoneNumber2)
+    {
+        $this->phoneNumber2 = $phoneNumber2;
+    
+        return $this;
+    }
+
+    /**
+     * Get phoneNumber2
+     *
+     * @return string 
+     */
+    public function getPhoneNumber2()
+    {
+        return $this->phoneNumber2;
+    }
+
+    /**
+     * Set phoneNumber3
+     *
+     * @param string $phoneNumber3
+     * @return Businesspartner
+     */
+    public function setPhoneNumber3($phoneNumber3)
+    {
+        $this->phoneNumber3 = $phoneNumber3;
+    
+        return $this;
+    }
+
+    /**
+     * Get phoneNumber3
+     *
+     * @return string 
+     */
+    public function getPhoneNumber3()
+    {
+        return $this->phoneNumber3;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return Businesspartner
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 }

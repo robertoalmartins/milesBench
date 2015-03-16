@@ -6,6 +6,14 @@
         var success = function(response) {
             var data = jQuery.parseJSON(response);
 
+            str = $component;
+            $ParentNode = document.getElementById(str.substr(1,100));
+            if ($ParentNode) {
+                while ($ParentNode.hasChildNodes()) {
+                    $ParentNode.removeChild($ParentNode.firstChild);
+                }            
+            }
+
             for(var i in data.dataset){
                 var city = data.dataset[i];
                 $($component). append(

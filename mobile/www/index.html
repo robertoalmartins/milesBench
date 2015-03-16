@@ -41,6 +41,7 @@
         <script type="application/javascript" src="bootstrap-table/dist/bootstrap-table.js"></script>
         <script type="application/javascript" src="js/bootstrap-select.js"></script>
         <script type="application/javascript" src="js/jasny-bootstrap.js"></script>
+        <script type="application/javascript" src="numeral/numeral.js"></script>
 
         <script type="application/javascript" src="src/controller/Login.js"></script>
         <script type="application/javascript" src="src/controller/Provider.js"></script>
@@ -162,7 +163,7 @@
 
                                     <div class="table-thing widget uib_w_60 d-margins" data-uib="twitter%20bootstrap/select" data-ver="0">
                                         <label class="narrow-control label-top-left">Companhia aérea</label>
-                                        <select class="selectpicker" data-live-search="true" style="display: none;" id="purchase_airline">
+                                        <select class="selectpicker" data-live-search="true" style="display: none;" id="purchase_airline" title="Informe a companhia aérea">
                                         </select>
                                     </div>
                                     <div class="table-thing widget uib_w_61 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -214,12 +215,25 @@
                         <div class="grid grid-pad urow uib_row_13 row-height-13" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_30 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-
-                                    <div class="table-thing widget uib_w_52 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Data de expiração dos pontos</label>
-                                        <input class="wide-control form-control" type="date" id="purchase_miles_duedate">
+                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Data de expiração dos pontos</label>
+                                                    <input class="wide-control form-control" type="date" id="purchase_miles_duedate">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_37 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Data de limite para comercialização</label>
+                                                    <input class="wide-control form-control" type="date" id="purchase_contract_miles_duedate">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
                                     </div>
-
                                     <div class="table-thing widget uib_w_51 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                         <label class="narrow-control label-top-left">Quantidade de pontos</label>
                                         <input class="wide-control form-control" type="number" id="purchase_miles" onblur="setTotalCost()">
@@ -270,8 +284,9 @@
                                 <div class="widget-container content-area vertical-col">
 
                                     <div class="table-thing widget uib_w_46 d-margins" data-uib="twitter%20bootstrap/select" data-ver="0">
-                                        <label class="narrow-control label-top-left">Informe o Fornecedor</label>
-                                        <select id="wizard_selectprovider" class="selectpicker" data-live-search="true" style="display: none;">
+                                        <label class="narrow-control label-top-left">Informe o Cliente</label>
+                                        <select id="wizard_selectprovider" class="selectpicker" data-live-search="true" style="display: none;" title="Informe o Cliente ou clique em próximo para novo">
+                                            <option></option>
                                         </select>
                                     </div>
                                     <span class="uib_shim"></span>
@@ -297,7 +312,7 @@
             <div class="upage hidden" id="provider_form">
                 <div class="upage-outer">
                     <div class="uib-header header-bg container-group inner-element uib_w_23" data-uib="layout/header" data-ver="0">
-                        <h2>Uai Milhas - Fornecedor</h2>
+                        <h2>Uai Milhas - Cliente</h2>
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left">
                         </div>
@@ -315,7 +330,7 @@
                                     </div>
                                     <div class="table-thing widget uib_w_25 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                         <label class="narrow-control label-top-left">CPF</label>
-                                        <input class="wide-control form-control" type="text" data-mask="999.999.999-99" id="provider_code">
+                                        <input class="wide-control form-control" type="text" id="provider_code" onblur="checkCPFProvider()">
                                     </div>
                                     <div class="table-thing widget uib_w_26 d-margins" data-uib="twitter%20bootstrap/text_area" data-ver="0">
                                         <label class="narrow-control label-top-left">Endereço</label>
@@ -342,13 +357,58 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="table-thing widget uib_w_28 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Email</label>
-                                        <input class="wide-control form-control" type="email" id="provider_email">
+                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_38 col-1_9-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Email</label>
+                                                    <input class="wide-control form-control" type="email" id="provider_email">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_37 col-1_3-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Status</label>
+                                                    <select class="selectpicker" data-live-search="true" style="display: none;" title = "Status Cliente" id="provider_status">
+                                                        <option>Em Analise</option>
+                                                        <option>Aprovado</option>
+                                                        <option>Reprovado</option>
+                                                    </select>
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
                                     </div>
-                                    <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Telefone</label>
-                                        <input class="wide-control form-control" type="text" id="provider_phone">
+                                    <div class="grid urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_42 col-1_4-12_4-4" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                <label class="narrow-control label-top-left">Telefone Celular</label>
+                                                <input class="wide-control form-control" type="text" id="provider_phone">
+                                                </div>
+                                                <span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_43 col-1_4-12_4-8" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                <label class="narrow-control label-top-left">Telefone Comercial</label>
+                                                <input class="wide-control form-control" type="text" id="provider_phone2">
+                                                </div>
+                                                <span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_41 col-1_4-12_4-8" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                <label class="narrow-control label-top-left">Telefone Residencial</label>
+                                                <input class="wide-control form-control" type="text" id="provider_phone3">
+                                                </div><span class="uib_shim"></span>
+                                                <span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
                                     </div>
                                     <span class="uib_shim"></span>
                                 </div>
@@ -379,7 +439,7 @@
             <div class="upage hidden" id="provider">
                 <div class="upage-outer">
                     <div class="uib-header header-bg container-group inner-element uib_w_5" data-uib="layout/header" data-ver="0">
-                        <h2>UAI Milhas - Fornecedor</h2>
+                        <h2>UAI Milhas - Cliente</h2>
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left">
                             <button type="button" class="btn widget uib_w_21 d-margins button_icon btn-default" data-uib="twitter%20bootstrap/button" data-ver="0" id="menu_provider"><i class="glyphicon glyphicon-th-list button-icon-left" data-position="left"></i> 
@@ -399,7 +459,10 @@
                                                 <th data-field="id" data-halign="left" data-align="left" data-sortable="true">ID</th>
                                                 <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
                                                 <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
-                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
+                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone Celular</th>
+                                                <th data-field="phoneNumber2" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Telefone Comercial</th>
+                                                <th data-field="phoneNumber3" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Telefone Residencial</th>
+                                                <th data-field="status" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Status</th>
                                                 <th data-field="registrationCode" data-halign="left" data-align="left" data-sortable="true">CPF</th>
                                                 <th data-field="adress" data-halign="left" data-align="left" data-sortable="true">Endereço</th>
                                                 <th data-field="city" data-halign="left" data-align="left" data-sortable="true">Cidade</th>
@@ -455,6 +518,7 @@
                                                 <th data-field="card_number" data-halign="left" data-align="left" data-sortable="true">Número Cartão</th>
                                                 <th data-field="leftover" data-halign="left" data-align="right" data-sortable="true">Saldo Milhas</th>
                                                 <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Vencimento</th>
+                                                <th data-field="contract_due_date" data-halign="left" data-align="left" data-sortable="true">Limite Contrato</th>
                                                 <th data-field="cost_per_thousand" data-halign="left" data-align="right" data-sortable="true">Custo por 1000</th>
                                             </tr>
                                         </thead>
@@ -505,8 +569,8 @@
                                                 <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
                                                 <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
                                                 <th data-field="from" data-halign="left" data-align="left" data-sortable="true">De</th>
-                                                <th data-field="to" data-halign="left" data-align="right" data-sortable="true">Para</th>
-                                                <th data-field="miles_used" data-halign="left" data-align="left" data-sortable="true">Total de Milhas</th>
+                                                <th data-field="to" data-halign="left" data-align="left" data-sortable="true">Para</th>
+                                                <th data-field="miles_used" data-halign="right" data-align="right" data-sortable="true">Total de Milhas</th>
                                                 <th data-field="description" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Observação</th>
                                                 <th data-field="issue_date" data-halign="left" data-align="right" data-sortable="true">Data Pedido</th>
                                                 <th data-field="boarding_date" data-halign="left" data-align="right" data-sortable="true">Data Embarque</th>
@@ -558,6 +622,7 @@
                                                 <th data-field="card_number" data-halign="left" data-align="left" data-sortable="true">Número Cartão</th>
                                                 <th data-field="leftover" data-halign="left" data-align="right" data-sortable="true">Saldo Milhas</th>
                                                 <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Vencimento</th>
+                                                <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Limite Contrato</th>
                                                 <th data-field="cost_per_thousand" data-halign="left" data-align="right" data-sortable="true">Custo por 1000</th>
                                             </tr>
                                         </thead>
@@ -700,21 +765,36 @@
                             <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <div class="table-thing widget uib_w_25 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Cliente</label>
-                                        <select class="selectpicker" data-live-search="true" style="display: none;" id="order_client">
-                                        </select>
-                                    </div>
-                                    <div class="table-thing widget uib_w_26 d-margins" data-uib="twitter%20bootstrap/text_area" data-ver="0">
-                                        <label class="narrow-control label-top-left">Companhia Aérea</label>
-                                        <select class="selectpicker" data-live-search="true" style="display: none;" id="order_airline">
+                                        <label class="narrow-control label-top-left">Agência</label>
+                                        <select class="selectpicker" data-live-search="true" style="display: none;" id="order_client" title="Selecione uma agência">
                                         </select>
                                     </div>
                                     <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Companhia Aérea</label>
+                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="order_airline" title="Selecione uma companhia aérea">
+                                                    </select>
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_37 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Vôo</label>
+                                                    <input class="wide-control form-control" type="text" id="order_flight">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Origem</label>
-                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="order_from">
+                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="order_from" title="Selecione um aeroporto">
                                                     </select>
                                                 </div><span class="uib_shim"></span>
                                             </div>
@@ -723,7 +803,7 @@
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Destino</label>
-                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="order_to">
+                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="order_to" title="Selecione um aeroporto">
                                                     </select>
                                                 </div><span class="uib_shim"></span>
                                             </div>
@@ -743,7 +823,7 @@
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Status</label>
-                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="order_status">
+                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="order_status" title="Status pedido">
                                                         <option>Pendente</option>
                                                         <option>Emitido</option>
                                                         <option>Encerrado</option>
@@ -777,12 +857,12 @@
                                                 <span class="uib_shim"></span>
                                             </div>
                                         </div>
-                                        <div class="col uib_col_41 col-1_4-12_4-8" data-uib="layout/col" data-ver="0">
+                                        <div class="col uib_col_41 col-1_4-12_8-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                                    <label class="narrow-control label-top-left">Data Retorno</label>
-                                                    <input class="wide-control form-control" type="date" id="order_returnDate">
-                                                </div><span class="uib_shim"></span>
+                                                    <label class="narrow-control label-top-left">Hora Vôo</label>
+                                                    <input class="wide-control form-control" type="text" id="order_flightHour">
+                                                </div>
                                                 <span class="uib_shim"></span>
                                             </div>
                                         </div>
@@ -840,12 +920,15 @@
                                                 <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
                                                 <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
                                                 <th data-field="from" data-halign="left" data-align="left" data-sortable="true">De</th>
-                                                <th data-field="to" data-halign="left" data-align="right" data-sortable="true">Para</th>
-                                                <th data-field="miles_used" data-halign="left" data-align="left" data-sortable="true">Total de Milhas</th>
+                                                <th data-field="to" data-halign="left" data-align="left" data-sortable="true">Para</th>
+                                                <th data-field="airportNamefrom" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Descrição De</th>
+                                                <th data-field="airportNameto" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Descrição Para</th>
+                                                <th data-field="miles_used" data-halign="right" data-align="right" data-sortable="true">Total de Milhas</th>
                                                 <th data-field="description" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Observação</th>
                                                 <th data-field="issue_date" data-halign="left" data-align="right" data-sortable="true">Data Pedido</th>
                                                 <th data-field="boarding_date" data-halign="left" data-align="right" data-sortable="true">Data Embarque</th>
-                                                <th data-field="return_date" data-halign="left" data-align="right" data-sortable="true">Data Retorno</th>
+                                                <th data-field="flight" data-halign="left" data-align="right" data-sortable="true">Vôo</th>
+                                                <th data-field="flightHour" data-halign="left" data-align="right" data-sortable="true">Horário Vôo</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tb_order">
@@ -929,7 +1012,7 @@
                                                             <p class="list-group-item-text">Banco de Milhas</p>
                                                         </a>
                                                         <a class="list-group-item allow-badge widget uib_w_12 Menu_Style" data-uib="twitter%20bootstrap/list_item" data-ver="0" id="mnu_provider">
-                                                            <p class="list-group-item-text">Fornecedor</p>
+                                                            <p class="list-group-item-text">Cliente</p>
                                                         </a>
                                                     </div><span class="uib_shim"></span>
                                                 </div>

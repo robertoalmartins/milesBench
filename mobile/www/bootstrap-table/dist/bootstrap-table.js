@@ -1374,7 +1374,7 @@
         if (this.options.height) {
             var toolbarHeight = +this.$toolbar.children().outerHeight(true),
                 paginationHeight = +this.$pagination.children().outerHeight(true),
-                height = this.options.height - toolbarHeight - paginationHeight;
+                height = $(window).height() - 120 - toolbarHeight - paginationHeight;
 
             this.$container.find('.fixed-table-container').css('height', height + 'px');
         }

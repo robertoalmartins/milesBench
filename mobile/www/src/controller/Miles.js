@@ -25,9 +25,10 @@
                     '<td>'+miles.phoneNumber+'</td>'+
                     '<td>'+miles.airline+'</td>'+
                     '<td>'+miles.card_number+'</td>'+
-                    '<td>'+miles.leftover+'</td>'+
+                    '<td>'+numeral(miles.leftover).format('0,0')+'</td>'+
                     '<td>'+miles.due_date+'</td>'+
-                    '<td>'+miles.cost_per_thousand+'</td>'+
+                    '<td>'+miles.contract_due_date+'</td>'+
+                    '<td>'+numeral(miles.cost_per_thousand).format('$0,0.00')+'</td>'+
                     '</tr>'
                 );
             }

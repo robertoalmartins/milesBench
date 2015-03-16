@@ -31,6 +31,7 @@ class miles {
                 'airline' => $miles->getCards()->getAirline()->getName(),
                 'leftover' => $miles->getLeftover(),
                 'due_date' => $miles->getDueDate()->format('d/m/y'),
+                'contract_due_date' => $miles->getContractDueDate()->format('d/m/y'),
                 'cost_per_thousand' => $miles->getCostPerThousand()
             );
 
@@ -38,4 +39,29 @@ class miles {
         $response->setDataset($dataset);
     }
 
+    public function loadByMilesUsed(Request $request, Response $response) {
+        $dados = $request->getRow();
+
+        $em = Application::getInstance()->getEntityManager();
+        $sql = "select c, b, a, m FROM Milesbench m JOIN m.cards c JOIN c.businesspartner b JOIN c.airline a WHERE m.leftover >= ".$dados['value'];
+        $query = $em->createQuery($sql);
+        $milesbench = $query->getResult();
+
+        $dataset = array();
+        foreach($milesbench as $miles){
+            $dataset[] = array(
+                'name' => $miles->getCards()->getBusinesspartner()->getName(),
+                'email' => $miles->getCards()->getBusinesspartner()->getEmail(),
+                'phoneNumber' => $miles->getCards()->getBusinesspartner()->getPhoneNumber(),
+                'card_number' => $miles->getCards()->getCardNumber(),
+                'airline' => $miles->getCards()->getAirline()->getName(),
+                'leftover' => $miles->getLeftover(),
+                'due_date' => $miles->getDueDate()->format('d/m/y'),
+                'contract_due_date' => $miles->getContractDueDate()->format('d/m/y'),
+                'cost_per_thousand' => $miles->getCostPerThousand()
+            );
+
+        }
+        $response->setDataset($dataset);
+    }
 }

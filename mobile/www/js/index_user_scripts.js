@@ -75,6 +75,7 @@
 
         /****_________________________________________________________________________________________________****/
         $(document).on("click", "#mnu_purchase", function(evt){
+            setCityNameEnviroment('');
             uib_sb.toggle_sidebar($(".uib_w_6"));
             loadSelectProvider('#wizard_selectprovider');
             loadAirline('#purchase_airline');

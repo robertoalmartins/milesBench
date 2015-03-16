@@ -36,7 +36,11 @@ class order {
                 'description' => $item->getDescription(),
                 'issueDate' => $item->getIssueDate()->format('Y-m-d'),
                 'boardingDate' => $item->getBoardingDate()->format('Y-m-d'),
-                'returnDate' => $item->getReturnDate()->format('Y-m-d')
+                'returnDate' => $item->getReturnDate()->format('Y-m-d'),
+                'airportNamefrom' => $item->getAirportFrom()->getName(),
+                'airportNameto' => $item->getAirportTo()->getName(),
+                'flight' => $item->getFlight(),
+                'flightHour' => $item->getFlightHour()
             );
 
         }
@@ -61,7 +65,11 @@ class order {
                 'milesUsed' => $item->getMilesUsed(),
                 'issueDate' => $item->getIssueDate()->format('d/m/y'),
                 'boardingDate' => $item->getBoardingDate()->format('d/m/y'),
-                'returnDate' => $item->getReturnDate()->format('d/m/y')
+                'returnDate' => $item->getReturnDate()->format('d/m/y'),
+                'airportNamefrom' => $item->getAirportFrom()->getName(),
+                'airportNameto' => $item->getAirportTo()->getName(),
+                'flight' => $item->getFlight(),
+                'flightHour' => $item->getFlightHour()
             );
 
         }
@@ -84,10 +92,12 @@ class order {
             $Sale->setMilesUsed($dados['milesUsed']);
             $Sale->setDescription($dados['description']);
             $Sale->setAirline($em->getRepository('Airline')->findOneBy(array('name' => $dados['airline'])));
-            $Sale->setAirportFrom($em->getRepository('Airport')->findOneBy(array('code' => $dados['from'])));
-            $Sale->setAirportTo($em->getRepository('Airport')->findOneBy(array('code' => $dados['to'])));
+            $Sale->setAirportFrom($em->getRepository('Airport')->findOneBy(array('code' => substr($dados['from'],0,3))));
+            $Sale->setAirportTo($em->getRepository('Airport')->findOneBy(array('code' => substr($dados['to'],0,3))));
             $Sale->setClient($em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['client'])));
             $Sale->setStatus($dados['status']);
+            $Sale->setFlight($dados['flight']);
+            $Sale->setFlightHour($dados['flightHour']);
             $em->persist($Sale);
             $em->flush($Sale);
 

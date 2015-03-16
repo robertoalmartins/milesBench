@@ -30,7 +30,10 @@ class Provider {
                 'adress' => $Provider->getAdress(),
                 'partnerType' => $Provider->getPartnerType(),
                 'email' => $Provider->getEmail(),
-                'phoneNumber' => $Provider->getPhoneNumber()
+                'phoneNumber' => $Provider->getPhoneNumber(),
+                'phoneNumber2' => $Provider->getPhoneNumber2(),
+                'phoneNumber3' => $Provider->getPhoneNumber3(),
+                'status' => $Provider->getStatus()
             );
 
         }
@@ -49,7 +52,10 @@ class Provider {
             }
             $BusinessPartner->setName($dados['name']);
             $BusinessPartner->setPhoneNumber($dados['phoneNumber']);
-            $BusinessPartner->setCity($em->getRepository('City')->findOneBy(array('name' => substr($dados['city'],0,strrpos($dados['city'],',')))));
+            $BusinessPartner->setPhoneNumber2($dados['phoneNumber2']);
+            $BusinessPartner->setPhoneNumber3($dados['phoneNumber3']);
+            $BusinessPartner->setStatus($dados['status']);
+            $BusinessPartner->setCity($em->getRepository('City')->findOneBy(array('name' => $dados['city'])));
             $BusinessPartner->setRegistrationCode($dados['registrationCode']);
             $BusinessPartner->setAdress($dados['adress']);
             $BusinessPartner->setEmail($dados['email']);

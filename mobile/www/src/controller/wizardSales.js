@@ -32,7 +32,7 @@ var salesRow;
                     '<td>'+order.airline+'</td>'+
                     '<td>'+order.from+'</td>'+
                     '<td>'+order.to+'</td>'+
-                    '<td>'+order.milesUsed+'</td>'+
+                    '<td>'+numeral(order.milesUsed).format('0,0')+'</td>'+
                     '<td>'+order.description+'</td>'+
                     '<td>'+order.issueDate+'</td>'+
                     '<td>'+order.boardingDate+'</td>'+
@@ -58,6 +58,9 @@ var salesRow;
     }
 
     function loadSalesMiles_Grid() {
+        $milesUsed = {};
+        $milesUsed['value'] = numeral().unformat($salesOrderRow.miles_used);
+
         var success = function(response) {
             var data = jQuery.parseJSON(response);
 
@@ -81,9 +84,10 @@ var salesRow;
                     '<td>'+miles.phoneNumber+'</td>'+
                     '<td>'+miles.airline+'</td>'+
                     '<td>'+miles.card_number+'</td>'+
-                    '<td>'+miles.leftover+'</td>'+
+                    '<td>'+numeral(miles.leftover).format('0,0')+'</td>'+
                     '<td>'+miles.due_date+'</td>'+
-                    '<td>'+miles.cost_per_thousand+'</td>'+
+                    '<td>'+miles.contract_due_date+'</td>'+
+                    '<td>'+numeral(miles.cost_per_thousand).format('$0,0.00')+'</td>'+
                     '</tr>'
                 );
             }
@@ -99,7 +103,8 @@ var salesRow;
 
         $.ajax({
             type: "POST",
-            url: "../../backend/application/index.php?rota=/loadMiles",
+            url: "../../backend/application/index.php?rota=/loadSalesMiles",
+            data: $milesUsed,
             success: success
         });
     }
@@ -108,8 +113,8 @@ var salesRow;
         activate_page("#wizard_sales_3");
         var $sales_miles_used = $('#sales_miles_used');
         var $sales_total_cost = $('#sales_total_cost');
-        $sales_miles_used.val($salesOrderRow.miles_used);
-        $sales_total_cost.val($milesCardRow.cost_per_thousand/1000 * $salesOrderRow.miles_used);
+        $sales_miles_used.val(numeral().unformat($salesOrderRow.miles_used));
+        $sales_total_cost.val(numeral().unformat($milesCardRow.cost_per_thousand)/1000 * numeral().unformat($salesOrderRow.miles_used));
     }
 
     function setKickback(){

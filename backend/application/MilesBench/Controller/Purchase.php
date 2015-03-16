@@ -22,12 +22,12 @@ class purchase {
         try {
             $em->getConnection()->beginTransaction();
 
-            $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['name']));
+            $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('registrationCode' => $dados['registrationCode']));
             if (!$BusinessPartner) {
                 $BusinessPartner = new \Businesspartner();
                 $BusinessPartner->setName($dados['name']);
                 $BusinessPartner->setPhoneNumber($dados['phoneNumber']);
-                $BusinessPartner->setCity($em->getRepository('City')->findOneBy(array('name' => substr($dados['city'],0,strrpos($dados['city'],',')))));
+                $BusinessPartner->setCity($em->getRepository('City')->findOneBy(array('name' => $dados['city'])));
                 $BusinessPartner->setRegistrationCode($dados['registrationCode']);
                 $BusinessPartner->setAdress($dados['adress']);
                 $BusinessPartner->setEmail($dados['email']);
@@ -67,6 +67,7 @@ class purchase {
                 $MilesBench->setCostPerThousand($dados['cost_per_thousand']);
                 $MilesBench->setCards($Cards);
                 $MilesBench->setDueDate(new \Datetime($dados['miles_due_date']));
+                $MilesBench->setContractDueDate(new \Datetime($dados['contract_due_date']));
             }
             $MilesBench->setLeftOver($MilesBench->getLeftOver() + $dados['purchase_miles']);
             $em->persist($MilesBench);

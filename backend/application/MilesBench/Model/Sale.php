@@ -619,4 +619,64 @@ class Sale
     {
         return $this->cards;
     }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="flight", type="string", length=45, nullable=true)
+     */
+    private $flight;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="flight_hour", type="string", length=45, nullable=true)
+     */
+    private $flightHour;
+
+
+    /**
+     * Set flight
+     *
+     * @param string $flight
+     * @return Sale
+     */
+    public function setFlight($flight)
+    {
+        $this->flight = $flight;
+    
+        return $this;
+    }
+
+    /**
+     * Get flight
+     *
+     * @return string 
+     */
+    public function getFlight()
+    {
+        return $this->flight;
+    }
+
+    /**
+     * Set flightHour
+     *
+     * @param string $flightHour
+     * @return Sale
+     */
+    public function setFlightHour($flightHour)
+    {
+        $this->flightHour = $flightHour;
+    
+        return $this;
+    }
+
+    /**
+     * Get flightHour
+     *
+     * @return string 
+     */
+    public function getFlightHour()
+    {
+        return $this->flightHour;
+    }
 }

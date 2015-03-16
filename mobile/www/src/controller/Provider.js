@@ -27,6 +27,9 @@ var provider;
                     '<td>'+provider.name+'</td>'+
                     '<td>'+provider.email+'</td>'+
                     '<td>'+provider.phoneNumber+'</td>'+
+                    '<td>'+provider.phoneNumber2+'</td>'+
+                    '<td>'+provider.phoneNumber3+'</td>'+
+                    '<td>'+provider.status+'</td>'+
                     '<td>'+provider.registrationCode+'</td>'+
                     '<td>'+provider.adress+'</td>'+
                     '<td>'+provider.city+'</td>'+
@@ -61,17 +64,24 @@ var provider;
         var $provider_state = $('#provider_state');
         var $provider_email = $('#provider_email');
         var $provider_phone = $('#provider_phone');
+        var $provider_phone2 = $('#provider_phone2');
+        var $provider_phone3 = $('#provider_phone3');
+        var $provider_status = $('#provider_status');
 
         $provider_name.val(datarow.name);
         $provider_code.val(datarow.registrationCode);
         $provider_adress.val(datarow.adress);
         $provider_email.val(datarow.email);
         $provider_phone.val(datarow.phoneNumber);
+        $provider_phone2.val(datarow.phoneNumber2);
+        $provider_phone3.val(datarow.phoneNumber3);
+        $provider_status.val(datarow.status);
 
         var str = datarow.city;
 
+        setCityNameEnviroment(str.substring(0,str.indexOf(',')));
         $provider_state.selectpicker('val',str.substring(str.indexOf(',')+2));
-        loadCity('provider_city','provider_state',str.substring(0,str.indexOf(',')));
+        loadCity('provider_city','provider_state');
     }
 
     function newProvider() {
@@ -84,6 +94,9 @@ var provider;
         $providerRow['city'] = '';
         $providerRow['email'] = '';
         $providerRow['phoneNumber'] = '';
+        $providerRow['phoneNumber2'] = '';
+        $providerRow['phoneNumber3'] = '';
+        $providerRow['status'] = 'Em Analise';
         $providerRow['partnerType'] = 'P';
 
         $('#provider_name').val('');
@@ -93,6 +106,9 @@ var provider;
         $('#provider_state').val('');
         $('#provider_email').val('');
         $('#provider_phone').val('');
+        $('#provider_phone2').val('');
+        $('#provider_phone3').val('');
+        $('#provider_status').val('');
     }
 
     function saveProvider() {
@@ -102,6 +118,9 @@ var provider;
         $providerRow.city = $('#provider_city')[0].value + ', ' + $('#provider_state')[0].value;
         $providerRow.email = $('#provider_email')[0].value;
         $providerRow.phoneNumber = $('#provider_phone')[0].value;
+        $providerRow.phoneNumber2 = $('#provider_phone2')[0].value;
+        $providerRow.phoneNumber3 = $('#provider_phone3')[0].value;
+        $providerRow.status = $('#provider_status')[0].value;
         $providerRow.partnerType = 'P';
 
         var success = function(response) {
@@ -142,6 +161,17 @@ var provider;
         var success = function(response) {
             var data = jQuery.parseJSON(response);
 
+            str = $component;
+            $ParentNode = document.getElementById(str.substr(1,100));
+            if ($ParentNode) {
+                while ($ParentNode.hasChildNodes()) {
+                    $ParentNode.removeChild($ParentNode.firstChild);
+                }            
+            }
+
+            $($component). append(
+                '<option>'+'</option>'
+            );
             for(var i in data.dataset){
                 var provider = data.dataset[i];
                 $($component). append(
@@ -156,4 +186,11 @@ var provider;
             url: "../../backend/application/index.php?rota=/loadProvider",
             success: success
         });
+    }
+
+    function checkCPFProvider() {
+        if (!ValidaCPF($('#provider_code')[0].value)){
+            alert('CPF Inválido');
+            return false;
+        }
     }

@@ -31,11 +31,14 @@ var order;
                     '<td>'+order.airline+'</td>'+
                     '<td>'+order.from+'</td>'+
                     '<td>'+order.to+'</td>'+
-                    '<td>'+order.milesUsed+'</td>'+
+                    '<td>'+order.airportNamefrom+'</td>'+
+                    '<td>'+order.airportNameto+'</td>'+
+                    '<td>'+numeral(order.milesUsed).format('0,0')+'</td>'+
                     '<td>'+order.description+'</td>'+
                     '<td>'+order.issueDate+'</td>'+
                     '<td>'+order.boardingDate+'</td>'+
-                    '<td>'+order.returnDate+'</td>'+
+                    '<td>'+order.flight+'</td>'+
+                    '<td>'+order.flightHour+'</td>'+
                     '</tr>'
                 );
             }
@@ -43,34 +46,9 @@ var order;
             var $result = $('#events-result');
 
             $table.bootstrapTable({
-            }).on('all.bs.table', function (e, name, args) {
-                console.log('Event:', name, ', data:', args);
             }).on('click-row.bs.table', function (e, row, $element) {
                 activate_page("#order_form");
                 loadOrder_Form(row);
-            }).on('dbl-click-row.bs.table', function (e, row, $element) {
-                $result.text('Event: dbl-click-row.bs.table, data: ' + JSON.stringify(row));
-            }).on('sort.bs.table', function (e, name, order) {
-                $result.text('Event: sort.bs.table, data: ' + name + ', ' + order);
-            }).on('check.bs.table', function (e, row) {
-                $result.text('Event: check.bs.table, data: ' + JSON.stringify(row));
-            }).on('uncheck.bs.table', function (e, row) {
-                $result.text('Event: uncheck.bs.table, data: ' + JSON.stringify(row));
-            }).on('check-all.bs.table', function (e) {
-                $result.text('Event: check-all.bs.table');
-            }).on('uncheck-all.bs.table', function (e) {
-                $result.text('Event: uncheck-all.bs.table');
-            }).on('load-success.bs.table', function (e, data) {
-                $result.text('Event: load-success.bs.table');
-            }).on('load-error.bs.table', function (e, status) {
-                $result.text('Event: load-error.bs.table, data: ' + status);
-            }).on('column-switch.bs.table', function (e, field, checked) {
-                $result.text('Event: column-switch.bs.table, data: ' +
-                field + ', ' + checked);
-            }).on('page-change.bs.table', function (e, size, number) {
-                $result.text('Event: page-change.bs.table, data: ' + number + ', ' + size);
-            }).on('search.bs.table', function (e, text) {
-                $result.text('Event: search.bs.table, data: ' + text);
             });
         };
 
@@ -94,18 +72,20 @@ var order;
         var $order_description = $('#order_description');
         var $order_issueDate = $('#order_issueDate');
         var $order_boardingDate = $('#order_boardingDate');
-        var $order_returnDate = $('#order_returnDate');
+        var $order_flight = $('#order_flight');
+        var $order_flightHour = $('#order_flightHour');
 
-        $order_status.val(datarow.status);
-        $order_client.val(datarow.client);
-        $order_airline.val(datarow.airline);
-        $order_from.val(datarow.from);
-        $order_to.val(datarow.to);
-        $order_milesUsed.val(datarow.miles_used);
+        $order_status.selectpicker('val',datarow.status);
+        $order_client.selectpicker('val',datarow.client);
+        $order_airline.selectpicker('val',datarow.airline);
+        $order_from.selectpicker('val',datarow.from + ' ' + datarow.airportNamefrom);
+        $order_to.selectpicker('val',datarow.to + ' ' + datarow.airportNameto);
+        $order_milesUsed.val(numeral().unformat(datarow.miles_used));
         $order_description.val(datarow.description);
         $order_issueDate.val(datarow.issue_date);
         $order_boardingDate.val(datarow.boarding_date);
-        $order_returnDate.val(datarow.return_date);
+        $order_flight.val(datarow.flight);
+        $order_flightHour.val(datarow.flightHour);
     }
 
     function newOrder() {
@@ -121,19 +101,20 @@ var order;
         $orderRow['description'] = '';
         $orderRow['issueDate'] = '';
         $orderRow['boardingDate'] = '';
-        $orderRow['returnDate'] = '';
-
+        $orderRow['flight'] = '';
+        $orderRow['flightHour'] = '';
 
         $('#order_status').val('Pendente');
-        $('#order_client').val('');
-        $('#order_airline').val('');
-        $('#order_from').val('');
-        $('#order_to').val('');
+        $('#order_client').selectpicker('val','');
+        $('#order_airline').selectpicker('val','');
+        $('#order_from').selectpicker('val','');
+        $('#order_to').selectpicker('val','');
         $('#order_milesUsed').val('');
         $('#order_description').val('');
         $('#order_issueDate').val('');
         $('#order_boardingDate').val('');
-        $('#order_returnDate').val('');
+        $('#order_flight').val('');
+        $('#order_flightHour').val('');
     }
 
     function saveOrder() {
@@ -146,7 +127,8 @@ var order;
         $orderRow['description'] = $('#order_description')[0].value;
         $orderRow['issueDate'] = $('#order_issueDate')[0].value;
         $orderRow['boardingDate'] = $('#order_boardingDate')[0].value;
-        $orderRow['returnDate'] = $('#order_returnDate')[0].value;
+        $orderRow['flight'] = $('#order_flight')[0].value;
+        $orderRow['flightHour'] = $('#order_flightHour')[0].value;
 
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;

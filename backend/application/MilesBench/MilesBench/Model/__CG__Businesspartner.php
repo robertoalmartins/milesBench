@@ -64,10 +64,10 @@ class Businesspartner extends \Businesspartner implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Businesspartner' . "\0" . 'id', '' . "\0" . 'Businesspartner' . "\0" . 'name', '' . "\0" . 'Businesspartner' . "\0" . 'registrationCode', '' . "\0" . 'Businesspartner' . "\0" . 'adress', '' . "\0" . 'Businesspartner' . "\0" . 'partnerType', '' . "\0" . 'Businesspartner' . "\0" . 'acessName', '' . "\0" . 'Businesspartner' . "\0" . 'email', '' . "\0" . 'Businesspartner' . "\0" . 'password', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber', '' . "\0" . 'Businesspartner' . "\0" . 'city');
+            return array('__isInitialized__', '' . "\0" . 'Businesspartner' . "\0" . 'id', '' . "\0" . 'Businesspartner' . "\0" . 'name', '' . "\0" . 'Businesspartner' . "\0" . 'registrationCode', '' . "\0" . 'Businesspartner' . "\0" . 'adress', '' . "\0" . 'Businesspartner' . "\0" . 'partnerType', '' . "\0" . 'Businesspartner' . "\0" . 'acessName', '' . "\0" . 'Businesspartner' . "\0" . 'email', '' . "\0" . 'Businesspartner' . "\0" . 'password', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber', '' . "\0" . 'Businesspartner' . "\0" . 'city', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber2', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber3', '' . "\0" . 'Businesspartner' . "\0" . 'status');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Businesspartner' . "\0" . 'id', '' . "\0" . 'Businesspartner' . "\0" . 'name', '' . "\0" . 'Businesspartner' . "\0" . 'registrationCode', '' . "\0" . 'Businesspartner' . "\0" . 'adress', '' . "\0" . 'Businesspartner' . "\0" . 'partnerType', '' . "\0" . 'Businesspartner' . "\0" . 'acessName', '' . "\0" . 'Businesspartner' . "\0" . 'email', '' . "\0" . 'Businesspartner' . "\0" . 'password', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber', '' . "\0" . 'Businesspartner' . "\0" . 'city');
+        return array('__isInitialized__', '' . "\0" . 'Businesspartner' . "\0" . 'id', '' . "\0" . 'Businesspartner' . "\0" . 'name', '' . "\0" . 'Businesspartner' . "\0" . 'registrationCode', '' . "\0" . 'Businesspartner' . "\0" . 'adress', '' . "\0" . 'Businesspartner' . "\0" . 'partnerType', '' . "\0" . 'Businesspartner' . "\0" . 'acessName', '' . "\0" . 'Businesspartner' . "\0" . 'email', '' . "\0" . 'Businesspartner' . "\0" . 'password', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber', '' . "\0" . 'Businesspartner' . "\0" . 'city', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber2', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber3', '' . "\0" . 'Businesspartner' . "\0" . 'status');
     }
 
     /**
@@ -384,6 +384,72 @@ class Businesspartner extends \Businesspartner implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', array());
 
         return parent::getCity();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPhoneNumber2($phoneNumber2)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhoneNumber2', array($phoneNumber2));
+
+        return parent::setPhoneNumber2($phoneNumber2);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPhoneNumber2()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhoneNumber2', array());
+
+        return parent::getPhoneNumber2();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPhoneNumber3($phoneNumber3)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhoneNumber3', array($phoneNumber3));
+
+        return parent::setPhoneNumber3($phoneNumber3);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPhoneNumber3()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhoneNumber3', array());
+
+        return parent::getPhoneNumber3();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStatus($status)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+
+        return parent::setStatus($status);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStatus()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+
+        return parent::getStatus();
     }
 
 }

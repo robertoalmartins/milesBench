@@ -27,7 +27,10 @@ class Businesspartner {
             }
             $BusinessPartner->setName($dados['name']);
             $BusinessPartner->setPhoneNumber($dados['phoneNumber']);
-            $BusinessPartner->setCity($em->getRepository('City')->findOneBy(array('name' => substr($dados['city'],0,strrpos($dados['city'],',')))));
+            $BusinessPartner->setPhoneNumber2($dados['phoneNumber2']);
+            $BusinessPartner->setPhoneNumber3($dados['phoneNumber3']);
+            $BusinessPartner->setStatus($dados['status']);
+            $BusinessPartner->setCity($em->getRepository('City')->findOneBy(array('name' => $dados['city'])));
             $BusinessPartner->setRegistrationCode($dados['registrationCode']);
             $BusinessPartner->setAdress($dados['adress']);
             $BusinessPartner->setEmail($dados['email']);

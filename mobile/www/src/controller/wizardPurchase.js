@@ -12,7 +12,7 @@ var wizard_purchase_data;
         $wizard_purchase_data = {};
 
         if ($('#wizard_selectprovider')[0].value == '') {
-            loadCity('#provider_city');
+            loadState('#provider_state');
             activate_page("#wizard_purchase_2");
             
             $Node = document.getElementById("provider_formsub").childNodes;
@@ -43,6 +43,7 @@ var wizard_purchase_data;
 
     function savelocal_purchase() {
         $wizard_purchase.miles_due_date = $("#purchase_miles_duedate")[0].value;
+        $wizard_purchase.miles_contract_due_date = $("#purchase_contract_miles_duedate")[0].value;
         $wizard_purchase.miles = $("#purchase_miles")[0].value;
         $wizard_purchase.cost_per_thousand = $("#purchase_cost_per_thousand")[0].value;
         $wizard_purchase.total_cost = $("#purchase_totalcost")[0].value;
