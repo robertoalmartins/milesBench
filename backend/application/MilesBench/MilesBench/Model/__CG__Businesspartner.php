@@ -64,10 +64,10 @@ class Businesspartner extends \Businesspartner implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Businesspartner' . "\0" . 'id', '' . "\0" . 'Businesspartner' . "\0" . 'name', '' . "\0" . 'Businesspartner' . "\0" . 'registrationCode', '' . "\0" . 'Businesspartner' . "\0" . 'adress', '' . "\0" . 'Businesspartner' . "\0" . 'partnerType', '' . "\0" . 'Businesspartner' . "\0" . 'acessName', '' . "\0" . 'Businesspartner' . "\0" . 'email', '' . "\0" . 'Businesspartner' . "\0" . 'password', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber', '' . "\0" . 'Businesspartner' . "\0" . 'city', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber2', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber3', '' . "\0" . 'Businesspartner' . "\0" . 'status');
+            return array('__isInitialized__', '' . "\0" . 'Businesspartner' . "\0" . 'id', '' . "\0" . 'Businesspartner' . "\0" . 'name', '' . "\0" . 'Businesspartner' . "\0" . 'registrationCode', '' . "\0" . 'Businesspartner' . "\0" . 'adress', '' . "\0" . 'Businesspartner' . "\0" . 'partnerType', '' . "\0" . 'Businesspartner' . "\0" . 'acessName', '' . "\0" . 'Businesspartner' . "\0" . 'email', '' . "\0" . 'Businesspartner' . "\0" . 'password', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber', '' . "\0" . 'Businesspartner' . "\0" . 'city', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber2', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber3', '' . "\0" . 'Businesspartner' . "\0" . 'status', '' . "\0" . 'Businesspartner' . "\0" . 'birthdate');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Businesspartner' . "\0" . 'id', '' . "\0" . 'Businesspartner' . "\0" . 'name', '' . "\0" . 'Businesspartner' . "\0" . 'registrationCode', '' . "\0" . 'Businesspartner' . "\0" . 'adress', '' . "\0" . 'Businesspartner' . "\0" . 'partnerType', '' . "\0" . 'Businesspartner' . "\0" . 'acessName', '' . "\0" . 'Businesspartner' . "\0" . 'email', '' . "\0" . 'Businesspartner' . "\0" . 'password', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber', '' . "\0" . 'Businesspartner' . "\0" . 'city', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber2', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber3', '' . "\0" . 'Businesspartner' . "\0" . 'status');
+        return array('__isInitialized__', '' . "\0" . 'Businesspartner' . "\0" . 'id', '' . "\0" . 'Businesspartner' . "\0" . 'name', '' . "\0" . 'Businesspartner' . "\0" . 'registrationCode', '' . "\0" . 'Businesspartner' . "\0" . 'adress', '' . "\0" . 'Businesspartner' . "\0" . 'partnerType', '' . "\0" . 'Businesspartner' . "\0" . 'acessName', '' . "\0" . 'Businesspartner' . "\0" . 'email', '' . "\0" . 'Businesspartner' . "\0" . 'password', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber', '' . "\0" . 'Businesspartner' . "\0" . 'city', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber2', '' . "\0" . 'Businesspartner' . "\0" . 'phoneNumber3', '' . "\0" . 'Businesspartner' . "\0" . 'status', '' . "\0" . 'Businesspartner' . "\0" . 'birthdate');
     }
 
     /**
@@ -450,6 +450,28 @@ class Businesspartner extends \Businesspartner implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
 
         return parent::getStatus();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setBirthdate($birthdate)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBirthdate', array($birthdate));
+
+        return parent::setBirthdate($birthdate);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBirthdate()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBirthdate', array());
+
+        return parent::getBirthdate();
     }
 
 }

@@ -14,7 +14,7 @@ class connectionManager {
         'dbname' => 'milesbench',
         'user' => 'milesbenchdb',
         'password' => 'Milesbench2@15',
-        'host' => 'localhost:3306',
+        'host' => 'localhost',
         'driver' => 'pdo_mysql'
     );
 

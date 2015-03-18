@@ -394,4 +394,34 @@ class Businesspartner
     {
         return $this->status;
     }
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="birthdate", type="datetime", nullable=true)
+     */
+    private $birthdate;
+
+
+    /**
+     * Set birthdate
+     *
+     * @param \DateTime $birthdate
+     * @return Businesspartner
+     */
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+    
+        return $this;
+    }
+
+    /**
+     * Get birthdate
+     *
+     * @return \DateTime 
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
 }

@@ -679,4 +679,34 @@ class Sale
     {
         return $this->flightHour;
     }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="extra_fee", type="decimal", precision=20, scale=0, nullable=true)
+     */
+    private $extraFee;
+
+
+    /**
+     * Set extraFee
+     *
+     * @param string $extraFee
+     * @return Sale
+     */
+    public function setExtraFee($extraFee)
+    {
+        $this->extraFee = $extraFee;
+    
+        return $this;
+    }
+
+    /**
+     * Get extraFee
+     *
+     * @return string 
+     */
+    public function getExtraFee()
+    {
+        return $this->extraFee;
+    }
 }

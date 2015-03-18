@@ -104,7 +104,7 @@ var order;
         $orderRow['flight'] = '';
         $orderRow['flightHour'] = '';
 
-        $('#order_status').val('Pendente');
+        $('#order_status').selectpicker('val','Pendente');
         $('#order_client').selectpicker('val','');
         $('#order_airline').selectpicker('val','');
         $('#order_from').selectpicker('val','');

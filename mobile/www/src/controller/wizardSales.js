@@ -65,6 +65,15 @@ var salesRow;
             var data = jQuery.parseJSON(response);
 
             activate_page("#wizard_sales_2");
+
+            $ParentNode = document.getElementById('wizardheader2');
+            if ($ParentNode) {
+                while ($ParentNode.hasChildNodes()) {
+                    $ParentNode.removeChild($ParentNode.firstChild);
+                }            
+            }
+            $('#wizardheader2').append('<h2>Uai Milhas - Registrar Emissão ('+$salesOrderRow.miles_used+')</h2>');
+
             var $init = $('#sales_milesTable td');
             if ($init.length > 0) {
                 $('#sales_milesTable').bootstrapTable('destroy');
@@ -111,6 +120,16 @@ var salesRow;
 
     function loadSalesWizard_Form() {
         activate_page("#wizard_sales_3");
+
+        $ParentNode = document.getElementById('wizardheader3');
+        if ($ParentNode) {
+            while ($ParentNode.hasChildNodes()) {
+                $ParentNode.removeChild($ParentNode.firstChild);
+            }            
+        }
+        $('#wizardheader3').append('<h2>Uai Milhas - Registrar Emissão ('+$milesCardRow.name+')</h2>');
+
+
         var $sales_miles_used = $('#sales_miles_used');
         var $sales_total_cost = $('#sales_total_cost');
         $sales_miles_used.val(numeral().unformat($salesOrderRow.miles_used));
@@ -118,7 +137,7 @@ var salesRow;
     }
 
     function setKickback(){
-        $('#sales_kickback').val($('#sales_amount_paid')[0].value - $('#sales_total_cost')[0].value - $('#sales_tax')[0].value);
+        $('#sales_kickback').val($('#sales_amount_paid')[0].value - $('#sales_total_cost')[0].value - $('#sales_tax')[0].value - $('#sales_extra_fee')[0].value);
     }
 
     function saveSale(){
@@ -135,12 +154,18 @@ var salesRow;
         $salesRow['totalCost'] = $('#sales_total_cost')[0].value;
         $salesRow['amountPaid'] = $('#sales_amount_paid')[0].value;
         $salesRow['kickback'] = $('#sales_kickback')[0].value;
+        $salesRow['extra_fee'] = $('#sales_extra_fee')[0].value;
+        $salesRow['birthdate'] = $('#sales_birthdate')[0].value;
 
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;
             if(message['type'] == 'S') {
                 alert(message['text']);
             }
+            loadClient('#order_client');
+            loadAirport('#order_from');
+            loadAirport('#order_to');
+            loadAirline('#order_airline');
             loadOrder();
         };
 

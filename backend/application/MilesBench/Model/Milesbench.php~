@@ -184,4 +184,34 @@ class Milesbench
     {
         return $this->cards;
     }
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="contract_due_date", type="datetime", nullable=true)
+     */
+    private $contractDueDate;
+
+
+    /**
+     * Set contractDueDate
+     *
+     * @param \DateTime $contractDueDate
+     * @return Milesbench
+     */
+    public function setContractDueDate($contractDueDate)
+    {
+        $this->contractDueDate = $contractDueDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get contractDueDate
+     *
+     * @return \DateTime 
+     */
+    public function getContractDueDate()
+    {
+        return $this->contractDueDate;
+    }
 }

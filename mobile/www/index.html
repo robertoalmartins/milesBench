@@ -601,8 +601,7 @@
             </div>
             <div class="upage hidden" id="wizard_sales_2">
                 <div class="upage-outer">
-                    <div class="uib-header header-bg container-group inner-element uib_w_67" data-uib="layout/header" data-ver="0">
-                        <h2>Uai Milhas - Registrar Emissão</h2>
+                    <div id="wizardheader2" class="uib-header header-bg container-group inner-element uib_w_67" data-uib="layout/header" data-ver="0">
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left"></div>
                         <div class="widget-container content-area horiz-area wrapping-col right"></div>
@@ -650,8 +649,7 @@
             </div>
             <div class="upage hidden" id="wizard_sales_3">
                 <div class="upage-outer">
-                    <div class="uib-header header-bg container-group inner-element uib_w_67" data-uib="layout/header" data-ver="0">
-                        <h2>Uai Milhas - Registrar Emissão</h2>
+                    <div id="wizardheader3" class="uib-header header-bg container-group inner-element uib_w_67" data-uib="layout/header" data-ver="0">
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left"></div>
                         <div class="widget-container content-area horiz-area wrapping-col right"></div>
@@ -666,9 +664,24 @@
                                         <input class="wide-control form-control" type="text" id="sales_pax_name">
                                     </div>
 
-                                    <div class="table-thing widget uib_w_24 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Documento</label>
-                                        <input class="wide-control form-control" type="text" id="sales_registration_code">
+                                    <div class="grid urow uib_row_16" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_36 col-1_8-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_71 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Documento</label>
+                                                    <input class="wide-control form-control" type="text" id="sales_registration_code">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_35 col-1_4-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_71 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Data de Nascimento</label>
+                                                    <input class="wide-control form-control" type="date" id="sales_birthdate">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
                                     </div>
 
                                     <div class="grid urow uib_row_16" data-uib="layout/row" data-ver="0">
@@ -726,11 +739,25 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="table-thing widget uib_w_25 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Valor de Retorno</label>
-                                        <input class="wide-control form-control" type="number" id="sales_kickback">
+                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Taxa Extra</label>
+                                                    <input class="wide-control form-control" type="number" id="sales_extra_fee" onBlur="setKickback()">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_37 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Valor de Retorno</label>
+                                                    <input class="wide-control form-control" type="number" id="sales_kickback">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
                                     </div>
-
                                     <span class="uib_shim"></span>
                                 </div>
                             </div>

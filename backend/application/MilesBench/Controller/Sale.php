@@ -33,6 +33,7 @@ class sale {
                     $BusinessPartner->setPartnerType($BusinessPartner->getPartnerType()+'_X');
                 }
             }
+            $BusinessPartner->setBirthdate(new \Datetime($dados['birthdate']));
             $em->persist($BusinessPartner);
             $em->flush($BusinessPartner);
 
@@ -46,6 +47,7 @@ class sale {
             $Sale->setTotalCost($dados['totalCost']);
             $Sale->setAmountPaid($dados['amountPaid']);
             $Sale->setKickback($dados['kickback']);
+            $Sale->setExtraFee($dados['extra_fee']);
             $Sale->setPax($BusinessPartner);
             $Sale->setStatus('Emitido');
             $Sale->setCards($Cards);
