@@ -49,7 +49,7 @@ function __autoload($class)
     } else if (substr($path,0,10) == "MilesBench") {
         require $path . '.php';
     } else {
-        require 'MilesBench\\Model\\'.$path . '.php';
+        require '../application/MilesBench/Model/'.$path . '.php';
     }
 }
 
