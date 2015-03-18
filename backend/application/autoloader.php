@@ -44,7 +44,7 @@ function __autoload($class)
     $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
     if (substr($path,0,8) == "Doctrine") {
         $namespaceClass = substr($path,0,strrpos($path,strrchr($path,DIRECTORY_SEPARATOR)));
-        $pathClass = $namespace[$namespaceClass];
+        $pathClass = $namespace[str_replace('/','\\',$namespaceClass)];
         require $pathClass.$path.'.php';
     } else if (substr($path,0,10) == "MilesBench") {
         require $path . '.php';
