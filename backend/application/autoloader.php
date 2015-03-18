@@ -2,21 +2,21 @@
 function __autoload($class)
 {
     $ds = DIRECTORY_SEPARATOR;
-    $vendorDir = $ds.'..'.$ds.'vendor';
+    $vendorDir = '..'.$ds.'vendor';
     $namespace = array(
-        'Doctrine\\ORM' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Repository' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Event' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Proxy' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Id' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Query' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Query\\AST' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Query\\Exec' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Persisters' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Mapping' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Mapping\\Driver' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Internal\\Hydration' => $ds.'..'.$ds.'lib'.$ds,
-        'Doctrine\\ORM\\Internal' => $ds.'..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Repository' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Event' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Proxy' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Id' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Query' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Query\\AST' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Query\\Exec' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Persisters' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Mapping' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Mapping\\Driver' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Internal\\Hydration' => '..'.$ds.'lib'.$ds,
+        'Doctrine\\ORM\\Internal' => '..'.$ds.'lib'.$ds,
         'Doctrine\\DBAL' => $vendorDir . $ds.'doctrine'.$ds.'dbal'.$ds.'lib'.$ds,
         'Doctrine\\DBAL\\Driver' => $vendorDir . $ds.'doctrine'.$ds.'dbal'.$ds.'lib'.$ds,
         'Doctrine\\DBAL\\Driver\\PDOMySql' => $vendorDir . $ds.'doctrine'.$ds.'dbal'.$ds.'lib'.$ds,
