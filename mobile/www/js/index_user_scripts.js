@@ -98,6 +98,32 @@
             removeAgency();
         });
 
+
+        /****_________________________________________________________________________________________________****/
+        $(document).on("click", "#mnu_profile", function(evt){
+            uib_sb.toggle_sidebar($(".uib_w_6"));
+            loadState('#profile_state');
+            loadProfile();
+        });
+
+        $(document).on("click", "#save_profile", function(evt){
+            saveProfile();
+        });
+
+        $(document).on("click", "#cancel_profile", function(evt){
+            activate_page("#profile");
+            loadProfile();
+        });
+
+        $(document).on("click", "#insert_profile", function(evt){
+            activate_page("#profile_form");
+            newProfile();
+        });
+
+        $(document).on("click", "#remove_profile", function(evt){
+            removeProfile();
+        });
+
         /****_________________________________________________________________________________________________****/
         $(document).on("click", "#mnu_purchase", function(evt){
             setCityNameEnviroment('');
