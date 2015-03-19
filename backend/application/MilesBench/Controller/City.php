@@ -19,7 +19,7 @@ class City {
         $dados = $request->getRow();
 
         $em = Application::getInstance()->getEntityManager();
-        $Cities = $em->getRepository('City')->findBy(array('state' => $dados['state']));;
+        $Cities = $em->getRepository('City')->findBy(array('state' => $dados['state']));
 
         $dataset = array();
         foreach($Cities as $City){

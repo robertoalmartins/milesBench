@@ -74,6 +74,31 @@
         });
 
         /****_________________________________________________________________________________________________****/
+        $(document).on("click", "#mnu_agency", function(evt){
+            uib_sb.toggle_sidebar($(".uib_w_6"));
+            loadState('#agency_state');
+            loadAgency();
+        });
+
+        $(document).on("click", "#save_agency", function(evt){
+            saveAgency();
+        });
+
+        $(document).on("click", "#cancel_agency", function(evt){
+            activate_page("#agency");
+            loadAgency();
+        });
+
+        $(document).on("click", "#insert_agency", function(evt){
+            activate_page("#agency_form");
+            newAgency();
+        });
+
+        $(document).on("click", "#remove_agency", function(evt){
+            removeAgency();
+        });
+
+        /****_________________________________________________________________________________________________****/
         $(document).on("click", "#mnu_purchase", function(evt){
             setCityNameEnviroment('');
             uib_sb.toggle_sidebar($(".uib_w_6"));

@@ -13,7 +13,7 @@ use MilesBench\Model;
 use MilesBench\Request\Request;
 use MilesBench\Request\Response;
 
-class Client {
+class Agency {
 
     public function load(Request $request, Response $response) {
         $em = Application::getInstance()->getEntityManager();
@@ -38,4 +38,5 @@ class Client {
         }
         $response->setDataset($dataset);
     }
+
 }
