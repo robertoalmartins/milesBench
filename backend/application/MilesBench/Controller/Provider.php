@@ -22,15 +22,16 @@ class Provider {
         $dataset = array();
         foreach($BusinessPartner as $Provider){
             $City = $Provider->getCity();
+            if ($City) {
+                $cityname = $City->getName() . ', ' . $City->getState();
+            } else {
+                $cityname = '';
+            }
             $dataset[] = array(
                 'id' => $Provider->getId(),
                 'name' => $Provider->getName(),
-                if ($City) {
-                    'city' => $City->getName() . ', ' . $City->getState(),
-                } else {
-                    'city' => '',
-                }
                 'registrationCode' => $Provider->getRegistrationCode(),
+                'city' => $cityname,
                 'adress' => $Provider->getAdress(),
                 'partnerType' => $Provider->getPartnerType(),
                 'email' => $Provider->getEmail(),
