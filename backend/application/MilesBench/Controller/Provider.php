@@ -25,7 +25,11 @@ class Provider {
             $dataset[] = array(
                 'id' => $Provider->getId(),
                 'name' => $Provider->getName(),
-                'city' => $City->getName() . ', ' . $City->getState(),
+                if ($City) {
+                    'city' => $City->getName() . ', ' . $City->getState(),
+                } else {
+                    'city' => '',
+                }
                 'registrationCode' => $Provider->getRegistrationCode(),
                 'adress' => $Provider->getAdress(),
                 'partnerType' => $Provider->getPartnerType(),
