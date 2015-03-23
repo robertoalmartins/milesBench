@@ -40,12 +40,34 @@
         });
 
         $(document).on("click", "#insert_order", function(evt){
-            activate_page("#order_form");
-            newOrder();
+            loadClient('#worder_client');
+            loadAirport('#worder_from');
+            loadAirport('#worder_to');
+            loadAirline('#worder_airline');
+            activate_page("#wizard_worder_1");
         });
 
         $(document).on("click", "#remove_order", function(evt){
             removeOrder();
+        });
+
+        $(document).on("click", "#next_worder", function(evt){
+            activate_page("#wizard_worder_1");
+        });
+
+        $(document).on("click", "#next_worder", function(evt){
+            loadOrderMiles_Grid();
+        });
+
+        $(document).on("click", "#worder2_next", function(evt){
+            saveWizardOrder();
+            activate_page("#order");
+            loadOrder();
+        });
+
+        $(document).on("click", "#cancel_worder", function(evt){
+            activate_page("#order");
+            loadOrder();
         });
 
         /****_________________________________________________________________________________________________****/

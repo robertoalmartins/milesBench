@@ -6,6 +6,17 @@
         var success = function(response) {
             var data = jQuery.parseJSON(response);
 
+            $ParentNode = document.getElementById($component)
+            if ($ParentNode) {
+                while ($ParentNode.hasChildNodes()) {
+                    $ParentNode.removeChild($ParentNode.firstChild);
+                }            
+            }
+
+            $($component). append(
+                '<option>'+'</option>'
+            );
+
             for(var i in data.dataset){
                 var Airline = data.dataset[i];
                 $($component). append(

@@ -13,6 +13,10 @@
                 }            
             }
 
+            $($component). append(
+                '<option>'+'</option>'
+            );
+
             for(var i in data.dataset){
                 var Airport = data.dataset[i];
                 $($component). append(

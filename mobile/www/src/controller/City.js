@@ -17,6 +17,10 @@ var CityName;
                 $ParentNode.removeChild($ParentNode.firstChild);
             }            
 
+            $('#'+$component). append(
+                '<option>'+'</option>'
+            );
+
             for(var i in data.dataset){
                 var city = data.dataset[i];
                 $('#'+$component). append(

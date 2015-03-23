@@ -14,10 +14,15 @@
                 }            
             }
 
+            $($component). append(
+                '<option>'+'</option>'
+            );
+
+
             for(var i in data.dataset){
-                var city = data.dataset[i];
+                var client = data.dataset[i];
                 $($component). append(
-                    '<option>'+city.name+'</option>'
+                    '<option>'+client.name+'</option>'
                 );
             }
             $($component).selectpicker('refresh');

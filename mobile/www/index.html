@@ -55,6 +55,7 @@
         <script type="application/javascript" src="src/controller/Profile.js"></script>
         <script type="application/javascript" src="src/controller/wizardPurchase.js"></script>
         <script type="application/javascript" src="src/controller/wizardSales.js"></script>
+        <script type="application/javascript" src="src/controller/wizardOrder.js"></script>
     </head>
 
     <body>
@@ -344,6 +345,7 @@
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Estado</label>
                                                     <select class="selectpicker" data-live-search="true" style="display: none;" title = "Selecione um estado" id="provider_state" onChange="loadCity('provider_city','provider_state')">
+                                                        <option></option>
                                                     </select>
                                                 </div><span class="uib_shim"></span>
                                             </div>
@@ -353,6 +355,7 @@
                                                 <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Cidade</label>
                                                     <select class="selectpicker" data-live-search="true" style="display: none;" title = "Selecione uma cidade" id="provider_city">
+                                                        <option></option>
                                                     </select>
                                                 </div><span class="uib_shim"></span>
                                             </div>
@@ -533,6 +536,7 @@
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Estado</label>
                                                     <select class="selectpicker" data-live-search="true" style="display: none;" title = "Selecione um estado" id="profile_state" onChange="loadCity('profile_city','profile_state')">
+                                                        <option></option>
                                                     </select>
                                                 </div><span class="uib_shim"></span>
                                             </div>
@@ -542,6 +546,7 @@
                                                 <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Cidade</label>
                                                     <select class="selectpicker" data-live-search="true" style="display: none;" title = "Selecione uma cidade" id="profile_city">
+                                                        <option></option>
                                                     </select>
                                                 </div><span class="uib_shim"></span>
                                             </div>
@@ -695,6 +700,7 @@
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Estado</label>
                                                     <select class="selectpicker" data-live-search="true" style="display: none;" title = "Selecione um estado" id="agency_state" onChange="loadCity('agency_city','agency_state')">
+                                                        <option></option>
                                                     </select>
                                                 </div><span class="uib_shim"></span>
                                             </div>
@@ -704,6 +710,7 @@
                                                 <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                                     <label class="narrow-control label-top-left">Cidade</label>
                                                     <select class="selectpicker" data-live-search="true" style="display: none;" title = "Selecione uma cidade" id="agency_city">
+                                                        <option></option>
                                                     </select>
                                                 </div><span class="uib_shim"></span>
                                             </div>
@@ -1127,6 +1134,7 @@
                                     <div class="table-thing widget uib_w_25 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
                                         <label class="narrow-control label-top-left">Agência</label>
                                         <select class="selectpicker" data-live-search="true" style="display: none;" id="order_client" title="Selecione uma agência">
+                                            <option></option>
                                         </select>
                                     </div>
                                     <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
@@ -1249,6 +1257,218 @@
 
                             <button type="button" class="btn widget uib_w_32 d-margins button_footer btn-default" data-uib="twitter%20bootstrap/button" data-ver="0" id="save_order">Confirmar<i class="glyphicon"></i>
                             </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /upage-outer -->
+            </div>
+            <div class="upage hidden" id="wizard_worder_1">
+                <div class="upage-outer">
+                    <div class="uib-header header-bg container-group inner-element uib_w_23" data-uib="layout/header" data-ver="0">
+                        <h2>Uai Milhas - Pedidos</h2>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col left">
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                    </div>
+                    <div id="worder_formsub" class="upage-content ">
+                        <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Agência</label>
+                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="worder_client" title="Selecione uma agência">
+                                                        <option></option>
+                                                    </select>
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_37 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Companhia Aérea</label>
+                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="worder_airline" title="Selecione uma companhia aérea">
+                                                    </select>
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Vôo</label>
+                                                    <input class="wide-control form-control" type="text" id="worder_flight">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_37 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Hora Vôo</label>
+                                                    <input class="wide-control form-control" type="text" id="worder_flightHour">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Origem</label>
+                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="worder_from" title="Selecione um aeroporto">
+                                                    </select>
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_37 col-1_6-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_78 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Destino</label>
+                                                    <select class="selectpicker" data-live-search="true" style="display: none;" id="worder_to" title="Selecione um aeroporto">
+                                                    </select>
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_42 col-1_4-12_4-4" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Nome do Passageiro</label>
+                                                    <input class="wide-control form-control" type="text" id="worder_pax_name">
+                                                </div>
+                                                <span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_43 col-1_4-12_4-8" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Data de Nascimento</label>
+                                                    <input class="wide-control form-control" type="date" id="worder_birthdate">
+                                                </div>
+                                                <span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_41 col-1_4-12_8-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Documento</label>
+                                                    <input class="wide-control form-control" type="text" id="worder_registration_code">
+                                                </div>
+                                                <span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                    <div class="grid urow uib_row_16" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_36 col-1_8-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_71 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Observação</label>
+                                                    <input class="wide-control form-control" type="text" id="worder_description">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_35 col-1_4-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_71 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Total de Milhas</label>
+                                                    <input class="wide-control form-control" type="number" id="worder_milesUsed">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                    <div class="grid urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_36 col-1_8-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_71 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Data Pedido</label>
+                                                    <input class="wide-control form-control" type="date" id="worder_issueDate">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_35 col-1_4-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_71 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                    <label class="narrow-control label-top-left">Data Embarque</label>
+                                                    <input class="wide-control form-control" type="date" id="worder_boardingDate">
+                                                </div><span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                    <span class="uib_shim"></span>
+                                </div>
+                            </div>
+                            <span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_30" data-uib="layout/footer" data-ver="0">
+                        <h2>Passo 1 de 2</h2>
+                        <div class="widget-container content-area horiz-area wrapping-col left">
+                            <button type="button" class="btn widget uib_w_34 d-margins button_footer btn-default" data-uib="twitter%20bootstrap/button" data-ver="0" id="cancel_worder">Cancelar<i class="glyphicon"></i>
+                            </button>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col right">
+
+                            <button type="button" class="btn widget uib_w_32 d-margins button_footer btn-default" data-uib="twitter%20bootstrap/button" data-ver="0" id="next_worder">Próximo<i class="glyphicon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /upage-outer -->
+            </div>
+            <div class="upage hidden" id="wizard_worder_2">
+                <div class="upage-outer">
+                    <div id="wizardorderheader2" class="uib-header header-bg container-group inner-element uib_w_67" data-uib="layout/header" data-ver="0">
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col left"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                    </div>
+                    <div id="wizard_worder_2sub" class="upage-content ">
+                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <table id="worder_milesTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
+                                        <thead>
+                                            <tr>
+                                                <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
+                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
+                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
+                                                <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
+                                                <th data-field="card_number" data-halign="left" data-align="left" data-sortable="true">Número Cartão</th>
+                                                <th data-field="leftover" data-halign="left" data-align="right" data-sortable="true">Saldo Milhas</th>
+                                                <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Vencimento</th>
+                                                <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Limite Contrato</th>
+                                                <th data-field="cost_per_thousand" data-halign="left" data-align="right" data-sortable="true">Custo por 1000</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tb_ordermiles">
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div><span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_68" data-uib="layout/footer" data-ver="0">
+                        <h2>Passo 2 de 2</h2>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col left">
+                            <button type="button" class="btn widget uib_w_69 d-margins btn-default button_footer" data-uib="twitter%20bootstrap/button" data-ver="0" id="worder2_prior"><i class="glyphicon button-icon-left" data-position="left"></i>Anterior</button>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col right">
+                            <button type="button" class="btn widget uib_w_70 d-margins btn-default button_footer" data-uib="twitter%20bootstrap/button" data-ver="0" id="worder2_next"><i class="glyphicon button-icon-left" data-position="left"></i>Finalizar</button>
                         </div>
                     </div>
                 </div>

@@ -86,6 +86,26 @@ class order {
             } else {
                 $Sale = new \Sale();
             }
+
+            $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['paxName']));
+            if (!$BusinessPartner) {
+                $BusinessPartner = new \Businesspartner();
+                $BusinessPartner->setName($dados['paxName']);
+                $BusinessPartner->setRegistrationCode($dados['paxRegistrationCode']);
+                $BusinessPartner->setPartnerType('X');
+            } else {
+                if (strpos($BusinessPartner->getPartnerType(),'X')) {
+                    $BusinessPartner->setPartnerType($BusinessPartner->getPartnerType()+'_X');
+                }
+            }
+            $BusinessPartner->setBirthdate(new \Datetime($dados['birthdate']));
+            $em->persist($BusinessPartner);
+            $em->flush($BusinessPartner);
+
+            $Cards = $em->getRepository('cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
+
+            $Sale->setCards($Cards);
+            $Sale->setPax($BusinessPartner);
             $Sale->setIssueDate(new \Datetime($dados['issueDate']));
             $Sale->setBoardingDate(new \Datetime($dados['boardingDate']));
             $Sale->setReturnDate(new \Datetime($dados['returnDate']));

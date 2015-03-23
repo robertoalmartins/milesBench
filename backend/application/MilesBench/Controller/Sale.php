@@ -20,25 +20,7 @@ class sale {
         $em = Application::getInstance()->getEntityManager();
 
         try {
-            $em->getConnection()->beginTransaction();
-
-            $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['paxName']));
-            if (!$BusinessPartner) {
-                $BusinessPartner = new \Businesspartner();
-                $BusinessPartner->setName($dados['paxName']);
-                $BusinessPartner->setRegistrationCode($dados['paxRegistrationCode']);
-                $BusinessPartner->setPartnerType('X');
-            } else {
-                if (strpos($BusinessPartner->getPartnerType(),'X')) {
-                    $BusinessPartner->setPartnerType($BusinessPartner->getPartnerType()+'_X');
-                }
-            }
-            $BusinessPartner->setBirthdate(new \Datetime($dados['birthdate']));
-            $em->persist($BusinessPartner);
-            $em->flush($BusinessPartner);
-
-            $Cards = $em->getRepository('cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
-            
+            $em->getConnection()->beginTransaction();            
             $Sale = $em->getRepository('Sale')->find($dados['id']);
             $Sale->setFlightLocator($dados['flightLocator']);
             $Sale->setCheckinState($dados['checkinState']);
@@ -48,9 +30,7 @@ class sale {
             $Sale->setAmountPaid($dados['amountPaid']);
             $Sale->setKickback($dados['kickback']);
             $Sale->setExtraFee($dados['extra_fee']);
-            $Sale->setPax($BusinessPartner);
             $Sale->setStatus('Emitido');
-            $Sale->setCards($Cards);
             $em->persist($Sale);
             $em->flush($Sale);
 
