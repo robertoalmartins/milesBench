@@ -40,7 +40,8 @@ class order {
                 'airportNamefrom' => $item->getAirportFrom()->getName(),
                 'airportNameto' => $item->getAirportTo()->getName(),
                 'flight' => $item->getFlight(),
-                'flightHour' => $item->getFlightHour()
+                'flightHour' => $item->getFlightHour(),
+                'cards' => $cards_id
             );
 
         }
@@ -53,6 +54,12 @@ class order {
 
         $dataset = array();
         foreach($order as $item){
+            if ($item->getCards()) {
+                $cards_id = $item->getCards()->getId();
+            } else {
+                $cards_id = '';
+            }
+
             $dataset[] = array(
                 'id' => $item->getId(),
                 'status' => $item->getStatus(),
@@ -69,7 +76,8 @@ class order {
                 'airportNamefrom' => $item->getAirportFrom()->getName(),
                 'airportNameto' => $item->getAirportTo()->getName(),
                 'flight' => $item->getFlight(),
-                'flightHour' => $item->getFlightHour()
+                'flightHour' => $item->getFlightHour(),
+                'cards' => $cards_id
             );
 
         }
@@ -81,6 +89,7 @@ class order {
 
         try {
             $em = Application::getInstance()->getEntityManager();
+            $em->getConnection()->beginTransaction();            
             if ($dados['id']) {
                 $Sale = $em->getRepository('Sale')->find($dados['id']);
             } else {
@@ -104,6 +113,11 @@ class order {
 
             $Cards = $em->getRepository('cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
 
+            $MilesBench = $em->getRepository('Milesbench')->findOneBy(array('cards' => $Cards));
+            $MilesBench->setLeftOver($MilesBench->getLeftOver() - $Sale->getMilesUsed());
+            $em->persist($MilesBench);
+            $em->flush($MilesBench);
+
             $Sale->setCards($Cards);
             $Sale->setPax($BusinessPartner);
             $Sale->setIssueDate(new \Datetime($dados['issueDate']));
@@ -121,12 +135,15 @@ class order {
             $em->persist($Sale);
             $em->flush($Sale);
 
+            $em->getConnection()->commit();
+
             $message = new \MilesBench\Message();
             $message->setType(\MilesBench\Message::SUCCESS);
             $message->setText('Registro alterado com sucesso');
             $response->addMessage($message);
 
         } catch (Exception $e) {
+            $em->getConnection()->rollback();
             $message = new \MilesBench\Message();
             $message->setType(\MilesBench\Message::ERROR);
             $message->setText($e->getMessage());

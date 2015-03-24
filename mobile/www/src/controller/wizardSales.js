@@ -37,6 +37,7 @@ var salesRow;
                     '<td>'+order.issueDate+'</td>'+
                     '<td>'+order.boardingDate+'</td>'+
                     '<td>'+order.returnDate+'</td>'+
+                    '<td>'+order.cards+'</td>'+
                     '</tr>'
                 );
             }
@@ -60,6 +61,8 @@ var salesRow;
     function loadSalesMiles_Grid() {
         $milesUsed = {};
         $milesUsed['value'] = numeral().unformat($salesOrderRow.miles_used);
+        $milesUsed['cards'] = $salesOrderRow.cards;
+
 
         var success = function(response) {
             var data = jQuery.parseJSON(response);
@@ -115,6 +118,7 @@ var salesRow;
             url: "../../backend/application/index.php?rota=/loadSalesMiles",
             data: $milesUsed,
             success: success
+
         });
     }
 
@@ -143,10 +147,6 @@ var salesRow;
     function saveSale(){
         $salesRow = {};
         $salesRow['id'] = $salesOrderRow.id;
-        $salesRow['cardNumber'] = $milesCardRow.card_number;
-        $salesRow['dueDate'] = $milesCardRow.due_date;
-        $salesRow['paxName'] = $('#sales_pax_name')[0].value;
-        $salesRow['paxRegistrationCode'] = $('#sales_registration_code')[0].value;
         $salesRow['flightLocator'] = $('#sales_flight_locator')[0].value;
         $salesRow['checkinState'] = $('#sales_checkin_state')[0].value;
         $salesRow['tax'] = $('#sales_tax')[0].value;
@@ -155,7 +155,6 @@ var salesRow;
         $salesRow['amountPaid'] = $('#sales_amount_paid')[0].value;
         $salesRow['kickback'] = $('#sales_kickback')[0].value;
         $salesRow['extra_fee'] = $('#sales_extra_fee')[0].value;
-        $salesRow['birthdate'] = $('#sales_birthdate')[0].value;
 
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;

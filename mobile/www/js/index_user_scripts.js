@@ -59,6 +59,11 @@
             loadOrderMiles_Grid();
         });
 
+        $(document).on("click", "#worder2_prior", function(evt){
+            activate_page("#wizard_worder_1");
+        });
+        
+
         $(document).on("click", "#worder2_next", function(evt){
             saveWizardOrder();
             activate_page("#order");

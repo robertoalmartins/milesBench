@@ -43,7 +43,11 @@ class miles {
         $dados = $request->getRow();
 
         $em = Application::getInstance()->getEntityManager();
-        $sql = "select c, b, a, m FROM Milesbench m JOIN m.cards c JOIN c.businesspartner b JOIN c.airline a WHERE m.leftover >= ".$dados['value'];
+        if ($dados['cards']) {
+            $sql = "select c, b, a, m FROM Milesbench m JOIN m.cards c JOIN c.businesspartner b JOIN c.airline a WHERE c.id = ".$dados['cards'];
+        } else {
+            $sql = "select c, b, a, m FROM Milesbench m JOIN m.cards c JOIN c.businesspartner b JOIN c.airline a WHERE m.leftover >= ".$dados['value'];
+        }
         $query = $em->createQuery($sql);
         $milesbench = $query->getResult();
 

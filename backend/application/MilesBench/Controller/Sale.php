@@ -25,7 +25,6 @@ class sale {
             $Sale->setFlightLocator($dados['flightLocator']);
             $Sale->setCheckinState($dados['checkinState']);
             $Sale->setTax($dados['tax']);
-            $Sale->setMilesUsed($dados['milesUsed']);
             $Sale->setTotalCost($dados['totalCost']);
             $Sale->setAmountPaid($dados['amountPaid']);
             $Sale->setKickback($dados['kickback']);
@@ -33,11 +32,6 @@ class sale {
             $Sale->setStatus('Emitido');
             $em->persist($Sale);
             $em->flush($Sale);
-
-            $MilesBench = $em->getRepository('Milesbench')->findOneBy(array('cards' => $Cards));
-            $MilesBench->setLeftOver($MilesBench->getLeftOver() - $Sale->getMilesUsed());
-            $em->persist($MilesBench);
-            $em->flush($MilesBench);
 
             $em->getConnection()->commit();
 

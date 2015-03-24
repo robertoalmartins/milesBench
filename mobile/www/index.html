@@ -100,11 +100,11 @@
                                         </div>
                                         <div class="table-thing widget uib_w_1 d-margins Border-color" data-uib="twitter%20bootstrap/input" data-ver="0">
                                             <label class="narrow-control"></label>
-                                            <input class="wide-control form-control" name="email" type="email" placeholder="Email">
+                                            <input class="wide-control form-control" name="email" type="email" placeholder="Email" value="roberto.alpm@gmail.com">
                                         </div>
                                         <div class="table-thing widget uib_w_2 d-margins Border-color" data-uib="twitter%20bootstrap/input" data-ver="0">
                                             <label class="narrow-control"></label>
-                                            <input class="wide-control form-control" name="password" type="password" placeholder="Senha">
+                                            <input class="wide-control form-control" name="password" type="password" placeholder="Senha" value="1">
                                         </div>
                                         <button type="submit" class="btn widget uib_w_3 d-margins color_button btn-success" data-uib="twitter%20bootstrap/button" data-ver="0"><i class="glyphicon button-icon-left" data-position="left"></i>Entrar</button>
                                         <span class="uib_shim"></span>
@@ -915,6 +915,7 @@
                                                 <th data-field="issue_date" data-halign="left" data-align="right" data-sortable="true">Data Pedido</th>
                                                 <th data-field="boarding_date" data-halign="left" data-align="right" data-sortable="true">Data Embarque</th>
                                                 <th data-field="return_date" data-halign="left" data-align="right" data-sortable="true">Data Retorno</th>
+                                                <th data-field="cards" data-halign="left" data-align="right" data-sortable="false" data-visible="false">ID Cartão</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tb_sales1">
@@ -998,31 +999,6 @@
                         <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-
-                                    <div class="table-thing widget uib_w_24 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Nome do Passageiro</label>
-                                        <input class="wide-control form-control" type="text" id="sales_pax_name">
-                                    </div>
-
-                                    <div class="grid urow uib_row_16" data-uib="layout/row" data-ver="0">
-                                        <div class="col uib_col_36 col-1_8-12" data-uib="layout/col" data-ver="0">
-                                            <div class="widget-container content-area vertical-col">
-                                                <div class="table-thing widget uib_w_71 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                                    <label class="narrow-control label-top-left">Documento</label>
-                                                    <input class="wide-control form-control" type="text" id="sales_registration_code">
-                                                </div><span class="uib_shim"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col uib_col_35 col-1_4-12" data-uib="layout/col" data-ver="0">
-                                            <div class="widget-container content-area vertical-col">
-                                                <div class="table-thing widget uib_w_71 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                                    <label class="narrow-control label-top-left">Data de Nascimento</label>
-                                                    <input class="wide-control form-control" type="date" id="sales_birthdate">
-                                                </div><span class="uib_shim"></span>
-                                            </div>
-                                        </div>
-                                        <span class="uib_shim"></span>
-                                    </div>
 
                                     <div class="grid urow uib_row_16" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_36 col-1_8-12" data-uib="layout/col" data-ver="0">
@@ -1438,7 +1414,7 @@
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
 
-                                    <table id="worder_milesTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
+                                    <table id="worder_milesTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true" data-click-to-select="true" data-select-item-name="radioName">
                                         <thead>
                                             <tr>
                                                 <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
@@ -1450,6 +1426,7 @@
                                                 <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Vencimento</th>
                                                 <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Limite Contrato</th>
                                                 <th data-field="cost_per_thousand" data-halign="left" data-align="right" data-sortable="true">Custo por 1000</th>
+                                                <th data-field="state" data-radio="true"></th>
                                             </tr>
                                         </thead>
                                         <tbody id="tb_ordermiles">
