@@ -120,7 +120,7 @@ class order {
 
             $Sale->setCards($Cards);
             $Sale->setPax($BusinessPartner);
-            $Sale->setIssueDate(new \Datetime());
+            $Sale->setIssueDate(new \Datetime($dados['issueDate']));
             $Sale->setBoardingDate(new \Datetime($dados['boardingDate']));
             $Sale->setReturnDate(new \Datetime($dados['returnDate']));
             $Sale->setMilesUsed($dados['milesUsed']);
