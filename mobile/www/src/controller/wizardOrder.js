@@ -1,26 +1,11 @@
 var wizardOrderRow;
+var wizard_worder_1;
 var milesOrderRow;
 
     function loadOrderMiles_Grid() {
-        $wizardOrderRow = {};
-        $wizardOrderRow['status'] = 'Pendente';
-        $wizardOrderRow['client'] = $('#worder_client')[0].value;
-        $wizardOrderRow['airline'] = $('#worder_airline')[0].value;
-        $wizardOrderRow['from'] = $('#worder_from')[0].value;
-        $wizardOrderRow['to'] = $('#worder_to')[0].value;
-        $wizardOrderRow['milesUsed'] = $('#worder_milesUsed')[0].value;
-        $wizardOrderRow['paxName'] = $('#worder_pax_name')[0].value;
-        $wizardOrderRow['paxRegistrationCode'] = $('#worder_registration_code')[0].value;
-        $wizardOrderRow['birthdate'] = $('#worder_birthdate')[0].value;
-        $wizardOrderRow['description'] = $('#worder_description')[0].value;
-        $wizardOrderRow['issueDate'] = $('#worder_issueDate')[0].value;
-        $wizardOrderRow['boardingDate'] = $('#worder_boardingDate')[0].value;
-        $wizardOrderRow['flight'] = $('#worder_flight')[0].value;
-        $wizardOrderRow['flightHour'] = $('#worder_flightHour')[0].value;
-
-
-        $milesUsed = {};
-        $milesUsed['value'] = numeral().unformat($wizardOrderRow.milesUsed);
+        $wizard_worder_1 = {};
+        $wizard_worder_1['airline'] = $('#worder_airline')[0].value;
+        $wizard_worder_1['milesUsed'] = $('#worder_milesUsed')[0].value;
 
         var success = function(response) {
             var data = jQuery.parseJSON(response);
@@ -33,7 +18,7 @@ var milesOrderRow;
                     $ParentNode.removeChild($ParentNode.firstChild);
                 }            
             }
-            $('#wizardorderheader2').append('<h2>Uai Milhas - Pedidos ('+$wizardOrderRow.milesUsed+')</h2>');
+            $('#wizardorderheader2').append('<h2>Uai Milhas - Pedidos ('+$wizard_worder_1.milesUsed+')</h2>');
 
             var $init = $('#worder_milesTable td');
             if ($init.length > 0) {
@@ -73,13 +58,26 @@ var milesOrderRow;
         $.ajax({
             type: "POST",
             url: "../../backend/application/index.php?rota=/loadSalesMiles",
-            data: $milesUsed,
+            data: $wizard_worder_1,
             success: success
         });
     }
 
-
     function saveWizardOrder() {
+        $wizardOrderRow = {};
+        $wizardOrderRow['status'] = 'Pendente';
+        $wizardOrderRow['client'] = $('#worder_client')[0].value;
+        $wizardOrderRow['airline'] = $wizard_worder_1['airline'];
+        $wizardOrderRow['from'] = $('#worder_from')[0].value;
+        $wizardOrderRow['to'] = $('#worder_to')[0].value;
+        $wizardOrderRow['milesUsed'] = $wizard_worder_1['milesUsed'];
+        $wizardOrderRow['paxName'] = $('#worder_pax_name')[0].value;
+        $wizardOrderRow['paxRegistrationCode'] = $('#worder_registration_code')[0].value;
+        $wizardOrderRow['birthdate'] = $('#worder_birthdate')[0].value;
+        $wizardOrderRow['description'] = $('#worder_description')[0].value;
+        $wizardOrderRow['boardingDate'] = $('#worder_boardingDate')[0].value;
+        $wizardOrderRow['flight'] = $('#worder_flight')[0].value;
+        $wizardOrderRow['flightHour'] = $('#worder_flightHour')[0].value;
         $wizardOrderRow['cardNumber'] = $milesOrderRow.card_number;
 
         var success = function(response) {

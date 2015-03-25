@@ -51,23 +51,27 @@
             removeOrder();
         });
 
-        $(document).on("click", "#next_worder", function(evt){
-            activate_page("#wizard_worder_1");
-        });
-
-        $(document).on("click", "#next_worder", function(evt){
+        $(document).on("click", "#next_worder_1", function(evt){
             loadOrderMiles_Grid();
         });
 
         $(document).on("click", "#worder2_prior", function(evt){
             activate_page("#wizard_worder_1");
         });
-        
+
 
         $(document).on("click", "#worder2_next", function(evt){
+            activate_page("#wizard_worder_3");
+        });
+
+        $(document).on("click", "#save_worder", function(evt){
             saveWizardOrder();
             activate_page("#order");
             loadOrder();
+        });
+
+        $(document).on("click", "#prior_worder", function(evt){
+            activate_page("#wizard_worder_2");
         });
 
         $(document).on("click", "#cancel_worder", function(evt){
