@@ -30,9 +30,9 @@ var milesOrderRow;
                 }
             }
 
-            $('#worder_client').val('');
-            $('#worder_from').val('');
-            $('#worder_to').val('');
+            $('#worder_client').selectpicker('val','');
+            $('#worder_from').selectpicker('val','');
+            $('#worder_to').selectpicker('val','');
             $('#worder_pax_name').val('');
             $('#worder_registration_code').val('');
             $('#worder_birthdate').val('');

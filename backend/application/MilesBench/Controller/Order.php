@@ -114,7 +114,7 @@ class order {
             $Cards = $em->getRepository('Cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
 
             $MilesBench = $em->getRepository('Milesbench')->findOneBy(array('cards' => $Cards));
-            $MilesBench->setLeftOver($MilesBench->getLeftOver() - $Sale->getMilesUsed());
+            $MilesBench->setLeftOver($MilesBench->getLeftOver() - $dados['milesUsed']);
             $em->persist($MilesBench);
             $em->flush($MilesBench);
 
