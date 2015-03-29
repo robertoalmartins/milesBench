@@ -30,6 +30,17 @@ var milesOrderRow;
                 }
             }
 
+            $('#worder_client').val('');
+            $('#worder_from').val('');
+            $('#worder_to').val('');
+            $('#worder_pax_name').val('');
+            $('#worder_registration_code').val('');
+            $('#worder_birthdate').val('');
+            $('#worder_description').val('');
+            $('#worder_boardingDate').val('');
+            $('#worder_flight').val('');
+            $('#worder_flightHour').val('');
+
             for(var i in data.dataset){
                 miles = data.dataset[i];
                 $('#worder_milesTable tbody'). append(

@@ -45,6 +45,8 @@
             loadAirport('#worder_to');
             loadAirline('#worder_airline');
             activate_page("#wizard_worder_1");
+            $('#worder_airline').val('');
+            $('#worder_milesUsed').val('');
         });
 
         $(document).on("click", "#remove_order", function(evt){
