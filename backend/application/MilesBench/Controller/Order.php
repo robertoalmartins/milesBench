@@ -111,7 +111,7 @@ class order {
             $em->persist($BusinessPartner);
             $em->flush($BusinessPartner);
 
-            $Cards = $em->getRepository('cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
+            $Cards = $em->getRepository('Cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
 
             $MilesBench = $em->getRepository('Milesbench')->findOneBy(array('cards' => $Cards));
             $MilesBench->setLeftOver($MilesBench->getLeftOver() - $Sale->getMilesUsed());

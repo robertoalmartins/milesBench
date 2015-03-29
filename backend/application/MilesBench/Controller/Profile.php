@@ -22,10 +22,15 @@ class Profile {
         $dataset = array();
         foreach($BusinessPartner as $Profile){
             $City = $Profile->getCity();
+            if ($City) {
+                $city_name = $City->getName() . ', ' . $City->getState();
+            } else {
+                $city_name = '';
+            }
             $dataset[] = array(
                 'id' => $Profile->getId(),
                 'name' => $Profile->getName(),
-                'city' => $City->getName() . ', ' . $City->getState(),
+                'city' => $city_name,
                 'registrationCode' => $Profile->getRegistrationCode(),
                 'adress' => $Profile->getAdress(),
                 'partnerType' => $Profile->getPartnerType(),
