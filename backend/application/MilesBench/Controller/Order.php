@@ -12,6 +12,8 @@ use MilesBench\Application;
 use MilesBench\Model;
 use MilesBench\Request\Request;
 use MilesBench\Request\Response;
+use PHPMailer;
+require '/../../../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 
 class order {
 
@@ -36,7 +38,7 @@ class order {
                 'description' => $item->getDescription(),
                 'issueDate' => $item->getIssueDate()->format('Y-m-d'),
                 'boardingDate' => $item->getBoardingDate()->format('Y-m-d'),
-                'returnDate' => $item->getReturnDate()->format('Y-m-d'),
+                'returnDate' => null,
                 'airportNamefrom' => $item->getAirportFrom()->getName(),
                 'airportNameto' => $item->getAirportTo()->getName(),
                 'flight' => $item->getFlight(),
@@ -90,7 +92,7 @@ class order {
         try {
             $em = Application::getInstance()->getEntityManager();
             $em->getConnection()->beginTransaction();            
-            if ($dados['id']) {
+            if (isset($dados['id'])) {
                 $Sale = $em->getRepository('Sale')->find($dados['id']);
             } else {
                 $Sale = new \Sale();
@@ -113,16 +115,10 @@ class order {
 
             $Cards = $em->getRepository('Cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
 
-            $MilesBench = $em->getRepository('Milesbench')->findOneBy(array('cards' => $Cards));
-            $MilesBench->setLeftOver($MilesBench->getLeftOver() - $dados['milesUsed']);
-            $em->persist($MilesBench);
-            $em->flush($MilesBench);
-
             $Sale->setCards($Cards);
             $Sale->setPax($BusinessPartner);
-            $Sale->setIssueDate(new \Datetime($dados['issueDate']));
+            $Sale->setIssueDate(new \Datetime());
             $Sale->setBoardingDate(new \Datetime($dados['boardingDate']));
-            $Sale->setReturnDate(new \Datetime($dados['returnDate']));
             $Sale->setMilesUsed($dados['milesUsed']);
             $Sale->setDescription($dados['description']);
             $Sale->setAirline($em->getRepository('Airline')->findOneBy(array('name' => $dados['airline'])));
@@ -137,10 +133,20 @@ class order {
 
             $em->getConnection()->commit();
 
+            $email = array(
+                'cardNumber' => $dados['cardNumber'],
+                'recoveryPassword' => $Cards->getRecoveryPassword(),
+                'milesUsed' => $dados['milesUsed'],
+                'paxName' => $dados['paxName'],
+                'boardingDate' => $dados['boardingDate'],
+                'flight' => $dados['flight'],
+                'flightHour' => $dados['flightHour']);
+
             $message = new \MilesBench\Message();
             $message->setType(\MilesBench\Message::SUCCESS);
             $message->setText('Registro alterado com sucesso');
             $response->addMessage($message);
+            $response->setDataset($email);
 
         } catch (Exception $e) {
             $em->getConnection()->rollback();
@@ -171,4 +177,100 @@ class order {
             $response->addMessage($message);
         }
     }
+
+    public function mail(Request $request, Response $response) {
+        $dados = $request->getRow();
+        try {
+            self::SendOrderByMail($dados);
+
+            $message = new \MilesBench\Message();
+            $message->setType(\MilesBench\Message::SUCCESS);
+            $message->setText('Email enviado com sucesso');
+            $response->addMessage($message);
+
+        } catch (Exception $e) {
+            $message = new \MilesBench\Message();
+            $message->setType(\MilesBench\Message::ERROR);
+            $message->setText($e->getMessage());
+            $response->addMessage($message);
+        }
+    }
+
+    public function SendOrderByMail($email){
+        PHPMailerAutoload('PHPMailer');
+        PHPMailerAutoload('pop3');
+        PHPMailerAutoload('SMTP');
+        $mail = new PHPMailer;
+
+        //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.mail.yahoo.com';                  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'robertoalmartins@yahoo.com.br';    // SMTP username
+        $mail->Password = 'perdigao1979';                     // SMTP password
+        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 465;                                    // TCP port to connect to
+
+        $mail->From = 'robertoalmartins@yahoo.com.br';
+        $mail->FromName = 'Uai Milhas';
+        $mail->addAddress('leandro.miqueri@uaimilhas.com.br', 'Leandro Miqueri');     // Add a recipient
+        //$mail->addAddress('ellen@example.com');               // Name is optional
+        //$mail->addReplyTo('info@example.com', 'Information');
+        //$mail->addCC('cc@example.com');
+        //$mail->addBCC('bcc@example.com');
+
+        //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+        $mail->addAttachment('../../../img/emissao_ideal.png');    // Optional name
+        $mail->isHTML(true);                                  // Set email format to HTML
+
+        $mail->Subject = 'Emissao de Bilhetes';
+        $html_body = 
+        '<head>
+            <style>
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    padding: 5px;
+                    text-align: left;
+                }
+            </style>
+        </head>
+
+        <body>
+            <table style="width:100%">
+                <tr>
+                    <th>Fidelidade</th>
+                    <th>Senha Resgate</th>
+                    <th>Quantidade de Pontos</th>
+                    <th>Passageiro</th>
+                    <th>Data Embarque</th>
+                    <th>Voo</th>
+                    <th>Horario</th>
+                </tr>
+                <tr>
+                    <td>'.$email['cardNumber'].'</td>
+                    <td>'.$email['recoveryPassword'].'</td>
+                    <td>'.$email['milesUsed'].'</td>
+                    <td>'.$email['paxName'].'</td>
+                    <td>'.$email['boardingDate'].'</td>
+                    <td>'.$email['flight'].'</td>
+                    <td>'.$email['flightHour'].'</td>
+                </tr>
+            </table>
+        </body>';
+
+        $mail->Body = $html_body;
+        //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        if(!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent';
+        }
+    }
+
 }

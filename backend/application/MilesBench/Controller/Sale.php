@@ -33,6 +33,12 @@ class sale {
             $em->persist($Sale);
             $em->flush($Sale);
 
+            $Cards = $em->getRepository('Cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
+            $MilesBench = $em->getRepository('Milesbench')->findOneBy(array('cards' => $Cards));
+            $MilesBench->setLeftOver($MilesBench->getLeftOver() - $dados['milesUsed']);
+            $em->persist($MilesBench);
+            $em->flush($MilesBench);
+
             $em->getConnection()->commit();
 
             $message = new \MilesBench\Message();

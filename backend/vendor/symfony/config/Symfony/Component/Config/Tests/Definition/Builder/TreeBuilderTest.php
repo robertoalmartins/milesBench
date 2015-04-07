@@ -13,11 +13,10 @@ namespace Symfony\Component\Config\Tests\Definition\Builder;
 
 use Symfony\Component\Config\Tests\Definition\Builder\NodeBuilder as CustomNodeBuilder;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 
-require __DIR__ . '/../../Fixtures/Builder/NodeBuilder.php';
-require __DIR__ . '/../../Fixtures/Builder/BarNodeDefinition.php';
-require __DIR__ . '/../../Fixtures/Builder/VariableNodeDefinition.php';
+require __DIR__.'/../../Fixtures/Builder/NodeBuilder.php';
+require __DIR__.'/../../Fixtures/Builder/BarNodeDefinition.php';
+require __DIR__.'/../../Fixtures/Builder/VariableNodeDefinition.php';
 
 class TreeBuilderTest extends \PHPUnit_Framework_TestCase
 {

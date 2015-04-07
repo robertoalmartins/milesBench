@@ -12,6 +12,7 @@ $routes = array(
     '/loadOrder' => '\MilesBench\Controller\Order::load',
     '/saveOrder' => '\MilesBench\Controller\Order::save',
     '/removeOrder' => '\MilesBench\Controller\Order::remove',
+    '/mailOrder' => '\MilesBench\Controller\Order::mail',
     '/loadClient' => '\MilesBench\Controller\Client::load',
     '/saveClient' => '\MilesBench\Controller\Businesspartner::save',
     '/removeClient' => '\MilesBench\Controller\Businesspartner::remove',
