@@ -1,6 +1,7 @@
 var wizardOrderRow;
 var wizard_worder_1;
 var milesOrderRow;
+var resumeByMail;
 
     function loadOrderMiles_Grid() {
         $wizard_worder_1 = {};
@@ -93,16 +94,65 @@ var milesOrderRow;
 
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;
+            $resumeByMail = jQuery.parseJSON(response).dataset;
+
             if(message['type'] == 'S') {
                 alert(message['text']);
             }
-            loadOrder();
+            showOrderResume();
         };
 
         $.ajax({
             type: "POST",
             url: "../../backend/application/index.php?rota=/saveOrder",
             data: $wizardOrderRow,
+            success: success
+        });
+    }
+
+    function showOrderResume() {
+        activate_page("#wizard_worder_4");
+
+        var $init = $('#worder_resume td');
+        if ($init.length > 0) {
+            $('#worder_resume').bootstrapTable('destroy');
+
+            $ParentNode = document.getElementById("tb_orderresume")
+            while ($ParentNode.hasChildNodes()) {
+                $ParentNode.removeChild($ParentNode.firstChild);
+            }
+        }
+
+        $('#worder_resume tbody'). append(
+            '<tr>'+
+            '<td>'+$resumeByMail.cardNumber+'</td>'+
+            '<td>'+$resumeByMail.recoveryPassword+'</td>'+
+            '<td>'+$resumeByMail.milesUsed+'</td>'+
+            '<td>'+$resumeByMail.paxName+'</td>'+
+            '<td>'+$resumeByMail.boardingDate+'</td>'+
+            '<td>'+$resumeByMail.flight+'</td>'+
+            '<td>'+$resumeByMail.flightHour+'</td>'+
+            '</tr>'
+        );
+        var $table = $('#worder_resume');
+        var $result = $('#events-result');
+
+        $table.bootstrapTable({
+        }).on('click-row.bs.table', function (e, row, $element) {
+            $resumeByMail = row;
+        });
+    }
+
+    function sendMail() {
+        var success = function(response) {
+            activate_page("#order");
+            loadOrder();
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "../../backend/application/index.php?rota=/mailOrder",
+            data: $resumeByMail,
             success: success
         });
     }

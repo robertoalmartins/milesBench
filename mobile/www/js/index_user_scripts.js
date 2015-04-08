@@ -68,8 +68,19 @@
 
         $(document).on("click", "#save_worder", function(evt){
             saveWizardOrder();
+        });
+
+        $(document).on("click", "#worder4_order", function(evt){
             activate_page("#order");
             loadOrder();
+        });
+
+        $(document).on("click", "#worder4_mail", function(evt){
+            sendMail();
+        });
+
+        $(document).on("click", "#prior_worder", function(evt){
+            activate_page("#wizard_worder_2");
         });
 
         $(document).on("click", "#prior_worder", function(evt){
