@@ -25,6 +25,13 @@ class order {
 
         $dataset = array();
         foreach($order as $item){
+            $cards = $item->getCards();
+            if (isset($cards)) {
+                $cards_id = $item->getCards()->getId();
+            } else {
+                $cards_id = '';
+            }
+            
             $dataset[] = array(
                 'id' => $item->getId(),
                 'status' => $item->getStatus(),
@@ -56,12 +63,13 @@ class order {
 
         $dataset = array();
         foreach($order as $item){
-            if ($item->getCards()) {
+            $cards = $item->getCards();
+            if (isset($cards)) {
                 $cards_id = $item->getCards()->getId();
             } else {
                 $cards_id = '';
             }
-
+            
             $dataset[] = array(
                 'id' => $item->getId(),
                 'status' => $item->getStatus(),
@@ -74,7 +82,6 @@ class order {
                 'milesUsed' => $item->getMilesUsed(),
                 'issueDate' => $item->getIssueDate()->format('d/m/y'),
                 'boardingDate' => $item->getBoardingDate()->format('d/m/y'),
-                'returnDate' => $item->getReturnDate()->format('d/m/y'),
                 'airportNamefrom' => $item->getAirportFrom()->getName(),
                 'airportNameto' => $item->getAirportTo()->getName(),
                 'flight' => $item->getFlight(),
@@ -98,25 +105,39 @@ class order {
                 $Sale = new \Sale();
             }
 
-            $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['paxName']));
-            if (!$BusinessPartner) {
-                $BusinessPartner = new \Businesspartner();
-                $BusinessPartner->setName($dados['paxName']);
-                $BusinessPartner->setRegistrationCode($dados['paxRegistrationCode']);
-                $BusinessPartner->setPartnerType('X');
-            } else {
-                if (strpos($BusinessPartner->getPartnerType(),'X')) {
-                    $BusinessPartner->setPartnerType($BusinessPartner->getPartnerType()+'_X');
+            if (isset($dados['paxName'])){
+                $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['paxName']));
+                if (!$BusinessPartner) {
+                    $BusinessPartner = new \Businesspartner();
+                    $BusinessPartner->setName($dados['paxName']);
+                    $BusinessPartner->setRegistrationCode($dados['paxRegistrationCode']);
+                    $BusinessPartner->setPartnerType('X');
+                } else {
+                    if (strpos($BusinessPartner->getPartnerType(),'X')) {
+                        $BusinessPartner->setPartnerType($BusinessPartner->getPartnerType()+'_X');
+                    }
                 }
+                $BusinessPartner->setBirthdate(new \Datetime($dados['birthdate']));
+                $em->persist($BusinessPartner);
+                $em->flush($BusinessPartner);
+            
+                $Sale->setPax($BusinessPartner);
             }
-            $BusinessPartner->setBirthdate(new \Datetime($dados['birthdate']));
-            $em->persist($BusinessPartner);
-            $em->flush($BusinessPartner);
 
-            $Cards = $em->getRepository('Cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
-
-            $Sale->setCards($Cards);
-            $Sale->setPax($BusinessPartner);
+            if (isset($dados['cardNumber'])){
+                $Cards = $em->getRepository('Cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
+                $Sale->setCards($Cards);
+                
+                $email = array(
+                    'cardNumber' => $dados['cardNumber'],
+                    'recoveryPassword' => $Cards->getRecoveryPassword(),
+                    'milesUsed' => $dados['milesUsed'],
+                    'paxName' => $dados['paxName'],
+                    'boardingDate' => $dados['boardingDate'],
+                    'flight' => $dados['flight'],
+                    'flightHour' => $dados['flightHour']);                
+            }
+            
             $Sale->setIssueDate(new \Datetime());
             $Sale->setBoardingDate(new \Datetime($dados['boardingDate']));
             $Sale->setMilesUsed($dados['milesUsed']);
@@ -133,20 +154,13 @@ class order {
 
             $em->getConnection()->commit();
 
-            $email = array(
-                'cardNumber' => $dados['cardNumber'],
-                'recoveryPassword' => $Cards->getRecoveryPassword(),
-                'milesUsed' => $dados['milesUsed'],
-                'paxName' => $dados['paxName'],
-                'boardingDate' => $dados['boardingDate'],
-                'flight' => $dados['flight'],
-                'flightHour' => $dados['flightHour']);
-
             $message = new \MilesBench\Message();
             $message->setType(\MilesBench\Message::SUCCESS);
             $message->setText('Registro alterado com sucesso');
             $response->addMessage($message);
-            $response->setDataset($email);
+            if (isset($email)) {
+                $response->setDataset($email);
+            }
 
         } catch (Exception $e) {
             $em->getConnection()->rollback();

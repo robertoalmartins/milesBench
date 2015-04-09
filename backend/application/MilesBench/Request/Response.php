@@ -66,9 +66,12 @@ class Response {
      */
     public function __toString() {
         $data = array();
-        foreach ($this->getMessages() as $message) {
-            $data['message']['text'] = $message->getText();
-            $data['message']['type'] = $message->getType();
+        $messages = $this->getMessages();
+        if (isset($messages)) {            
+            foreach ($messages as $message) {
+                $data['message']['text'] = $message->getText();
+                $data['message']['type'] = $message->getType();
+            }
         }
 
         $data['dataset'] = $this->getDataset();

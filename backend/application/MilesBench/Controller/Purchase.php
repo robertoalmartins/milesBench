@@ -22,7 +22,12 @@ class purchase {
         try {
             $em->getConnection()->beginTransaction();
 
-            $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('registrationCode' => $dados['registrationCode']));
+            if (isset($dados['registrationCode'])) {
+                $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('registrationCode' => $dados['registrationCode']));
+            } else {
+                $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['name']));
+            }
+            
             if (!$BusinessPartner) {
                 $BusinessPartner = new \Businesspartner();
                 $BusinessPartner->setName($dados['name']);

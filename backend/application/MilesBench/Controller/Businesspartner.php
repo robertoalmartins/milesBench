@@ -35,7 +35,7 @@ class Businesspartner {
             $BusinessPartner->setAdress($dados['adress']);
             $BusinessPartner->setEmail($dados['email']);
             $BusinessPartner->setPartnerType($dados['partnerType']);
-            if ($dados['password']) {
+            if (isset($dados['password'])) {
                 $BusinessPartner->setPassword($dados['password']);
             }
             $em->persist($BusinessPartner);

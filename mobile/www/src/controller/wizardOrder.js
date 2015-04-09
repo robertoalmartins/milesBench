@@ -122,8 +122,46 @@ var resumeByMail;
                 $ParentNode.removeChild($ParentNode.firstChild);
             }
         }
+             
+        $('#div_order_resume'). append(
+            '<head>'+
+                '<style>'+
+                    'table, th, td {'+
+                        'border: 1px solid black;'+
+                        'border-collapse: collapse;'+
+                    '}'+
+                    'th, td {'+
+                        'padding: 5px;'+
+                        'text-align: left;'+
+                    '}'+
+                '</style>'+
+            '</head>'+
+            '<body>'+
+                '<table style="width:100%">'+
+                    '<tr>'+
+                        '<th>Fidelidade</th>'+
+                        '<th>Senha Resgate</th>'+
+                        '<th>Quantidade de Pontos</th>'+
+                        '<th>Passageiro</th>'+
+                        '<th>Data Embarque</th>'+
+                        '<th>Decricao Voo</th>'+
+                        '<th>Horario/Trajeto Voo</th>'+
+                    '</tr>'+
+                    '<tr>'+
+                        '<td>'+$resumeByMail.cardNumber+'</td>'+
+                        '<td>'+$resumeByMail.recoveryPassword+'</td>'+
+                        '<td>'+$resumeByMail.milesUsed+'</td>'+
+                        '<td>'+$resumeByMail.paxName+'</td>'+
+                        '<td>'+$resumeByMail.boardingDate+'</td>'+
+                        '<td>'+$resumeByMail.flight+'</td>'+
+                        '<td>'+$resumeByMail.flightHour+'</td>'+
+                    '</tr>'+
+                '</table>'+
+            '</body>'
+        
+        );
 
-        $('#worder_resume tbody'). append(
+/*        $('#worder_resume tbody'). append(
             '<tr>'+
             '<td>'+$resumeByMail.cardNumber+'</td>'+
             '<td>'+$resumeByMail.recoveryPassword+'</td>'+
@@ -140,7 +178,7 @@ var resumeByMail;
         $table.bootstrapTable({
         }).on('click-row.bs.table', function (e, row, $element) {
             $resumeByMail = row;
-        });
+        });*/        
     }
 
     function sendMail() {
