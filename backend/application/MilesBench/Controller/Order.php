@@ -13,7 +13,7 @@ use MilesBench\Model;
 use MilesBench\Request\Request;
 use MilesBench\Request\Response;
 use PHPMailer;
-require '/../../../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
+require dirname(__FILE__) . '/../../../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 
 class order {
 
