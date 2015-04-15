@@ -105,7 +105,7 @@ class order {
                 $Sale = new \Sale();
             }
 
-            if (isset($dados['paxName'])){
+            if ($dados['paxRegistrationCode'] != ''){
                 $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['paxName']));
                 if (!$BusinessPartner) {
                     $BusinessPartner = new \Businesspartner();
@@ -228,7 +228,7 @@ class order {
 
         $mail->From = 'robertoalmartins@yahoo.com.br';
         $mail->FromName = 'Uai Milhas';
-        $mail->addAddress('leandro.miqueri@uaimilhas.com.br', 'Leandro Miqueri');     // Add a recipient
+        $mail->addAddress('roberto.alpm@gmail.com', 'Leandro Miqueri');     // Add a recipient
         //$mail->addAddress('ellen@example.com');               // Name is optional
         //$mail->addReplyTo('info@example.com', 'Information');
         //$mail->addCC('cc@example.com');

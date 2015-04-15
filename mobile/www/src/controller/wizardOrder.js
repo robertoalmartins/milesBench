@@ -25,7 +25,7 @@ var resumeByMail;
             if ($init.length > 0) {
                 $('#worder_milesTable').bootstrapTable('destroy');
 
-                $ParentNode = document.getElementById("tb_salesmiles")
+                $ParentNode = document.getElementById("tb_ordermiles")
                 while ($ParentNode.hasChildNodes()) {
                     $ParentNode.removeChild($ParentNode.firstChild);
                 }
