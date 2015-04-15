@@ -41,7 +41,10 @@ var resumeByMail;
             $('#worder_boardingDate').val('');
             $('#worder_flight').val('');
             $('#worder_flightHour').val('');
-
+            $('#worder_return_flight').val('');
+            $('#worder_return_flightHour').val('');
+            $('#worder_returnDate').val('');
+            
             for(var i in data.dataset){
                 miles = data.dataset[i];
                 $('#worder_milesTable tbody'). append(
@@ -88,8 +91,11 @@ var resumeByMail;
         $wizardOrderRow['birthdate'] = $('#worder_birthdate')[0].value;
         $wizardOrderRow['description'] = $('#worder_description')[0].value;
         $wizardOrderRow['boardingDate'] = $('#worder_boardingDate')[0].value;
+        $wizardOrderRow['returnDate'] = $('#worder_returnDate')[0].value;
         $wizardOrderRow['flight'] = $('#worder_flight')[0].value;
         $wizardOrderRow['flightHour'] = $('#worder_flightHour')[0].value;
+        $wizardOrderRow['return_flight'] = $('#worder_return_flight')[0].value;
+        $wizardOrderRow['return_flightHour'] = $('#worder_return_flightHour')[0].value;
         $wizardOrderRow['cardNumber'] = $milesOrderRow.card_number;
 
         var success = function(response) {
@@ -151,6 +157,7 @@ var resumeByMail;
                         '<th>Quantidade de Pontos</th>'+
                         '<th>Passageiro</th>'+
                         '<th>Data Embarque</th>'+
+                        '<th>Data Retorno</th>'+
                         '<th>Decricao Voo</th>'+
                         '<th>Horario/Trajeto Voo</th>'+
                     '</tr>'+
@@ -160,6 +167,7 @@ var resumeByMail;
                         '<td>'+$resumeByMail.milesUsed+'</td>'+
                         '<td>'+$resumeByMail.paxName+'</td>'+
                         '<td>'+$resumeByMail.boardingDate+'</td>'+
+                        '<td>'+$resumeByMail.returnDate+'</td>'+
                         '<td>'+$resumeByMail.flight+'</td>'+
                         '<td>'+$resumeByMail.flightHour+'</td>'+
                     '</tr>'+

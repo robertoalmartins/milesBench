@@ -99,11 +99,6 @@ class order {
         try {
             $em = Application::getInstance()->getEntityManager();
             $em->getConnection()->beginTransaction();            
-            if (isset($dados['id'])) {
-                $Sale = $em->getRepository('Sale')->find($dados['id']);
-            } else {
-                $Sale = new \Sale();
-            }
 
             if ($dados['paxName'] != ''){
                 $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['paxName']));
@@ -120,13 +115,12 @@ class order {
                 $BusinessPartner->setBirthdate(new \Datetime($dados['birthdate']));
                 $em->persist($BusinessPartner);
                 $em->flush($BusinessPartner);
-            
-                $Sale->setPax($BusinessPartner);
+                $sale_pax = $BusinessPartner;
             }
 
             if (isset($dados['cardNumber'])){
                 $Cards = $em->getRepository('Cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
-                $Sale->setCards($Cards);
+                $sale_cards = $Cards;
                 
                 $email = array(
                     'cardNumber' => $dados['cardNumber'],
@@ -134,13 +128,28 @@ class order {
                     'milesUsed' => $dados['milesUsed'],
                     'paxName' => $dados['paxName'],
                     'boardingDate' => $dados['boardingDate'],
-                    'flight' => $dados['flight'],
-                    'flightHour' => $dados['flightHour']);                
+                    'returnDate' => $dados['boardingDate'],
+                    'flight' => $dados['flight'].' '.$dados['return_flight'],
+                    'flightHour' => $dados['flightHour'].' '.$dados['return_flightHour']);                
             }
             
+            $milesUsed = $dados['milesUsed'];
+            $returned = false;
+            if (isset($dados['id'])) {
+                $Sale = $em->getRepository('Sale')->find($dados['id']);
+            } else {
+                $Sale = new \Sale();
+                if (isset($dados['returnDate'])) {
+                    $returned = true;
+                    $milesUsed = ($dados['milesUsed'] / 2);
+                }
+            }
+            
+            $Sale->setPax($sale_pax);
+            $Sale->setCards($sale_cards);
             $Sale->setIssueDate(new \Datetime());
             $Sale->setBoardingDate(new \Datetime($dados['boardingDate']));
-            $Sale->setMilesUsed($dados['milesUsed']);
+            $Sale->setMilesUsed($milesUsed);
             $Sale->setDescription($dados['description']);
             $Sale->setAirline($em->getRepository('Airline')->findOneBy(array('name' => $dados['airline'])));
             $Sale->setAirportFrom($em->getRepository('Airport')->findOneBy(array('code' => substr($dados['from'],0,3))));
@@ -152,6 +161,25 @@ class order {
             $em->persist($Sale);
             $em->flush($Sale);
 
+            if ($returned) {
+                $Sale = new \Sale();
+                $Sale->setPax($sale_pax);
+                $Sale->setCards($sale_cards);
+                $Sale->setIssueDate(new \Datetime());
+                $Sale->setBoardingDate(new \Datetime($dados['returnDate']));
+                $Sale->setMilesUsed($milesUsed);
+                $Sale->setDescription($dados['description']);
+                $Sale->setAirline($em->getRepository('Airline')->findOneBy(array('name' => $dados['airline'])));
+                $Sale->setAirportFrom($em->getRepository('Airport')->findOneBy(array('code' => substr($dados['to'],0,3))));
+                $Sale->setAirportTo($em->getRepository('Airport')->findOneBy(array('code' => substr($dados['from'],0,3))));
+                $Sale->setClient($em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['client'])));
+                $Sale->setStatus($dados['status']);
+                $Sale->setFlight($dados['return_flight']);
+                $Sale->setFlightHour($dados['return_flightHour']);
+                $em->persist($Sale);
+                $em->flush($Sale);          
+            }
+        
             $em->getConnection()->commit();
 
             $message = new \MilesBench\Message();
@@ -261,6 +289,7 @@ class order {
                     <th>Quantidade de Pontos</th>
                     <th>Passageiro</th>
                     <th>Data Embarque</th>
+                    <th>Data Retorno</th>
                     <th>Voo</th>
                     <th>Horario</th>
                 </tr>
@@ -270,6 +299,7 @@ class order {
                     <td>'.$email['milesUsed'].'</td>
                     <td>'.$email['paxName'].'</td>
                     <td>'.$email['boardingDate'].'</td>
+                    <td>'.$email['returnDate'].'</td>
                     <td>'.$email['flight'].'</td>
                     <td>'.$email['flightHour'].'</td>
                 </tr>
