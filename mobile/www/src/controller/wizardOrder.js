@@ -30,7 +30,7 @@ var resumeByMail;
                     $ParentNode.removeChild($ParentNode.firstChild);
                 }
             }
-
+            
             $('#worder_client').selectpicker('val','');
             $('#worder_from').selectpicker('val','');
             $('#worder_to').selectpicker('val','');
@@ -123,6 +123,13 @@ var resumeByMail;
             }
         }
              
+        $ParentNode = document.getElementById('div_order_resume');
+        if ($ParentNode) {
+            while ($ParentNode.hasChildNodes()) {
+                $ParentNode.removeChild($ParentNode.firstChild);
+            }            
+        }
+
         $('#div_order_resume'). append(
             '<head>'+
                 '<style>'+
