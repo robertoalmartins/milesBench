@@ -105,7 +105,7 @@ class order {
                 $Sale = new \Sale();
             }
 
-            if ($dados['paxRegistrationCode'] != ''){
+            if ($dados['paxName'] != ''){
                 $BusinessPartner = $em->getRepository('Businesspartner')->findOneBy(array('name' => $dados['paxName']));
                 if (!$BusinessPartner) {
                     $BusinessPartner = new \Businesspartner();
