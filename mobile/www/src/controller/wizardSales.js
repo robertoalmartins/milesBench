@@ -125,6 +125,15 @@ var salesRow;
     function loadSalesWizard_Form() {
         activate_page("#wizard_sales_3");
 
+        $('#sales_flight_locator').val('');
+        $('#sales_checkin_state').val('');
+        $('#sales_tax').val('');
+        $('#sales_miles_used').val('');
+        $('#sales_total_cost').val('');
+        $('#sales_amount_paid').val('');
+        $('#sales_kickback').val('');
+        $('#sales_extra_fee').val('');
+        
         $ParentNode = document.getElementById('wizardheader3');
         if ($ParentNode) {
             while ($ParentNode.hasChildNodes()) {
