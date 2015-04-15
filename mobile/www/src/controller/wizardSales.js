@@ -141,7 +141,9 @@ var salesRow;
     }
 
     function setKickback(){
-        $('#sales_kickback').val($('#sales_amount_paid')[0].value - $('#sales_total_cost')[0].value - $('#sales_tax')[0].value - $('#sales_extra_fee')[0].value);
+        $kickback = $('#sales_amount_paid')[0].value - $('#sales_total_cost')[0].value - $('#sales_tax')[0].value - $('#sales_extra_fee')[0].value;
+        $kickback = Math.round($kickback * 100)/100;
+        $('#sales_kickback').val($kickback);
     }
 
     function saveSale(){
@@ -151,6 +153,7 @@ var salesRow;
         $salesRow['checkinState'] = $('#sales_checkin_state')[0].value;
         $salesRow['tax'] = $('#sales_tax')[0].value;
         $salesRow['milesUsed'] = $('#sales_miles_used')[0].value;
+        $salesRow['cardNumber'] = $milesCardRow.card_number;
         $salesRow['totalCost'] = $('#sales_total_cost')[0].value;
         $salesRow['amountPaid'] = $('#sales_amount_paid')[0].value;
         $salesRow['kickback'] = $('#sales_kickback')[0].value;
