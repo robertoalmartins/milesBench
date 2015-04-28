@@ -37,6 +37,16 @@ var wizard_purchase_data;
         $wizard_provider.partnerType = 'P';
     }
 
+    function setFieldsVisibility($value) {
+        if ($value == 'TAM') {
+            document.getElementById("div_access_id").style.visibility = "visible";
+            document.getElementById("div_access_password").style.visibility = "visible";
+        } else {
+            document.getElementById("div_access_id").style.visibility = "collapse";
+            document.getElementById("div_access_password").style.visibility = "collapse";
+        }
+    }
+
     function setTotalCost(){
         $("#purchase_totalcost").val($('#purchase_cost_per_thousand')[0].value/1000 * $('#purchase_miles')[0].value);
     }
@@ -47,6 +57,9 @@ var wizard_purchase_data;
         $wizard_purchase.miles = $("#purchase_miles")[0].value;
         $wizard_purchase.cost_per_thousand = $("#purchase_cost_per_thousand")[0].value;
         $wizard_purchase.total_cost = $("#purchase_totalcost")[0].value;
+        $wizard_purchase.airline = $('#purchase_airline')[0].value;
+        
+        setFieldsVisibility($('#purchase_airline')[0].value);
     }
 
     function saveserver_wizard() {
@@ -62,7 +75,7 @@ var wizard_purchase_data;
         $wizard_purchase_data.purchase_miles = $wizard_purchase.miles;
         $wizard_purchase_data.cost_per_thousand = $wizard_purchase.cost_per_thousand;
         $wizard_purchase_data.total_cost = $wizard_purchase.total_cost;
-        $wizard_purchase_data.airline = $('#purchase_airline')[0].value;
+        $wizard_purchase_data.airline = $wizard_purchase.airline;
         $wizard_purchase_data.card_number = $('#purchase_card_number')[0].value;
         $wizard_purchase_data.access_id = $('#purchase_access_id')[0].value;
         $wizard_purchase_data.access_password = $('#purchase_access_password')[0].value;
