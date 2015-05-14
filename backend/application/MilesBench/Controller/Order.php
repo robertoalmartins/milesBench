@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 /**
  * Created by PhpStorm.
@@ -263,7 +264,7 @@ class order {
         //$mail->addBCC('bcc@example.com');
 
         //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-        $mail->addAttachment('../../../img/emissao_ideal.png');    // Optional name
+        $mail->addAttachment(dirname(__FILE__) . '../../../img/emissao_ideal.png');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
 
         $mail->Subject = 'Emissao de Bilhetes';
@@ -316,5 +317,4 @@ class order {
             echo 'Message has been sent';
         }
     }
-
 }
