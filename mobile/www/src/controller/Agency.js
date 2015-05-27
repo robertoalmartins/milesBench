@@ -9,39 +9,30 @@ var agency;
             var data = jQuery.parseJSON(response);
 
             activate_page("#agency");
-            var $init = $('#agencyTable td');
-            if ($init.length > 0) {
-                $('#agencyTable').bootstrapTable('destroy');
 
-                $ParentNode = document.getElementById("tb_agency")
-                while ($ParentNode.hasChildNodes()) {
-                    $ParentNode.removeChild($ParentNode.firstChild);
-                }
-            }
+            var columns = [
+                {id: "id", field: "id", name: "ID", width: 20},
+                {id: "name", field: "name", name: "Nome", width: 200},
+                {id: "email", field: "email", name: "Email", width: 150},
+                {id: "phoneNumber", field: "phoneNumber", name: "Telefone Celular", width: 100},
+                {id: "phoneNumber2", field: "phoneNumber2", name: "Telefone Comercial", width: 100},
+                {id: "phoneNumber3", field: "phoneNumber3", name: "Fax", width: 100},
+                {id: "registrationCode", field: "registrationCode", name: "CNPJ", width: 100},
+                {id: "adress", field: "adress", name: "Endereço", width: 120},
+                {id: "city", field: "city", name: "Cidade", width: 120},
+                {id: "edit", name: "Editar", field: "src", width: 40, formatter: function(args) {return "<img id='profileedit'   src ='img/edit.png'></img>"}}];
 
-            for(var i in data.dataset){
-                agency = data.dataset[i];
-                $('#agencyTable tbody'). append(
-                    '<tr id="tr_id'+agency.id+'" class="tr-class-'+agency.id+'">'+
-                    '<td id="td_id_'+agency.id+'" class="td-class-'+agency.id+'">'+agency.id+'</td>'+
-                    '<td>'+agency.name+'</td>'+
-                    '<td>'+agency.email+'</td>'+
-                    '<td>'+agency.phoneNumber+'</td>'+
-                    '<td>'+agency.phoneNumber2+'</td>'+
-                    '<td>'+agency.phoneNumber3+'</td>'+
-                    '<td>'+agency.registrationCode+'</td>'+
-                    '<td>'+agency.adress+'</td>'+
-                    '<td>'+agency.city+'</td>'+
-                    '</tr>'
-                );
-            }
-            var $table = $('#agencyTable');
-            var $result = $('#events-result');
+            var options = {
+                enableCellNavigation: true,
+                enableColumnReorder: false
+            };
 
-            $table.bootstrapTable({
-            }).on('click-row.bs.table', function (e, row, $element) {
+            grid = new Slick.Grid("#agencyTable", data.dataset, columns, options);
+
+            grid.onClick.subscribe(function (e) {
                 activate_page("#agency_form");
-                Agencyloadform(row);
+                var cell = grid.getCellFromEvent(e);
+                Agencyloadform(grid.getData()[cell.row]);
             });
         };
 

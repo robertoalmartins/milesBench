@@ -8,7 +8,9 @@
         <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-select.css" class="uib-framework-theme">
         <link rel="stylesheet" type="text/css" href="css/jasny-bootstrap.css" class="uib-framework-theme">
-        <link rel="stylesheet" type="text/css" href="bootstrap-table/dist/bootstrap-table.min.css" class="uib-framework-theme">
+        <link rel="stylesheet" type="text/css" href="SlickGrid/slick.grid.css" class="uib-framework-theme">
+        <link rel="stylesheet" type="text/css" href="css/grid.css" class="uib-framework-theme">
+        <link rel="stylesheet" type="text/css" href="SlickGrid/css/smoothness/jquery-ui-1.8.16.custom.css">
         <link rel="shortcut icon" href="img/favicon.ico">
         <title>Uai Milhas - Banco de Milhas</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -38,10 +40,12 @@
         <script type="application/javascript" src="sidebar/js/jquery.event.swipe.js"></script>
         <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
         <script type="application/javascript" src="sidebar/js/swipe.js"></script>
-        <script type="application/javascript" src="bootstrap-table/dist/bootstrap-table.js"></script>
         <script type="application/javascript" src="js/bootstrap-select.js"></script>
         <script type="application/javascript" src="js/jasny-bootstrap.js"></script>
         <script type="application/javascript" src="numeral/numeral.js"></script>
+        <script type="application/javascript" src="SlickGrid/lib/jquery.event.drag-2.2.js"></script>
+        <script type="application/javascript" src="SlickGrid/slick.core.js"></script>
+        <script type="application/javascript" src="SlickGrid/slick.grid.js"></script>
 
         <script type="application/javascript" src="src/controller/Login.js"></script>
         <script type="application/javascript" src="src/controller/Provider.js"></script>
@@ -456,27 +460,11 @@
                         <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-
-                                    <table id="providerTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="id" data-halign="left" data-align="left" data-sortable="true">ID</th>
-                                                <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
-                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
-                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone Celular</th>
-                                                <th data-field="phoneNumber2" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Telefone Comercial</th>
-                                                <th data-field="phoneNumber3" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Telefone Residencial</th>
-                                                <th data-field="status" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Status</th>
-                                                <th data-field="registrationCode" data-halign="left" data-align="left" data-sortable="true">CPF</th>
-                                                <th data-field="adress" data-halign="left" data-align="left" data-sortable="true">Endereço</th>
-                                                <th data-field="city" data-halign="left" data-align="left" data-sortable="true">Cidade</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tb_provider">
-
-                                        </tbody>
-                                    </table>
-
+                                    <tr>
+                                        <td valign="top" width="100%">
+                                          <div id="providerTable" style="width:100%;height:500px;"></div>
+                                        </td>
+                                    </tr>
                                 </div>
                             </div><span class="uib_shim"></span>
                         </div>
@@ -628,26 +616,11 @@
                         <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-
-                                    <table id="profileTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="id" data-halign="left" data-align="left" data-sortable="true">ID</th>
-                                                <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
-                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
-                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone Celular</th>
-                                                <th data-field="phoneNumber2" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Telefone Comercial</th>
-                                                <th data-field="phoneNumber3" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Fax</th>
-                                                <th data-field="registrationCode" data-halign="left" data-align="left" data-sortable="true">CPF</th>
-                                                <th data-field="adress" data-halign="left" data-align="left" data-sortable="true">Endereço</th>
-                                                <th data-field="city" data-halign="left" data-align="left" data-sortable="true">Cidade</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tb_profile">
-
-                                        </tbody>
-                                    </table>
-
+                                    <tr>
+                                        <td valign="top" width="100%">
+                                          <div id="profileTable" style="width:100%;height:500px;"></div>
+                                        </td>
+                                    </tr>
                                 </div>
                             </div><span class="uib_shim"></span>
                         </div>
@@ -792,26 +765,11 @@
                         <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-
-                                    <table id="agencyTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="id" data-halign="left" data-align="left" data-sortable="true">ID</th>
-                                                <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
-                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
-                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone Celular</th>
-                                                <th data-field="phoneNumber2" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Telefone Comercial</th>
-                                                <th data-field="phoneNumber3" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Fax</th>
-                                                <th data-field="registrationCode" data-halign="left" data-align="left" data-sortable="true">CNPJ</th>
-                                                <th data-field="adress" data-halign="left" data-align="left" data-sortable="true">Endereço</th>
-                                                <th data-field="city" data-halign="left" data-align="left" data-sortable="true">Cidade</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tb_agency">
-
-                                        </tbody>
-                                    </table>
-
+                                    <tr>
+                                        <td valign="top" width="100%">
+                                          <div id="agencyTable" style="width:100%;height:500px;"></div>
+                                        </td>
+                                    </tr>
                                 </div>
                             </div><span class="uib_shim"></span>
                         </div>
@@ -846,26 +804,11 @@
                         <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-
-                                    <table id="milesTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
-                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
-                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
-                                                <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
-                                                <th data-field="card_number" data-halign="left" data-align="left" data-sortable="true">Número Cartão</th>
-                                                <th data-field="leftover" data-halign="left" data-align="right" data-sortable="true">Saldo Milhas</th>
-                                                <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Vencimento</th>
-                                                <th data-field="contract_due_date" data-halign="left" data-align="left" data-sortable="true">Limite Contrato</th>
-                                                <th data-field="cost_per_thousand" data-halign="left" data-align="right" data-sortable="true">Custo por 1000</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tb_miles">
-
-                                        </tbody>
-                                    </table>
-
+                                    <tr>
+                                        <td valign="top" width="100%">
+                                          <div id="milesTable" style="width:100%;height:500px;"></div>
+                                        </td>
+                                    </tr>
                                 </div>
                             </div><span class="uib_shim"></span>
                         </div>
@@ -897,30 +840,11 @@
                         <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-
-                                    <table id="sales1Table" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="id" data-halign="left" data-align="left" data-sortable="true">ID</th>
-                                                <th data-field="status" data-halign="left" data-align="left" data-sortable="true">Status</th>
-                                                <th data-field="client" data-halign="left" data-align="left" data-sortable="true">Agência</th>
-                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
-                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
-                                                <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
-                                                <th data-field="from" data-halign="left" data-align="left" data-sortable="true">De</th>
-                                                <th data-field="to" data-halign="left" data-align="left" data-sortable="true">Para</th>
-                                                <th data-field="miles_used" data-halign="right" data-align="right" data-sortable="true">Total de Milhas</th>
-                                                <th data-field="description" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Observação</th>
-                                                <th data-field="issue_date" data-halign="left" data-align="right" data-sortable="true">Data Pedido</th>
-                                                <th data-field="boarding_date" data-halign="left" data-align="right" data-sortable="true">Data Embarque</th>
-                                                <th data-field="return_date" data-halign="left" data-align="right" data-sortable="true">Data Retorno</th>
-                                                <th data-field="cards" data-halign="left" data-align="right" data-sortable="false" data-visible="false">ID Cartão</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tb_sales1">
-
-                                        </tbody>
-                                    </table>
+                                    <tr>
+                                        <td valign="top" width="100%">
+                                          <div id="sales1Table" style="width:100%;height:500px;"></div>
+                                        </td>
+                                    </tr>
                                 </div>
                             </div><span class="uib_shim"></span>
                         </div>
@@ -950,26 +874,11 @@
                         <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-
-                                    <table id="sales_milesTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
-                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
-                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
-                                                <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
-                                                <th data-field="card_number" data-halign="left" data-align="left" data-sortable="true">Número Cartão</th>
-                                                <th data-field="leftover" data-halign="left" data-align="right" data-sortable="true">Saldo Milhas</th>
-                                                <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Vencimento</th>
-                                                <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Limite Contrato</th>
-                                                <th data-field="cost_per_thousand" data-halign="left" data-align="right" data-sortable="true">Custo por 1000</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tb_salesmiles">
-
-                                        </tbody>
-                                    </table>
-
+                                    <tr>
+                                        <td valign="top" width="100%">
+                                          <div id="sales_milesTable" style="width:100%;height:500px;"></div>
+                                        </td>
+                                    </tr>
                                 </div>
                             </div><span class="uib_shim"></span>
                         </div>
@@ -1448,27 +1357,11 @@
                         <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-
-                                    <table id="worder_milesTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true" data-click-to-select="true" data-select-item-name="radioName">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="name" data-halign="left" data-align="left" data-sortable="true">Nome</th>
-                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
-                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
-                                                <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
-                                                <th data-field="card_number" data-halign="left" data-align="left" data-sortable="true">Número Cartão</th>
-                                                <th data-field="leftover" data-halign="left" data-align="right" data-sortable="true">Saldo Milhas</th>
-                                                <th data-field="due_date" data-halign="left" data-align="left" data-sortable="true">Vencimento</th>
-                                                <th data-field="contract_due_date" data-halign="left" data-align="left" data-sortable="true">Limite Contrato</th>
-                                                <th data-field="cost_per_thousand" data-halign="left" data-align="right" data-sortable="true">Custo por 1000</th>
-                                                <th data-field="state" data-radio="true"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tb_ordermiles">
-
-                                        </tbody>
-                                    </table>
-
+                                    <tr>
+                                        <td valign="top" width="100%">
+                                          <div id="worder_milesTable" style="width:100%;height:500px;"></div>
+                                        </td>
+                                    </tr>
                                 </div>
                             </div><span class="uib_shim"></span>
                         </div>
@@ -1530,32 +1423,11 @@
                         <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-
-                                    <table id="orderTable" data-height="300" data-show-columns="true" data-id-field="id" data-show-refresh="false" data-search="true">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="id" data-halign="left" data-align="left" data-sortable="true">ID</th>
-                                                <th data-field="status" data-halign="left" data-align="left" data-sortable="true">Status</th>
-                                                <th data-field="client" data-halign="left" data-align="left" data-sortable="true">Agência</th>
-                                                <th data-field="email" data-halign="left" data-align="left" data-sortable="true">Email</th>
-                                                <th data-field="phoneNumber" data-halign="left" data-align="left" data-sortable="true">Telefone</th>
-                                                <th data-field="airline" data-halign="left" data-align="left" data-sortable="true">Companhia</th>
-                                                <th data-field="from" data-halign="left" data-align="left" data-sortable="true">De</th>
-                                                <th data-field="to" data-halign="left" data-align="left" data-sortable="true">Para</th>
-                                                <th data-field="airportNamefrom" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Descrição De</th>
-                                                <th data-field="airportNameto" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Descrição Para</th>
-                                                <th data-field="miles_used" data-halign="right" data-align="right" data-sortable="true">Total de Milhas</th>
-                                                <th data-field="description" data-halign="left" data-align="left" data-sortable="true" data-visible="false">Observação</th>
-                                                <th data-field="issue_date" data-halign="left" data-align="right" data-sortable="true">Data Pedido</th>
-                                                <th data-field="boarding_date" data-halign="left" data-align="right" data-sortable="true">Data Embarque</th>
-                                                <th data-field="flight" data-halign="left" data-align="right" data-sortable="true">Vôo</th>
-                                                <th data-field="flightHour" data-halign="left" data-align="right" data-sortable="true">Horário Vôo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tb_order">
-
-                                        </tbody>
-                                    </table>
+                                    <tr>
+                                        <td valign="top" width="100%">
+                                          <div id="orderTable" style="width:100%;height:500px;"></div>
+                                        </td>
+                                    </tr>
                                 </div>
                             </div><span class="uib_shim"></span>
                         </div>

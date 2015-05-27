@@ -21,16 +21,6 @@ var resumeByMail;
             }
             $('#wizardorderheader2').append('<h2>Uai Milhas - Pedidos ('+$wizard_worder_1.milesUsed+')</h2>');
 
-            var $init = $('#worder_milesTable td');
-            if ($init.length > 0) {
-                $('#worder_milesTable').bootstrapTable('destroy');
-
-                $ParentNode = document.getElementById("tb_ordermiles")
-                while ($ParentNode.hasChildNodes()) {
-                    $ParentNode.removeChild($ParentNode.firstChild);
-                }
-            }
-            
             $('#worder_client').selectpicker('val','');
             $('#worder_from').selectpicker('val','');
             $('#worder_to').selectpicker('val','');
@@ -45,28 +35,29 @@ var resumeByMail;
             $('#worder_return_flightHour').val('');
             $('#worder_returnDate').val('');
             
-            for(var i in data.dataset){
-                miles = data.dataset[i];
-                $('#worder_milesTable tbody'). append(
-                    '<tr>'+
-                    '<td>'+miles.name+'</td>'+
-                    '<td>'+miles.email+'</td>'+
-                    '<td>'+miles.phoneNumber+'</td>'+
-                    '<td>'+miles.airline+'</td>'+
-                    '<td>'+miles.card_number+'</td>'+
-                    '<td>'+numeral(miles.leftover).format('0,0')+'</td>'+
-                    '<td>'+miles.due_date+'</td>'+
-                    '<td>'+miles.contract_due_date+'</td>'+
-                    '<td>'+numeral(miles.cost_per_thousand).format('$0,0.00')+'</td>'+
-                    '</tr>'
-                );
-            }
-            var $table = $('#worder_milesTable');
-            var $result = $('#events-result');
 
-            $table.bootstrapTable({
-            }).on('click-row.bs.table', function (e, row, $element) {
-                $milesOrderRow = row;
+            var grid;
+            var columns = [
+                {id: "name", field: "name", name: "Nome", width: 200}, 
+                {id: "email", field: "email", name: "Email", width: 150}, 
+                {id: "phoneNumber", field: "phoneNumber", name: "Telefone", width: 100}, 
+                {id: "airline", field: "airline", name: "Companhia", width: 60}, 
+                {id: "card_number", field: "card_number", name: "Número Cartão", width: 100}, 
+                {id: "leftover", field: "leftover", name: "Saldo Milhas", width: 100}, 
+                {id: "due_date", field: "due_date", name: "Vencimento", width: 100}, 
+                {id: "contract_due_date", field: "contract_due_date", name: "Limite Contrato", width: 100}, 
+                {id: "cost_per_thousand", field: "cost_per_thousand", name: "Custo por 1000", width: 100}];
+
+            var options = {
+                enableCellNavigation: true,
+                enableColumnReorder: false
+            };
+
+            grid = new Slick.Grid("#worder_milesTable", data.dataset, columns, options);
+
+            grid.onClick.subscribe(function (e) {
+                var cell = grid.getCellFromEvent(e);
+                $milesOrderRow = grid.getData()[cell.row];
             });
         };
 

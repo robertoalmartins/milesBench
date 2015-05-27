@@ -9,46 +9,35 @@ var order;
             var data = jQuery.parseJSON(response);
 
             activate_page("#order");
-            var $init = $('#orderTable td');
-            if ($init.length > 0) {
-                $('#orderTable').bootstrapTable('destroy');
 
-                $ParentNode = document.getElementById("tb_order")
-                while ($ParentNode.hasChildNodes()) {
-                    $ParentNode.removeChild($ParentNode.firstChild);
-                }
-            }
+            var grid;
+            var columns = [
+                {id: "id", field: "id", name: "ID", width: 20},
+                {id: "status", field: "status", name: "Status", width: 60},
+                {id: "client", field: "client", name: "Agência", width: 150},
+                {id: "email", field: "email", name: "Email", width: 150},
+                {id: "phoneNumber", field: "phoneNumber", name: "Telefone", width: 100},
+                {id: "airline", field: "airline", name: "Companhia", width: 60},
+                {id: "from", field: "from", name: "De", width: 60},
+                {id: "to", field: "to", name: "Para", width: 60},
+                {id: "miles_used", field: "milesUsed", name: "Total de Milhas", width: 100},
+                {id: "description", field: "description", name: "Observação", width: 100},
+                {id: "issue_date", field: "issueDate", name: "Data Pedido", width: 100},
+                {id: "boarding_date", field: "boardingDate", name: "Data Embarque", width: 100},
+                {id: "flight", field: "flight", name: "Vôo", width: 100},
+                {id: "flightHour", field: "flightHour", name: "Horário Vôo", width: 100}];
 
-            for(var i in data.dataset){
-                order = data.dataset[i];
-                $('#orderTable tbody'). append(
-                    '<tr>'+
-                    '<td>'+order.id+'</td>'+
-                    '<td>'+order.status+'</td>'+
-                    '<td>'+order.client+'</td>'+
-                    '<td>'+order.email+'</td>'+
-                    '<td>'+order.phoneNumber+'</td>'+
-                    '<td>'+order.airline+'</td>'+
-                    '<td>'+order.from+'</td>'+
-                    '<td>'+order.to+'</td>'+
-                    '<td>'+order.airportNamefrom+'</td>'+
-                    '<td>'+order.airportNameto+'</td>'+
-                    '<td>'+numeral(order.milesUsed).format('0,0')+'</td>'+
-                    '<td>'+order.description+'</td>'+
-                    '<td>'+order.issueDate+'</td>'+
-                    '<td>'+order.boardingDate+'</td>'+
-                    '<td>'+order.flight+'</td>'+
-                    '<td>'+order.flightHour+'</td>'+
-                    '</tr>'
-                );
-            }
-            var $table = $('#orderTable');
-            var $result = $('#events-result');
+            var options = {
+                enableCellNavigation: true,
+                enableColumnReorder: false
+            };
 
-            $table.bootstrapTable({
-            }).on('click-row.bs.table', function (e, row, $element) {
+            grid = new Slick.Grid("#orderTable", data.dataset, columns, options);
+
+            grid.onClick.subscribe(function (e) {
                 activate_page("#order_form");
-                loadOrder_Form(row);
+                var cell = grid.getCellFromEvent(e);
+                loadOrder_Form(grid.getData()[cell.row]);
             });
         };
 

@@ -26,21 +26,21 @@ insert into cards
 
 INSERT INTO `milesbench`
 (`leftover`, `lastchange`, `cards_id`, `due_date`, `cost_per_thousand`, `contract_due_date`, `total_card_leftover`) 
-(select total, STR_TO_DATE(data_compra,'%m/%d/%Y'), cards.id, STR_TO_DATE(vencimento,'%m/%d/%Y'), valor_por_mil, ADDDATE(STR_TO_DATE(data_compra,'%m/%d/%Y'),45), null
+(select total, STR_TO_DATE(data_compra,'%d/%m/%Y'), cards.id, STR_TO_DATE(vencimento,'%d/%m/%Y'), valor_por_mil, ADDDATE(STR_TO_DATE(data_compra,'%d/%m/%Y'),45), null
  from import_cards_tam, cards
  where numero_fidelidade = card_number
    and total > 0);
 
 INSERT INTO `milesbench`
 (`leftover`, `lastchange`, `cards_id`, `due_date`, `cost_per_thousand`, `contract_due_date`, `total_card_leftover`) 
-(select `real`, STR_TO_DATE(data_compra,'%m/%d/%Y'), cards.id, STR_TO_DATE(expirar,'%m/%d/%Y'), valor_por_mil, ADDDATE(STR_TO_DATE(data_compra,'%m/%d/%Y'),45), null
+(select `real`, STR_TO_DATE(data_compra,'%d/%m/%Y'), cards.id, STR_TO_DATE(expirar,'%d/%m/%Y'), valor_por_mil, ADDDATE(STR_TO_DATE(data_compra,'%d/%m/%Y'),45), null
  from import_cards_gol, cards
  where numero_cartao = card_number
    and `real` > 0);
 
 INSERT INTO `milesbench`
 (`leftover`, `lastchange`, `cards_id`, `due_date`, `cost_per_thousand`, `contract_due_date`, `total_card_leftover`) 
-(select `real`, STR_TO_DATE(data_compra,'%m/%d/%Y'), cards.id, null, valor_por_mil, ADDDATE(STR_TO_DATE(data_compra,'%m/%d/%Y'),45), null
+(select `real`, STR_TO_DATE(data_compra,'%d/%m/%Y'), cards.id, null, valor_por_mil, ADDDATE(STR_TO_DATE(data_compra,'%d/%m/%Y'),45), null
  from import_cards_azul, cards
  where numero_cartao = card_number
    and `real` > 0);

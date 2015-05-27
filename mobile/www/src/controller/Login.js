@@ -6,6 +6,8 @@ function login() {
         var message = jQuery.parseJSON(response).message;
         if(message['type'] == 'S') {
             activate_page("#mb_mainpage")
+        } else {
+            alert('Usuário ou senha inválidos')
         }
     };
 

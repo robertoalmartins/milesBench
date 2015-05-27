@@ -9,40 +9,30 @@ var provider;
             var data = jQuery.parseJSON(response);
 
             activate_page("#provider");
-            var $init = $('#providerTable td');
-            if ($init.length > 0) {
-                $('#providerTable').bootstrapTable('destroy');
 
-                $ParentNode = document.getElementById("tb_provider")
-                while ($ParentNode.hasChildNodes()) {
-                    $ParentNode.removeChild($ParentNode.firstChild);
-                }
-            }
+            var columns = [
+                {id: "id", field: "id", name: "ID", width: 20}, 
+                {id: "name", field: "name", name: "Nome", width: 200}, 
+                {id: "email", field: "email", name: "Email", width: 150}, 
+                {id: "phoneNumber", field: "phoneNumber", name: "Telefone Celular", width: 100}, 
+                {id: "phoneNumber2", field: "phoneNumber2", name: "Telefone Comercial", width: 100}, 
+                {id: "phoneNumber3", field: "phoneNumber3", name: "Telefone Residencial", width: 100}, 
+                {id: "registrationCode", field: "registrationCode", name: "CPF", width: 100}, 
+                {id: "adress", field: "adress", name: "Endereço", width: 120}, 
+                {id: "city", field: "city", name: "Cidade", width: 120}, 
+                {id: "edit", name: "Editar", field: "src", width: 40, formatter: function(args) {return "<img id='profileedit'   src ='img/edit.png'></img>"}}];
 
-            for(var i in data.dataset){
-                provider = data.dataset[i];
-                $('#providerTable tbody'). append(
-                    '<tr id="tr_id'+provider.id+'" class="tr-class-'+provider.id+'">'+
-                    '<td id="td_id_'+provider.id+'" class="td-class-'+provider.id+'">'+provider.id+'</td>'+
-                    '<td>'+provider.name+'</td>'+
-                    '<td>'+provider.email+'</td>'+
-                    '<td>'+provider.phoneNumber+'</td>'+
-                    '<td>'+provider.phoneNumber2+'</td>'+
-                    '<td>'+provider.phoneNumber3+'</td>'+
-                    '<td>'+provider.status+'</td>'+
-                    '<td>'+provider.registrationCode+'</td>'+
-                    '<td>'+provider.adress+'</td>'+
-                    '<td>'+provider.city+'</td>'+
-                    '</tr>'
-                );
-            }
-            var $table = $('#providerTable');
-            var $result = $('#events-result');
+            var options = {
+                enableCellNavigation: true,
+                enableColumnReorder: false
+            };
 
-            $table.bootstrapTable({
-            }).on('click-row.bs.table', function (e, row, $element) {
+            grid = new Slick.Grid("#providerTable", data.dataset, columns, options);
+
+            grid.onClick.subscribe(function (e) {
                 activate_page("#provider_form");
-                Providerloadform(row);
+                var cell = grid.getCellFromEvent(e);
+                Providerloadform(grid.getData()[cell.row]);
             });
         };
 

@@ -35,6 +35,7 @@ class Profile {
                 'adress' => $Profile->getAdress(),
                 'partnerType' => $Profile->getPartnerType(),
                 'email' => $Profile->getEmail(),
+                'password' => $Profile->getPassword(),
                 'phoneNumber' => $Profile->getPhoneNumber(),
                 'phoneNumber2' => $Profile->getPhoneNumber2(),
                 'phoneNumber3' => $Profile->getPhoneNumber3()

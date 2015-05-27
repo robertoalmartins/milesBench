@@ -9,39 +9,31 @@ var profile;
             var data = jQuery.parseJSON(response);
 
             activate_page("#profile");
-            var $init = $('#profileTable td');
-            if ($init.length > 0) {
-                $('#profileTable').bootstrapTable('destroy');
 
-                $ParentNode = document.getElementById("tb_profile")
-                while ($ParentNode.hasChildNodes()) {
-                    $ParentNode.removeChild($ParentNode.firstChild);
-                }
-            }
+            var grid;
+            var columns = [
+                {id: "id", name: "ID", field: "id", width: 20},
+                {id: "name", name: "Nome", field: "name", width: 200},
+                {id: "email", name: "Email", field: "email", width: 150},
+                {id: "phoneNumber", name: "Telefone Celular", field: "phoneNumber", width: 100},
+                {id: "phoneNumber2", name: "Telefone Comercial", field: "phoneNumber2", width: 100},
+                {id: "phoneNumber3", name: "Fax", field: "phoneNumber3", width: 100},
+                {id: "registrationCode", name: "CPF", field: "registrationCode", width: 100},
+                {id: "adress", name: "Endereço", field: "adress", width: 120},
+                {id: "city", name: "Cidade", field: "city", width: 120},
+                {id: "edit", name: "Editar", field: "src", width: 40, formatter: function(args) {return "<img id='profileedit'   src ='img/edit.png'></img>"}}];
 
-            for(var i in data.dataset){
-                profile = data.dataset[i];
-                $('#profileTable tbody'). append(
-                    '<tr id="tr_id'+profile.id+'" class="tr-class-'+profile.id+'">'+
-                    '<td id="td_id_'+profile.id+'" class="td-class-'+profile.id+'">'+profile.id+'</td>'+
-                    '<td>'+profile.name+'</td>'+
-                    '<td>'+profile.email+'</td>'+
-                    '<td>'+profile.phoneNumber+'</td>'+
-                    '<td>'+profile.phoneNumber2+'</td>'+
-                    '<td>'+profile.phoneNumber3+'</td>'+
-                    '<td>'+profile.registrationCode+'</td>'+
-                    '<td>'+profile.adress+'</td>'+
-                    '<td>'+profile.city+'</td>'+
-                    '</tr>'
-                );
-            }
-            var $table = $('#profileTable');
-            var $result = $('#events-result');
+            var options = {
+                enableCellNavigation: true,
+                enableColumnReorder: false
+            };
 
-            $table.bootstrapTable({
-            }).on('click-row.bs.table', function (e, row, $element) {
+            grid = new Slick.Grid("#profileTable", data.dataset, columns, options);
+
+            grid.onClick.subscribe(function (e) {
                 activate_page("#profile_form");
-                Profileloadform(row);
+                var cell = grid.getCellFromEvent(e);
+                Profileloadform(grid.getData()[cell.row]);
             });
         };
 
@@ -65,6 +57,7 @@ var profile;
         var $profile_phone = $('#profile_phone');
         var $profile_phone2 = $('#profile_phone2');
         var $profile_phone3 = $('#profile_phone3');
+        var $profile_password = $('#profile_password');
 
         $profile_name.val(datarow.name);
         $profile_code.val(datarow.registrationCode);
@@ -73,7 +66,7 @@ var profile;
         $profile_phone.val(datarow.phoneNumber);
         $profile_phone2.val(datarow.phoneNumber2);
         $profile_phone3.val(datarow.phoneNumber3);
-        $profile_password.val('');
+        $profile_password.val(datarow.password);
 
         var str = datarow.city;
 

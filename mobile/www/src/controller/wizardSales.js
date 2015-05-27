@@ -20,33 +20,33 @@ var salesRow;
                 }
             }
 
-            for(var i in data.dataset){
-                order = data.dataset[i];
-                $('#sales1Table tbody'). append(
-                    '<tr>'+
-                    '<td>'+order.id+'</td>'+
-                    '<td>'+order.status+'</td>'+
-                    '<td>'+order.client+'</td>'+
-                    '<td>'+order.email+'</td>'+
-                    '<td>'+order.phoneNumber+'</td>'+
-                    '<td>'+order.airline+'</td>'+
-                    '<td>'+order.from+'</td>'+
-                    '<td>'+order.to+'</td>'+
-                    '<td>'+numeral(order.milesUsed).format('0,0')+'</td>'+
-                    '<td>'+order.description+'</td>'+
-                    '<td>'+order.issueDate+'</td>'+
-                    '<td>'+order.boardingDate+'</td>'+
-                    '<td>'+order.returnDate+'</td>'+
-                    '<td>'+order.cards+'</td>'+
-                    '</tr>'
-                );
-            }
-            var $table = $('#sales1Table');
-            var $result = $('#events-result');
+            var grid;
+            var columns = [
+                {id: "id", field: "id", name: "ID", width: 20},
+                {id: "status", field: "status", name: "Status", width: 60},
+                {id: "client", field: "client", name: "Agência", width: 100},
+                {id: "email", field: "email", name: "Email", width: 150},
+                {id: "phoneNumber", field: "phoneNumber", name: "Telefone", width: 100},
+                {id: "airline", field: "airline", name: "Companhia", width: 60},
+                {id: "from", field: "from", name: "De", width: 60},
+                {id: "to", field: "to", name: "Para", width: 60},
+                {id: "miles_used", field: "milesUsed", name: "Total de Milhas", width: 100},
+                {id: "description", field: "description", name: "Observação", width: 100},
+                {id: "issue_date", field: "issueDate", name: "Data Pedido", width: 100},
+                {id: "boarding_date", field: "boardingDate", name: "Data Embarque", width: 100},
+                {id: "return_date", field: "returnDate", name: "Data Retorno", width: 100},
+                {id: "cards", field: "cards", name: "ID Cartão", width: 100}];
 
-            $table.bootstrapTable({
-            }).on('click-row.bs.table', function (e, row, $element) {
-                $salesOrderRow = row;
+            var options = {
+                enableCellNavigation: true,
+                enableColumnReorder: false
+            };
+
+            grid = new Slick.Grid("#sales1Table", data.dataset, columns, options);
+
+            grid.onClick.subscribe(function (e) {
+                var cell = grid.getCellFromEvent(e);
+                $salesOrderRow = grid.getData()[cell.row];
                 loadSalesMiles_Grid();
             });
         };
@@ -60,7 +60,7 @@ var salesRow;
 
     function loadSalesMiles_Grid() {
         $milesUsed = {};
-        $milesUsed['value'] = numeral().unformat($salesOrderRow.miles_used);
+        $milesUsed['value'] = numeral().unformat($salesOrderRow.milesUsed);
         $milesUsed['cards'] = $salesOrderRow.cards;
 
 
@@ -75,40 +75,30 @@ var salesRow;
                     $ParentNode.removeChild($ParentNode.firstChild);
                 }            
             }
-            $('#wizardheader2').append('<h2>Uai Milhas - Registrar Emissão ('+$salesOrderRow.miles_used+')</h2>');
+            $('#wizardheader2').append('<h2>Uai Milhas - Registrar Emissão ('+$salesOrderRow.milesUsed+')</h2>');
 
-            var $init = $('#sales_milesTable td');
-            if ($init.length > 0) {
-                $('#sales_milesTable').bootstrapTable('destroy');
+            var grid;
+            var columns = [
+                {id: "name", field: "name", name: "Nome", width: 200},
+                {id: "email", field: "email", name: "Email", width: 150},
+                {id: "phoneNumber", field: "phoneNumber", name: "Telefone", width: 100},
+                {id: "airline", field: "airline", name: "Companhia", width: 60},
+                {id: "card_number", field: "card_number", name: "Número Cartão", width: 100},
+                {id: "leftover", field: "leftover", name: "Saldo Milhas", width: 100},
+                {id: "due_date", field: "due_date", name: "Vencimento", width: 100},
+                {id: "due_date", field: "due_date", name: "Limite Contrato", width: 100},
+                {id: "cost_per_thousand", field: "cost_per_thousand", name: "Custo por 1000", width: 100}];
 
-                $ParentNode = document.getElementById("tb_salesmiles")
-                while ($ParentNode.hasChildNodes()) {
-                    $ParentNode.removeChild($ParentNode.firstChild);
-                }
-            }
+            var options = {
+                enableCellNavigation: true,
+                enableColumnReorder: false
+            };
 
-            for(var i in data.dataset){
-                miles = data.dataset[i];
-                $('#sales_milesTable tbody'). append(
-                    '<tr>'+
-                    '<td>'+miles.name+'</td>'+
-                    '<td>'+miles.email+'</td>'+
-                    '<td>'+miles.phoneNumber+'</td>'+
-                    '<td>'+miles.airline+'</td>'+
-                    '<td>'+miles.card_number+'</td>'+
-                    '<td>'+numeral(miles.leftover).format('0,0')+'</td>'+
-                    '<td>'+miles.due_date+'</td>'+
-                    '<td>'+miles.contract_due_date+'</td>'+
-                    '<td>'+numeral(miles.cost_per_thousand).format('$0,0.00')+'</td>'+
-                    '</tr>'
-                );
-            }
-            var $table = $('#sales_milesTable');
-            var $result = $('#events-result');
+            grid = new Slick.Grid("#sales_milesTable", data.dataset, columns, options);
 
-            $table.bootstrapTable({
-            }).on('click-row.bs.table', function (e, row, $element) {
-                $milesCardRow = row;
+            grid.onClick.subscribe(function (e) {
+                var cell = grid.getCellFromEvent(e);
+                $milesCardRow = grid.getData()[cell.row];
                 loadSalesWizard_Form();
             });
         };
@@ -145,8 +135,8 @@ var salesRow;
 
         var $sales_miles_used = $('#sales_miles_used');
         var $sales_total_cost = $('#sales_total_cost');
-        $sales_miles_used.val(numeral().unformat($salesOrderRow.miles_used));
-        $sales_total_cost.val(numeral().unformat($milesCardRow.cost_per_thousand)/1000 * numeral().unformat($salesOrderRow.miles_used));
+        $sales_miles_used.val(numeral().unformat($salesOrderRow.milesUsed));
+        $sales_total_cost.val(numeral().unformat($milesCardRow.cost_per_thousand)/1000 * numeral().unformat($salesOrderRow.milesUsed));
     }
 
     function setKickback(){
