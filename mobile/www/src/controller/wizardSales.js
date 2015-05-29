@@ -27,7 +27,7 @@ var salesRow;
                 {id: "client", field: "client", name: "Agência", width: 100},
                 {id: "email", field: "email", name: "Email", width: 150},
                 {id: "phoneNumber", field: "phoneNumber", name: "Telefone", width: 100},
-                {id: "pax", field: "pax", name: "Nome do Passageiro", width: 100},
+                {id: "pax", field: "pax", name: "Passageiro", width: 100},
                 {id: "airline", field: "airline", name: "Companhia", width: 60},
                 {id: "from", field: "from", name: "De", width: 60},
                 {id: "to", field: "to", name: "Para", width: 60},
