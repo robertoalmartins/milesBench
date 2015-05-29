@@ -44,9 +44,9 @@ class miles {
 
         $em = Application::getInstance()->getEntityManager();
         if (isset($dados['cards'])) {
-            $sql = "select c, b, a, m FROM Milesbench m JOIN m.cards c JOIN c.businesspartner b JOIN c.airline a WHERE c.id = ".$dados['cards'];
+            $sql = "select c, b, a, m FROM Milesbench m JOIN m.cards c JOIN c.businesspartner b JOIN c.airline a WHERE c.id = ".$dados['cards'] . " ORDER BY m.contractDueDate";
         } else {
-            $sql = "select c, b, a, m FROM Milesbench m JOIN m.cards c JOIN c.businesspartner b JOIN c.airline a WHERE m.leftover >= ".$dados['milesUsed']." and a.name = '".$dados['airline']."' ORDER BY m.leftover";
+            $sql = "select c, b, a, m FROM Milesbench m JOIN m.cards c JOIN c.businesspartner b JOIN c.airline a WHERE m.leftover >= ".$dados['milesUsed']." and a.name = '".$dados['airline']."'  ORDER BY m.contractDueDate";
         }
         $query = $em->createQuery($sql);
         $milesbench = $query->getResult();
