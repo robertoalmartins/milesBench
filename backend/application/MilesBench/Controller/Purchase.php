@@ -41,7 +41,7 @@ class purchase {
                 $em->flush($BusinessPartner);
             }
 
-            $Cards = $em->getRepository('cards')->findOneBy(array('cardNumber' => $dados['card_number']));
+            $Cards = $em->getRepository('Cards')->findOneBy(array('cardNumber' => $dados['card_number']));
             if (!$Cards) {
                 $Cards = new \Cards();
                 $Cards->setCardNumber($dados['card_number']);
@@ -72,7 +72,14 @@ class purchase {
                 $MilesBench->setCostPerThousand($dados['cost_per_thousand']);
                 $MilesBench->setCards($Cards);
                 $MilesBench->setDueDate(new \Datetime($dados['miles_due_date']));
-                $MilesBench->setContractDueDate(new \Datetime($dados['contract_due_date']));
+                if (isset($dados['contract_due_date'])) {
+                   $MilesBench->setContractDueDate(new \Datetime($dados['contract_due_date']));
+                } else {
+                   $contract_due_date = new \Datetime();
+                   $contract_due_date->modify('+45 day');;
+                   
+                   $MilesBench->setContractDueDate($contract_due_date);
+                }
             }
             $MilesBench->setLeftOver($MilesBench->getLeftOver() + $dados['purchase_miles']);
             $em->persist($MilesBench);
