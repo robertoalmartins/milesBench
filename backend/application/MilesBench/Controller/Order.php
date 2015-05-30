@@ -123,16 +123,6 @@ class order {
             if (isset($dados['cardNumber'])){
                 $Cards = $em->getRepository('Cards')->findOneBy(array('cardNumber' => $dados['cardNumber']));
                 $sale_cards = $Cards;
-                
-                $email = array(
-                    'cardNumber' => $dados['cardNumber'],
-                    'recoveryPassword' => $Cards->getRecoveryPassword(),
-                    'milesUsed' => $dados['milesUsed'],
-                    'paxName' => $dados['paxName'],
-                    'boardingDate' => $dados['boardingDate'],
-                    'returnDate' => $dados['boardingDate'],
-                    'flight' => $dados['flight'].' '.$dados['return_flight'],
-                    'flightHour' => $dados['flightHour'].' '.$dados['return_flightHour']);                
             }
             
             $milesUsed = $dados['milesUsed'];
@@ -163,6 +153,15 @@ class order {
             $em->persist($Sale);
             $em->flush($Sale);
 
+            $email = array(
+                'cardNumber' => $dados['cardNumber'],
+                'recoveryPassword' => $Cards->getRecoveryPassword(),
+                'milesUsed' => $dados['milesUsed'],
+                'paxName' => $dados['paxName'],
+                'boardingDate' => $dados['boardingDate'],
+                'flight' => $dados['flight'],
+                'flightHour' => $dados['flightHour']);                
+
             if ($returned) {
                 $Sale = new \Sale();
                 $Sale->setPax($sale_pax);
@@ -180,6 +179,15 @@ class order {
                 $Sale->setFlightHour($dados['return_flightHour']);
                 $em->persist($Sale);
                 $em->flush($Sale);          
+
+                $email = array(
+                    'cardNumber' => $dados['cardNumber'],
+                    'recoveryPassword' => $Cards->getRecoveryPassword(),
+                    'milesUsed' => $dados['milesUsed'],
+                    'paxName' => $dados['paxName'],
+                    'boardingDate' => $dados['returnDate'],
+                    'flight' => $dados['return_flight'],
+                    'flightHour' => $dados['return_flightHour']);                
             }
         
             $em->getConnection()->commit();

@@ -17,7 +17,7 @@ class Agency {
 
     public function load(Request $request, Response $response) {
         $em = Application::getInstance()->getEntityManager();
-        $BusinessPartner = $em->getRepository('Businesspartner')->findBy(array('partnerType' => 'C'));
+        $BusinessPartner = $em->getRepository('Businesspartner')->findBy(array('partnerType' => 'C', 'status' => 'Aprovado')));
 
         $dataset = array();
         foreach($BusinessPartner as $Agency){

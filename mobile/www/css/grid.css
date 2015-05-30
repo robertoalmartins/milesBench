@@ -32,6 +32,11 @@ li {
   font-size: 8pt;
 }
 
+#providerCardsTable {
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 8pt;
+}
+
 #orderTable {
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 8pt;

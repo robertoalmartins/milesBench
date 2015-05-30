@@ -20,7 +20,7 @@ class Businesspartner {
 
         try {
             $em = Application::getInstance()->getEntityManager();
-            if ($dados['id']) {
+            if (isset($dados['id'])) {
                 $BusinessPartner = $em->getRepository('Businesspartner')->find($dados['id']);
             } else {
                 $BusinessPartner = new \Businesspartner();
@@ -29,7 +29,7 @@ class Businesspartner {
             $BusinessPartner->setPhoneNumber($dados['phoneNumber']);
             $BusinessPartner->setPhoneNumber2($dados['phoneNumber2']);
             $BusinessPartner->setPhoneNumber3($dados['phoneNumber3']);
-            $BusinessPartner->setStatus($dados['status']);
+            $BusinessPartner->setStatus('Aprovado');
             $BusinessPartner->setCity($em->getRepository('City')->findOneBy(array('name' => $dados['city'], 'state' => $dados['state'])));
             $BusinessPartner->setRegistrationCode($dados['registrationCode']);
             $BusinessPartner->setAdress($dados['adress']);

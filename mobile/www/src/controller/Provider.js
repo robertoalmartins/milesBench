@@ -2,6 +2,7 @@
  * Created by robertomartins on 1/19/2015.
  */
 var providerRow;
+var cardsRow;
 var provider;
 
     function loadProvider() {
@@ -9,9 +10,10 @@ var provider;
             var data = jQuery.parseJSON(response);
 
             activate_page("#provider");
+            loadProviderCards(data.dataset[0]);
 
             var columns = [
-                {id: "id", field: "id", name: "ID", width: 20}, 
+                {id: "id", field: "id", name: "ID", width: 40}, 
                 {id: "name", field: "name", name: "Nome", width: 200}, 
                 {id: "email", field: "email", name: "Email", width: 150}, 
                 {id: "phoneNumber", field: "phoneNumber", name: "Telefone Celular", width: 100}, 
@@ -30,9 +32,13 @@ var provider;
             grid = new Slick.Grid("#providerTable", data.dataset, columns, options);
 
             grid.onClick.subscribe(function (e) {
-                activate_page("#provider_form");
                 var cell = grid.getCellFromEvent(e);
-                Providerloadform(grid.getData()[cell.row]);
+                if (cell.cell < 9) {
+                    loadProviderCards(grid.getData()[cell.row]);
+                } else {
+                    activate_page("#provider_form");
+                    Providerloadform(grid.getData()[cell.row]);
+                }
             });
         };
 
@@ -117,9 +123,7 @@ var provider;
 
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;
-            if(message['type'] == 'S') {
-                alert(message['text']);
-            }
+            alert(message['text']);
             loadProvider();
         };
 
@@ -134,9 +138,7 @@ var provider;
     function removeProvider() {
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;
-            if(message['type'] == 'S') {
-                alert(message['text']);
-            }
+            alert(message['text']);
             loadProvider();
         };
 
@@ -176,6 +178,84 @@ var provider;
         $.ajax({
             type: "POST",
             url: "../../backend/application/index.php?rota=/loadProvider",
+            success: success
+        });
+    }
+
+    function loadProviderCards(datarow) {
+        $providerRow = datarow;
+        var success = function(response) {
+            var data = jQuery.parseJSON(response);
+
+            var columns = [
+                {id: "id", field: "id", name: "ID", width: 40}, 
+                {id: "airline", field: "airline", name: "Companhia", width: 100}, 
+                {id: "card_number", field: "card_number", name: "Número Fidelidade", width: 100}, 
+                {id: "access_id", field: "access_id", name: "Assinatura Eletrônica", width: 100}, 
+                {id: "access_password", field: "access_password", name: "Senha Múltiplus", width: 100}, 
+                {id: "recovery_password", field: "recovery_password", name: "Senha de resgate", width: 100},
+                {id: "miles_leftover", field: "miles_leftover", name: "Saldo Cartão", width: 100},
+                {id: "edit", name: "Editar", field: "src", width: 40, formatter: function(args) {return "<img id='profileedit'   src ='img/edit.png'></img>"}}];
+
+            var options = {
+                enableCellNavigation: true,
+                enableColumnReorder: false
+            };
+
+            gridCards = new Slick.Grid("#providerCardsTable", data.dataset, columns, options);
+
+            gridCards.onClick.subscribe(function (e) {
+                var cell = gridCards.getCellFromEvent(e);
+                if (cell.cell > 6) {
+                    activate_page("#providerCards_form");
+                    ProviderCardsloadform(gridCards.getData()[cell.row]);
+                }
+            });
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "../../backend/application/index.php?rota=/loadProviderCards",
+            success: success,
+            data: $providerRow
+        });
+    }
+
+    function ProviderCardsloadform($row) {
+        $cardsRow = $row;
+        if ($row.airline == 'TAM') {
+            document.getElementById("pc_access_id").style.visibility = "visible";
+            document.getElementById("pc_access_password").style.visibility = "visible";
+        } else {
+            document.getElementById("pc_access_id").style.visibility = "collapse";
+            document.getElementById("pc_access_password").style.visibility = "collapse";
+        }
+        
+        $('#providercards_card_number').val($row.card_number);
+        $('#providercards_recovery_password').val($row.recovery_password);
+        $('#providercards_access_id').val($row.access_id);
+        $('#providercards_access_password').val($row.access_password);
+
+    }
+
+    function saveProviderCards() {
+        $providerCardsRow = {};
+        $providerCardsRow.id = $cardsRow.id;
+        $providerCardsRow.card_number = $('#providercards_card_number')[0].value;
+        $providerCardsRow.recovery_password = $('#providercards_recovery_password')[0].value;
+        $providerCardsRow.access_id = $('#providercards_access_id')[0].value;
+        $providerCardsRow.access_password = $('#providercards_access_password')[0].value;
+
+        var success = function(response) {
+            var message = jQuery.parseJSON(response).message;
+            alert(message['text']);
+            loadProvider();
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "../../backend/application/index.php?rota=/saveProviderCards",
+            data: $providerCardsRow,
             success: success
         });
     }

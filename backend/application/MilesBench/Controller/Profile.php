@@ -17,7 +17,7 @@ class Profile {
 
     public function load(Request $request, Response $response) {
         $em = Application::getInstance()->getEntityManager();
-        $BusinessPartner = $em->getRepository('Businesspartner')->findBy(array('partnerType' => 'U'));
+        $BusinessPartner = $em->getRepository('Businesspartner')->findBy(array('partnerType' => 'U', 'status' => 'Aprovado')));
 
         $dataset = array();
         foreach($BusinessPartner as $Profile){

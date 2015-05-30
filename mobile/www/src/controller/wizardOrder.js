@@ -93,9 +93,7 @@ var resumeByMail;
             var message = jQuery.parseJSON(response).message;
             $resumeByMail = jQuery.parseJSON(response).dataset;
 
-            if(message['type'] == 'S') {
-                alert(message['text']);
-            }
+            alert(message['text']);
             showOrderResume();
         };
 
