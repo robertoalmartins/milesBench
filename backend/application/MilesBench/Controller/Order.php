@@ -153,7 +153,7 @@ class order {
             $em->persist($Sale);
             $em->flush($Sale);
 
-            $email = array(
+            $email[] = array(
                 'cardNumber' => $dados['cardNumber'],
                 'recoveryPassword' => $Cards->getRecoveryPassword(),
                 'milesUsed' => $dados['milesUsed'],
@@ -161,7 +161,7 @@ class order {
                 'boardingDate' => $dados['boardingDate'],
                 'flight' => $dados['flight'],
                 'flightHour' => $dados['flightHour']);                
-
+            
             if ($returned) {
                 $Sale = new \Sale();
                 $Sale->setPax($sale_pax);
@@ -180,7 +180,7 @@ class order {
                 $em->persist($Sale);
                 $em->flush($Sale);          
 
-                $email = array(
+                $email[] = array(
                     'cardNumber' => $dados['cardNumber'],
                     'recoveryPassword' => $Cards->getRecoveryPassword(),
                     'milesUsed' => $dados['milesUsed'],
@@ -231,9 +231,9 @@ class order {
     }
 
     public function mail(Request $request, Response $response) {
-        $dados = $request->getRow();
+        $row = $request->getRow();
         try {
-            self::SendOrderByMail($dados);
+            self::SendOrderByMail($row);
 
             $message = new \MilesBench\Message();
             $message->setType(\MilesBench\Message::SUCCESS);
@@ -249,6 +249,7 @@ class order {
     }
 
     public function SendOrderByMail($email){
+        
         PHPMailerAutoload('PHPMailer');
         PHPMailerAutoload('pop3');
         PHPMailerAutoload('SMTP');
@@ -273,7 +274,7 @@ class order {
         //$mail->addBCC('bcc@example.com');
 
         //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-        $mail->addAttachment(dirname(__FILE__) . '../../../img/emissao_ideal.png');    // Optional name
+        $mail->addAttachment(dirname(__FILE__) . '/../../../img/emissao_ideal.png');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
 
         $mail->Subject = 'Emissao de Bilhetes';
@@ -304,14 +305,22 @@ class order {
                     <th>Horario</th>
                 </tr>
                 <tr>
-                    <td>'.$email['cardNumber'].'</td>
-                    <td>'.$email['recoveryPassword'].'</td>
-                    <td>'.$email['milesUsed'].'</td>
-                    <td>'.$email['paxName'].'</td>
-                    <td>'.$email['boardingDate'].'</td>
-                    <td>'.$email['returnDate'].'</td>
-                    <td>'.$email['flight'].'</td>
-                    <td>'.$email['flightHour'].'</td>
+                    <td>'.$email['flight']['cardNumber'].'</td>
+                    <td>'.$email['flight']['recoveryPassword'].'</td>
+                    <td>'.$email['flight']['milesUsed'].'</td>
+                    <td>'.$email['flight']['paxName'].'</td>
+                    <td>'.$email['flight']['boardingDate'].'</td>
+                    <td>'.$email['flight']['flight'].'</td>
+                    <td>'.$email['flight']['flightHour'].'</td>
+                </tr>
+                <tr>
+                    <td>'.$email['returnFlight']['cardNumber'].'</td>
+                    <td>'.$email['returnFlight']['recoveryPassword'].'</td>
+                    <td>'.$email['returnFlight']['milesUsed'].'</td>
+                    <td>'.$email['returnFlight']['paxName'].'</td>
+                    <td>'.$email['returnFlight']['boardingDate'].'</td>
+                    <td>'.$email['returnFlight']['flight'].'</td>
+                    <td>'.$email['returnFlight']['flightHour'].'</td>
                 </tr>
             </table>
         </body>';

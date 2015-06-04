@@ -125,6 +125,7 @@ var resumeByMail;
             }            
         }
 
+
         $('#div_order_resume'). append(
             '<head>'+
                 '<style>'+
@@ -146,46 +147,37 @@ var resumeByMail;
                         '<th>Quantidade de Pontos</th>'+
                         '<th>Passageiro</th>'+
                         '<th>Data Embarque</th>'+
-                        '<th>Data Retorno</th>'+
                         '<th>Decricao Voo</th>'+
                         '<th>Horario/Trajeto Voo</th>'+
                     '</tr>'+
                     '<tr>'+
-                        '<td>'+$resumeByMail.cardNumber+'</td>'+
-                        '<td>'+$resumeByMail.recoveryPassword+'</td>'+
-                        '<td>'+$resumeByMail.milesUsed+'</td>'+
-                        '<td>'+$resumeByMail.paxName+'</td>'+
-                        '<td>'+$resumeByMail.boardingDate+'</td>'+
-                        '<td>'+$resumeByMail.returnDate+'</td>'+
-                        '<td>'+$resumeByMail.flight+'</td>'+
-                        '<td>'+$resumeByMail.flightHour+'</td>'+
+                        '<td>'+$resumeByMail[0].cardNumber+'</td>'+
+                        '<td>'+$resumeByMail[0].recoveryPassword+'</td>'+
+                        '<td>'+$resumeByMail[0].milesUsed+'</td>'+
+                        '<td>'+$resumeByMail[0].paxName+'</td>'+
+                        '<td>'+$resumeByMail[0].boardingDate+'</td>'+
+                        '<td>'+$resumeByMail[0].flight+'</td>'+
+                        '<td>'+$resumeByMail[0].flightHour+'</td>'+
+                    '</tr>'+
+                    '<tr>'+
+                        '<td>'+$resumeByMail[1].cardNumber+'</td>'+
+                        '<td>'+$resumeByMail[1].recoveryPassword+'</td>'+
+                        '<td>'+$resumeByMail[1].milesUsed+'</td>'+
+                        '<td>'+$resumeByMail[1].paxName+'</td>'+
+                        '<td>'+$resumeByMail[1].boardingDate+'</td>'+
+                        '<td>'+$resumeByMail[1].flight+'</td>'+
+                        '<td>'+$resumeByMail[1].flightHour+'</td>'+
                     '</tr>'+
                 '</table>'+
             '</body>'
         
         );
-
-/*        $('#worder_resume tbody'). append(
-            '<tr>'+
-            '<td>'+$resumeByMail.cardNumber+'</td>'+
-            '<td>'+$resumeByMail.recoveryPassword+'</td>'+
-            '<td>'+$resumeByMail.milesUsed+'</td>'+
-            '<td>'+$resumeByMail.paxName+'</td>'+
-            '<td>'+$resumeByMail.boardingDate+'</td>'+
-            '<td>'+$resumeByMail.flight+'</td>'+
-            '<td>'+$resumeByMail.flightHour+'</td>'+
-            '</tr>'
-        );
-        var $table = $('#worder_resume');
-        var $result = $('#events-result');
-
-        $table.bootstrapTable({
-        }).on('click-row.bs.table', function (e, row, $element) {
-            $resumeByMail = row;
-        });*/        
     }
 
     function sendMail() {
+        $flight = $resumeByMail[0];
+        $returnFlight = $resumeByMail[1];
+
         var success = function(response) {
             activate_page("#order");
             loadOrder();
@@ -194,7 +186,7 @@ var resumeByMail;
         $.ajax({
             type: "POST",
             url: "../../backend/application/index.php?rota=/mailOrder",
-            data: $resumeByMail,
+            data: {flight: $flight, returnFlight: $returnFlight},
             success: success
         });
     }
