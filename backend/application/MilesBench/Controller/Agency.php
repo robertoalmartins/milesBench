@@ -22,10 +22,15 @@ class Agency {
         $dataset = array();
         foreach($BusinessPartner as $Agency){
             $City = $Agency->getCity();
+            if ($City) {
+                $cityname = $City->getName() . ', ' . $City->getState();
+            } else {
+                $cityname = '';
+            }            
             $dataset[] = array(
                 'id' => $Agency->getId(),
                 'name' => $Agency->getName(),
-                'city' => $City->getName() . ', ' . $City->getState(),
+                'city' => $cityname,
                 'registrationCode' => $Agency->getRegistrationCode(),
                 'adress' => $Agency->getAdress(),
                 'partnerType' => $Agency->getPartnerType(),
