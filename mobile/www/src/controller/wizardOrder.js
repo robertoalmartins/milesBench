@@ -125,7 +125,45 @@ var resumeByMail;
             }            
         }
 
-
+        if ($resumeByMail[1] == null) {
+            $('#div_order_resume'). append(
+                '<head>'+
+                    '<style>'+
+                        'table, th, td {'+
+                            'border: 1px solid black;'+
+                            'border-collapse: collapse;'+
+                        '}'+
+                        'th, td {'+
+                            'padding: 5px;'+
+                            'text-align: left;'+
+                        '}'+
+                    '</style>'+
+                '</head>'+
+                '<body>'+
+                    '<table style="width:100%">'+
+                        '<tr>'+
+                            '<th>Fidelidade</th>'+
+                            '<th>Senha Resgate</th>'+
+                            '<th>Quantidade de Pontos</th>'+
+                            '<th>Passageiro</th>'+
+                            '<th>Data Embarque</th>'+
+                            '<th>Decricao Voo</th>'+
+                            '<th>Horario/Trajeto Voo</th>'+
+                        '</tr>'+
+                        '<tr>'+
+                            '<td>'+$resumeByMail[0].cardNumber+'</td>'+
+                            '<td>'+$resumeByMail[0].recoveryPassword+'</td>'+
+                            '<td>'+$resumeByMail[0].milesUsed+'</td>'+
+                            '<td>'+$resumeByMail[0].paxName+'</td>'+
+                            '<td>'+$resumeByMail[0].boardingDate+'</td>'+
+                            '<td>'+$resumeByMail[0].flight+'</td>'+
+                            '<td>'+$resumeByMail[0].flightHour+'</td>'+
+                        '</tr>'+
+                    '</table>'+
+                '</body>'
+            
+            );
+        } else {
         $('#div_order_resume'). append(
             '<head>'+
                 '<style>'+
@@ -170,8 +208,9 @@ var resumeByMail;
                     '</tr>'+
                 '</table>'+
             '</body>'
-        
         );
+            
+        }
     }
 
     function sendMail() {
