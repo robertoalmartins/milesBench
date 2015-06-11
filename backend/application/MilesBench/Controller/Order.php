@@ -126,12 +126,13 @@ class order {
             }
             
             $milesUsed = $dados['milesUsed'];
+
             $returned = false;
             if (isset($dados['id'])) {
                 $Sale = $em->getRepository('Sale')->find($dados['id']);
             } else {
                 $Sale = new \Sale();
-                if (isset($dados['returnDate'])) {
+                if ($dados['returnDate'] != '') {
                     $returned = true;
                     $milesUsed = ($dados['milesUsed'] / 2);
                 }
