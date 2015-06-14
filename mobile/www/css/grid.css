@@ -12,6 +12,22 @@ li {
   margin: 0;
 }
 
+#providerExtractTable {
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 8pt;
+}
+
+#providerTable {
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 8pt;
+  height: 60% !important;
+}
+
+#providerCardsTable {
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 8pt;
+}
+
 #profileTable {
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 8pt;
@@ -23,16 +39,6 @@ li {
 }
 
 #agencyTable {
-  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 8pt;
-}
-
-#providerTable {
-  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 8pt;
-}
-
-#providerCardsTable {
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 8pt;
 }

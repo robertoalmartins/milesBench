@@ -1,3 +1,8 @@
+html,
+body {
+  height: auto !important;
+}
+
 .upage {
  	position: absolute;
  	top: 0;
@@ -22,10 +27,6 @@
 
 .upage-content .grid, .upage-content .grid .col, .upage-content .grid .col .content-area {
 	height: 100% !important;
-}
-
-#provider .upage-content .grid {
-	height: 50% !important;
 }
 
 .bootstrap-select.btn-group .dropdown-menu.inner {

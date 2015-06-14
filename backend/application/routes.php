@@ -25,7 +25,6 @@ $routes = array(
     '/loadAirport' => '\MilesBench\Controller\Airport::load',
     '/loadAirline' => '\MilesBench\Controller\Airline::load',
     '/saveSale' => '\MilesBench\Controller\Sale::save',
-    '/savePurchase' => '\MilesBench\Controller\Purchase::save'
+    '/savePurchase' => '\MilesBench\Controller\Purchase::save',
+    '/loadExtractCards' => '\MilesBench\Controller\Extract::load'
 );
-
-

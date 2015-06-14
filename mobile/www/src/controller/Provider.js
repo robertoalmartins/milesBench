@@ -26,7 +26,8 @@ var provider;
 
             var options = {
                 enableCellNavigation: true,
-                enableColumnReorder: false
+                enableColumnReorder: false,
+                multiColumnSort: true
             };
 
             grid = new Slick.Grid("#providerTable", data.dataset, columns, options);
@@ -186,20 +187,22 @@ var provider;
         $providerRow = datarow;
         var success = function(response) {
             var data = jQuery.parseJSON(response);
+            loadExtract(data.dataset[0]);
 
             var columns = [
                 {id: "id", field: "id", name: "ID", width: 40}, 
-                {id: "airline", field: "airline", name: "Companhia", width: 100}, 
+                {id: "airline", field: "airline", name: "CIA", width: 60}, 
                 {id: "card_number", field: "card_number", name: "Número Fidelidade", width: 100}, 
                 {id: "access_id", field: "access_id", name: "Assinatura Eletrônica", width: 100}, 
                 {id: "access_password", field: "access_password", name: "Senha Múltiplus", width: 100}, 
                 {id: "recovery_password", field: "recovery_password", name: "Senha de resgate", width: 100},
-                {id: "miles_leftover", field: "miles_leftover", name: "Saldo Cartão", width: 100},
+                {id: "miles_leftover", field: "miles_leftover", name: "Saldo Cartão", width: 80},
                 {id: "edit", name: "Editar", field: "src", width: 40, formatter: function(args) {return "<img id='profileedit'   src ='img/edit.png'></img>"}}];
 
             var options = {
                 enableCellNavigation: true,
-                enableColumnReorder: false
+                enableColumnReorder: false,
+                multiColumnSort: true
             };
 
             gridCards = new Slick.Grid("#providerCardsTable", data.dataset, columns, options);
@@ -209,6 +212,8 @@ var provider;
                 if (cell.cell > 6) {
                     activate_page("#providerCards_form");
                     ProviderCardsloadform(gridCards.getData()[cell.row]);
+                } else {
+                    loadExtract(gridCards.getData()[cell.row]);                    
                 }
             });
         };
@@ -218,6 +223,36 @@ var provider;
             url: "../../backend/application/index.php?rota=/loadProviderCards",
             success: success,
             data: $providerRow
+        });
+    }
+
+    function loadExtract(datarow) {
+        $cardsExtractRow = datarow;
+        var success = function(response) {
+            var data = jQuery.parseJSON(response);
+
+            var columns = [
+                {id: "id", field: "id", name: "Operação", width: 100}, 
+                {id: "date", field: "date", name: "Referência", width: 100}, 
+                {id: "description", field: "description", name: "Descrição", width: 100}, 
+                {id: "value", field: "value", name: "Valor Operação", width: 100}, 
+                {id: "miles", field: "miles", name: "Milhas", width: 100},
+                {id: "name", field: "name", name: "Passageiro", width: 100}];
+
+            var options = {
+                enableCellNavigation: true,
+                enableColumnReorder: false,
+                multiColumnSort: true
+            };
+
+            gridExtractCards = new Slick.Grid("#providerExtractTable", data.dataset, columns, options);
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "../../backend/application/index.php?rota=/loadExtractCards",
+            success: success,
+            data: $cardsExtractRow
         });
     }
 
