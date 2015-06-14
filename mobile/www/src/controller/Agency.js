@@ -11,7 +11,7 @@ var agency;
             activate_page("#agency");
 
             var columns = [
-                {id: "id", field: "id", name: "ID", width: 20},
+                {id: "id", field: "id", name: "ID", width: 30},
                 {id: "name", field: "name", name: "Nome", width: 200},
                 {id: "email", field: "email", name: "Email", width: 150},
                 {id: "phoneNumber", field: "phoneNumber", name: "Telefone Celular", width: 100},

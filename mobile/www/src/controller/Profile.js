@@ -118,9 +118,7 @@ var profile;
 
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;
-            if(message['type'] == 'S') {
-                alert(message['text']);
-            }
+            alert(message['text']);
             loadProfile();
         };
 
@@ -135,9 +133,7 @@ var profile;
     function removeProfile() {
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;
-            if(message['type'] == 'S') {
-                alert(message['text']);
-            }
+            alert(message['text']);
             loadProfile();
         };
 

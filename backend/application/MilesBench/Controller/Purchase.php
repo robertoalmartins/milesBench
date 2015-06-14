@@ -36,6 +36,7 @@ class purchase {
                 $BusinessPartner->setRegistrationCode($dados['registrationCode']);
                 $BusinessPartner->setAdress($dados['adress']);
                 $BusinessPartner->setEmail($dados['email']);
+                $BusinessPartner->setStatus($dados['status']);
                 $BusinessPartner->setPartnerType('P');
                 $em->persist($BusinessPartner);
                 $em->flush($BusinessPartner);
@@ -59,6 +60,7 @@ class purchase {
             $Purchase->setPurchaseDate(new \Datetime());
             $Purchase->setCostPerThousand($dados['cost_per_thousand']);
             $Purchase->setTotalCost($dados['total_cost']);
+            $Purchase->setDescription($dados['description']);
             $Purchase->setAproved('Y');
             $Purchase->setMilesDueDate(new \Datetime($dados['miles_due_date']));
             $Purchase->setCards($Cards);

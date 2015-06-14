@@ -4,13 +4,14 @@
 
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="SlickGrid/css/smoothness/jquery-ui-1.8.16.custom.css">
+        <link rel="stylesheet" type="text/css" href="SlickGrid/slick.grid.css" class="uib-framework-theme">
         <link rel="stylesheet" type="text/css" href="flatly/css/flatly.min.css" class="uib-framework-theme">
         <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-select.css" class="uib-framework-theme">
         <link rel="stylesheet" type="text/css" href="css/jasny-bootstrap.css" class="uib-framework-theme">
-        <link rel="stylesheet" type="text/css" href="SlickGrid/slick.grid.css" class="uib-framework-theme">
         <link rel="stylesheet" type="text/css" href="css/grid.css" class="uib-framework-theme">
-        <link rel="stylesheet" type="text/css" href="SlickGrid/css/smoothness/jquery-ui-1.8.16.custom.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="shortcut icon" href="img/favicon.ico">
         <title>Uai Milhas - Banco de Milhas</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -70,7 +71,7 @@
                     <div class="upage-outer">
                         <div class="upage-content" id="mainsub">
 
-                            <div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row" data-ver="0">
+                            <div class="grid-pad urow uib_row_3 row-height-3" data-uib="layout/row" data-ver="0">
                                 <div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
                                     <div class="widget-container content-area vertical-col">
 
@@ -79,7 +80,7 @@
                                 </div>
                                 <span class="uib_shim"></span>
                             </div>
-                            <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
+                            <div class="grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
 
                                 <div class="col uib_col_24 col-0_2-12_2-2" data-uib="layout/col" data-ver="0">
                                     <div class="widget-container content-area vertical-col">
@@ -89,7 +90,7 @@
                                 <div class="col uib_col_3 col-0_8-12_8-10" data-uib="layout/col" data-ver="0">
                                     <div class="widget-container content-area vertical-col">
 
-                                        <div class="grid grid-pad urow uib_row_4 row-height-4" data-uib="layout/row" data-ver="0">
+                                        <div class="grid-pad urow uib_row_4 row-height-4" data-uib="layout/row" data-ver="0">
                                             <div class="col uib_col_6 col-1_12-12" data-uib="layout/col" data-ver="0">
                                                 <div class="widget-container content-area vertical-col">
                                                     <div class="widget uib_w_4 scale-image d-margins" data-uib="media/img" data-ver="0">
@@ -164,7 +165,7 @@
                     </div>
                     <div id="wizard_purchase_4sub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_15 row-height-15" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_15 row-height-15" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_33 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <div class="table-thing widget uib_w_61 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -213,7 +214,7 @@
 
                     <div id="wizard_purchase_3sub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_13 row-height-13" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_13 row-height-13" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_30 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <div class="table-thing widget uib_w_60 d-margins" data-uib="twitter%20bootstrap/select" data-ver="0">
@@ -221,7 +222,7 @@
                                         <select class="selectpicker" data-live-search="true" style="display: none;" id="purchase_airline" title="Informe a companhia aérea">
                                         </select>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -240,18 +241,40 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
+                                    <div class="urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_42 col-1_4-12_4-4" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                <label class="narrow-control label-top-left">Quantidade de pontos</label>
+                                                <input class="wide-control form-control" type="number" id="purchase_miles" onblur="setTotalCost()">
+                                                </div>
+                                                <span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_43 col-1_4-12_4-8" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                <label class="narrow-control label-top-left">Valor por Milhar</label>
+                                                <input class="wide-control form-control" type="number" id="purchase_cost_per_thousand" onblur="setTotalCost()">
+                                                </div>
+                                                <span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col uib_col_41 col-1_4-12_4-8" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+                                                <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                                <label class="narrow-control label-top-left">Valor Total</label>
+                                                <input class="wide-control form-control" type="number" id="purchase_totalcost">
+                                                </div><span class="uib_shim"></span>
+                                                <span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
                                     <div class="table-thing widget uib_w_51 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Quantidade de pontos</label>
-                                        <input class="wide-control form-control" type="number" id="purchase_miles" onblur="setTotalCost()">
+                                        <label class="narrow-control label-top-left">Observação</label>
+                                        <input class="wide-control form-control" type="text" id="purchase_description">
                                     </div>
-                                    <div class="table-thing widget uib_w_53" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Valor por Milhar</label>
-                                        <input class="wide-control form-control" type="number" id="purchase_cost_per_thousand" onblur="setTotalCost()">
-                                    </div>
-                                    <div class="table-thing widget uib_w_54 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
-                                        <label class="narrow-control label-top-left">Valor Total</label>
-                                        <input class="wide-control form-control" type="number" id="purchase_totalcost">
-                                    </div><span class="uib_shim"></span>
                                 </div>
                             </div>
                             <span class="uib_shim"></span>
@@ -274,7 +297,7 @@
             <div class="upage hidden" id="wizard_purchase_1">
                 <div class="upage-outer">
                     <div class="uib-header header-bg container-group inner-element uib_w_5" data-uib="layout/header" data-ver="0">
-                        <h2>Uai Milhar - Compra de Milhas</h2>
+                        <h2>Uai Milhas - Compra de Milhas</h2>
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left">
                             <button type="button" class="btn widget uib_w_21 d-margins button_icon btn-default" data-uib="twitter%20bootstrap/button" data-ver="0" id="menu_provider"><i class="glyphicon glyphicon-th-list button-icon-left" data-position="left"></i> 
@@ -285,7 +308,7 @@
 
                     <div id="wizard_purchase_1sub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_11 row-height-11" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_28 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
 
@@ -315,6 +338,61 @@
                 </div>
                 <!-- /upage-outer -->
             </div>
+            <div class="upage hidden" id="providerCards_form">
+                <div class="upage-outer">
+                    <div class="uib-header header-bg container-group inner-element uib_w_23" data-uib="layout/header" data-ver="0">
+                        <h2>Uai Milhas - Cliente</h2>
+                        <div class="widget-container wrapping-col single-centered"></div>
+                        <div class="widget-container content-area horiz-area wrapping-col left">
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                    </div>
+                    <div id="providercards_formsub" class="upage-content ">
+                        <div class="grid-pad urow uib_row_15 row-height-15" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_33 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+                                    <div class="table-thing widget uib_w_61 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                        <label class="narrow-control label-top-left">Número Fidelidade</label>
+                                        <input class="wide-control form-control" type="text" id="providercards_card_number">
+                                    </div>
+                                    <div class="table-thing widget uib_w_64 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                        <label class="narrow-control label-top-left">Senha de resgate</label>
+                                        <input class="wide-control form-control" type="text" id="providercards_recovery_password">
+                                    </div>
+                                    <div class="table-thing widget uib_w_62 d-margins" id="pc_access_id" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                        <label class="narrow-control label-top-left">Assinatura Eletronica</label>
+                                        <input class="wide-control form-control" type="text" id="providercards_access_id">
+                                    </div>
+                                    <div class="table-thing widget uib_w_63 d-margins" id="pc_access_password" data-uib="twitter%20bootstrap/input" data-ver="0">
+                                        <label class="narrow-control label-top-left">Senha Multiplus</label>
+                                        <input class="wide-control form-control" type="text" id="providercards_access_password">
+                                    </div>
+                                    <span class="uib_shim"></span>
+                                </div>
+                            </div>
+                            <span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_30" data-uib="layout/footer" data-ver="0">
+                        <h2></h2>
+                        <div class="widget-container wrapping-col single-centered">
+
+                            <button type="button" class="btn widget uib_w_37 d-margins btn-default button_footer" data-uib="twitter%20bootstrap/button" data-ver="0" id="remove_provider"><i class="glyphicon glyphicon-trash button-icon-left" data-position="left"></i>
+                            </button>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col left">
+                            <button type="button" class="btn widget uib_w_34 d-margins button_footer btn-default" data-uib="twitter%20bootstrap/button" data-ver="0" id="cancel_provider">Cancelar<i class="glyphicon"></i>
+                            </button>
+                        </div>
+                        <div class="widget-container content-area horiz-area wrapping-col right">
+
+                            <button type="button" class="btn widget uib_w_32 d-margins button_footer btn-default" data-uib="twitter%20bootstrap/button" data-ver="0" id="save_cardprovider">Confirmar<i class="glyphicon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /upage-outer -->
+            </div>
             <div class="upage hidden" id="provider_form">
                 <div class="upage-outer">
                     <div class="uib-header header-bg container-group inner-element uib_w_23" data-uib="layout/header" data-ver="0">
@@ -326,7 +404,7 @@
                     </div>
                     <div id="provider_formsub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
 
@@ -342,7 +420,7 @@
                                         <label class="narrow-control label-top-left">Endereço</label>
                                         <textarea rows="2" class="wide-control form-control" id="provider_adress"></textarea>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -365,7 +443,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_9-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -388,7 +466,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_42 col-1_4-12_4-4" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -457,19 +535,25 @@
                     </div>
                     <div id="providersub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class=" grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <tr>
                                         <td valign="top" width="100%">
-                                          <div id="providerTable" style="width:100%;height:500px;"></div>
+                                          <div id="providerTable" style="width:100%;height:100%;"></div>
+                                        </td>
+                                    </tr>
+                                </div>
+                                <div class="widget-container content-area vertical-col">
+                                    <tr>
+                                        <td valign="top" width="100%">
+                                          <div id="providerCardsTable" style="width:100%;height:200px;"></div>
                                         </td>
                                     </tr>
                                 </div>
                             </div><span class="uib_shim"></span>
                         </div>
                     </div>
-
                     <div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_35" data-uib="layout/footer" data-ver="0">
                         <h2></h2>
                         <div class="widget-container wrapping-col single-centered">
@@ -494,7 +578,7 @@
                     </div>
                     <div id="profile_formsub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
 
@@ -502,7 +586,7 @@
                                         <label class="narrow-control label-top-left">Nome</label>
                                         <input class="wide-control form-control" type="text" id="profile_name">
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <label class="narrow-control label-top-left">CPF</label>
                                             <input class="wide-control form-control" type="text" id="profile_code" onblur="checkCPFProfile()">
@@ -517,7 +601,7 @@
                                         <label class="narrow-control label-top-left">Endereço</label>
                                         <textarea rows="2" class="wide-control form-control" id="profile_adress"></textarea>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -544,7 +628,7 @@
                                         <label class="narrow-control label-top-left">Email</label>
                                         <input class="wide-control form-control" type="email" id="profile_email">
                                     </div>
-                                    <div class="grid urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_42 col-1_4-12_4-4" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -613,12 +697,12 @@
                     </div>
                     <div id="profilesub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class=" grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <tr>
                                         <td valign="top" width="100%">
-                                          <div id="profileTable" style="width:100%;height:500px;"></div>
+                                          <div id="profileTable" style="width:100%;height:100%;"></div>
                                         </td>
                                     </tr>
                                 </div>
@@ -650,7 +734,7 @@
                     </div>
                     <div id="agency_formsub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
 
@@ -666,7 +750,7 @@
                                         <label class="narrow-control label-top-left">Endereço</label>
                                         <textarea rows="2" class="wide-control form-control" id="agency_adress"></textarea>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -693,7 +777,7 @@
                                         <label class="narrow-control label-top-left">Email</label>
                                         <input class="wide-control form-control" type="email" id="agency_email">
                                     </div>
-                                    <div class="grid urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_42 col-1_4-12_4-4" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -762,12 +846,12 @@
                     </div>
                     <div id="agencysub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class=" grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <tr>
                                         <td valign="top" width="100%">
-                                          <div id="agencyTable" style="width:100%;height:500px;"></div>
+                                          <div id="agencyTable" style="width:100%;height:100%;"></div>
                                         </td>
                                     </tr>
                                 </div>
@@ -801,12 +885,12 @@
                     </div>
                     <div id="milessub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class=" grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <tr>
                                         <td valign="top" width="100%">
-                                          <div id="milesTable" style="width:100%;height:500px;"></div>
+                                          <div id="milesTable" style="width:100%; height: 100%;"></div>
                                         </td>
                                     </tr>
                                 </div>
@@ -827,7 +911,7 @@
             <div class="upage hidden" id="wizard_sales_1">
                 <div class="upage-outer">
                     <div class="uib-header header-bg container-group inner-element uib_w_5" data-uib="layout/header" data-ver="0">
-                        <h2>Uai Milhar - Registro de Emissão</h2>
+                        <h2>Uai Milhas - Registro de Emissão</h2>
                         <div class="widget-container wrapping-col single-centered"></div>
                         <div class="widget-container content-area horiz-area wrapping-col left">
                             <button type="button" class="btn widget uib_w_21 d-margins button_icon btn-default" data-uib="twitter%20bootstrap/button" data-ver="0" id="menu_provider"><i class="glyphicon glyphicon-th-list button-icon-left" data-position="left"></i> 
@@ -837,12 +921,12 @@
                     </div>
 
                     <div id="wizard_sales_1sub" class="upage-content ">
-                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class=" grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <tr>
                                         <td valign="top" width="100%">
-                                          <div id="sales1Table" style="width:100%;height:500px;"></div>
+                                          <div id="sales1Table" style="width:100%;height:100%;"></div>
                                         </td>
                                     </tr>
                                 </div>
@@ -871,12 +955,12 @@
                         <div class="widget-container content-area horiz-area wrapping-col right"></div>
                     </div>
                     <div id="wizard_sales_2sub" class="upage-content ">
-                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class=" grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <tr>
                                         <td valign="top" width="100%">
-                                          <div id="sales_milesTable" style="width:100%;height:500px;"></div>
+                                          <div id="sales_milesTable" style="width:100%;height:100%;"></div>
                                         </td>
                                     </tr>
                                 </div>
@@ -904,11 +988,11 @@
                         <div class="widget-container content-area horiz-area wrapping-col right"></div>
                     </div>
                     <div id="wizard_sales_3sub" class="upage-content ">
-                        <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
 
-                                    <div class="grid urow uib_row_16" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_16" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_36 col-1_8-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_71 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -925,7 +1009,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_72 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -944,7 +1028,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -963,7 +1047,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1012,7 +1096,7 @@
                     </div>
                     <div id="order_formsub" class="upage-content ">
 
-                        <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <div class="table-thing widget uib_w_25 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1021,7 +1105,7 @@
                                             <option></option>
                                         </select>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1041,7 +1125,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1062,7 +1146,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1090,7 +1174,7 @@
                                         <label class="narrow-control label-top-left">Observação</label>
                                         <input class="wide-control form-control" type="text" id="order_description">
                                     </div>
-                                    <div class="grid urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_20 row-height-20" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_42 col-1_4-12_4-4" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1156,7 +1240,7 @@
                         <div class="widget-container content-area horiz-area wrapping-col right"></div>
                     </div>
                     <div id="worder_formsub" class="upage-content ">
-                        <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <div class="table-thing widget uib_w_25 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1199,17 +1283,17 @@
                         <div class="widget-container content-area horiz-area wrapping-col right"></div>
                     </div>
                     <div id="worder_formsub" class="upage-content ">
-                        <div class="grid grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_9 row-height-9" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_22 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <label class="narrow-control label-top-left">Agência</label>
                                         <select class="selectpicker" data-live-search="true" style="display: none;" id="worder_client" title="Selecione uma agência">
                                             <option></option>
                                         </select>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1230,7 +1314,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_42 col-1_4-12_4-4" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_71 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1257,7 +1341,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1276,7 +1360,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_38 col-1_6-12" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_76 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1295,7 +1379,7 @@
                                         </div>
                                         <span class="uib_shim"></span>
                                     </div>
-                                    <div class="grid urow uib_row_17" data-uib="layout/row" data-ver="0">
+                                    <div class="urow uib_row_17" data-uib="layout/row" data-ver="0">
                                         <div class="col uib_col_42 col-1_4-12_4-4" data-uib="layout/col" data-ver="0">
                                             <div class="widget-container content-area vertical-col">
                                                 <div class="table-thing widget uib_w_29 d-margins" data-uib="twitter%20bootstrap/input" data-ver="0">
@@ -1354,12 +1438,12 @@
                         <div class="widget-container content-area horiz-area wrapping-col right"></div>
                     </div>
                     <div id="wizard_worder_2sub" class="upage-content ">
-                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class=" grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <tr>
                                         <td valign="top" width="100%">
-                                          <div id="worder_milesTable" style="width:100%;height:500px;"></div>
+                                          <div id="worder_milesTable" style="width:100%;height:100%;"></div>
                                         </td>
                                     </tr>
                                 </div>
@@ -1387,7 +1471,7 @@
                         <div class="widget-container content-area horiz-area wrapping-col right"></div>
                     </div>
                     <div id="wizard_worder_2sub" class="upage-content ">
-                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class="grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div id="div_order_resume" class="widget-container content-area vertical-col">
                                     
@@ -1420,12 +1504,12 @@
                         <div class="widget-container content-area horiz-area wrapping-col right"></div>
                     </div>
                     <div id="ordersub" class="upage-content ">
-                        <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class=" grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                             <div class="col uib_col_21 col-0_12-12" data-uib="layout/col" data-ver="0">
                                 <div class="widget-container content-area vertical-col">
                                     <tr>
                                         <td valign="top" width="100%">
-                                          <div id="orderTable" style="width:100%;height:500px;"></div>
+                                          <div id="orderTable" style="width:100%;height:100%;"></div>
                                         </td>
                                     </tr>
                                 </div>
@@ -1472,7 +1556,7 @@
 
             <div class="sidebar-content">
 
-                <div class="grid grid-pad urow uib_row_6 row-height-6" data-uib="layout/row" data-ver="0">
+                <div class="grid-pad urow uib_row_6 row-height-6" data-uib="layout/row" data-ver="0">
                     <div class="col uib_col_11 col-0_12-12" data-uib="layout/col" data-ver="0">
                         <div class="widget-container content-area vertical-col">
                             <span class="uib_shim"></span>
@@ -1481,7 +1565,7 @@
                     <span class="uib_shim"></span>
                 </div>
 
-                <div class="grid grid-pad urow uib_row_7 row-height-7" data-uib="layout/row" data-ver="0">
+                <div class="grid-pad urow uib_row_7 row-height-7" data-uib="layout/row" data-ver="0">
                     <div class="col uib_col_12 col-0_12-12" data-uib="layout/col" data-ver="0">
                         <div class="widget-container content-area vertical-col">
 
@@ -1567,7 +1651,7 @@
                     <span class="uib_shim"></span>
                 </div>
 
-                <div class="grid grid-pad urow uib_row_19 row-height-19" data-uib="layout/row" data-ver="0">
+                <div class="grid-pad urow uib_row_19 row-height-19" data-uib="layout/row" data-ver="0">
                     <div class="col uib_col_40 col-0_12-12" data-uib="layout/col" data-ver="0">
                         <div class="widget-container content-area vertical-col">
                             <span class="uib_shim"></span>

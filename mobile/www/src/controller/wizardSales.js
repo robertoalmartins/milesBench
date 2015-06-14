@@ -22,7 +22,7 @@ var salesRow;
 
             var grid;
             var columns = [
-                {id: "id", field: "id", name: "ID", width: 20},
+                {id: "id", field: "id", name: "ID", width: 30},
                 {id: "status", field: "status", name: "Status", width: 60},
                 {id: "client", field: "client", name: "Agência", width: 100},
                 {id: "email", field: "email", name: "Email", width: 150},
@@ -161,9 +161,7 @@ var salesRow;
 
         var success = function(response) {
             var message = jQuery.parseJSON(response).message;
-            if(message['type'] == 'S') {
-                alert(message['text']);
-            }
+            alert(message['text']);
             loadClient('#order_client');
             loadAirport('#order_from');
             loadAirport('#order_to');

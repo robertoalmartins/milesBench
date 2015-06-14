@@ -103,6 +103,10 @@
             saveProvider();
         });
 
+        $(document).on("click", "#save_cardprovider", function(evt){
+            saveProviderCards();
+        });
+
         $(document).on("click", "#cancel_provider", function(evt){
             activate_page("#provider");
             loadProvider();
@@ -175,6 +179,7 @@
             loadSelectProvider('#wizard_selectprovider');
             loadAirline('#purchase_airline');
             activate_page("#wizard_purchase_1");
+            clearFieldValues();
         });
 
         $(document).on("click", "#purchase1_next", function(evt) {
@@ -200,6 +205,9 @@
 
         $(document).on("click", "#purchase3_next", function(evt) {
             savelocal_purchase();
+            if (!new_provider) {
+                loadCard();
+            }
             activate_page("#wizard_purchase_4");
         });
 
