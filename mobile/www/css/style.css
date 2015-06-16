@@ -33,3 +33,7 @@ body {
 	height: 300px;
 	overflow-y: auto;
 }
+
+.modal-body {
+ 	padding-left: 15px !important;
+}

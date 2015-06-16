@@ -30,6 +30,18 @@ var provider;
                 multiColumnSort: true
             };
 
+            var gridSorter = function(columnField, isAsc, grid, gridData) {
+                var sign = isAsc ? 1 : -1;
+                var field = columnField
+                gridData.sort(function (dataRow1, dataRow2) {
+                    var value1 = dataRow1[field], value2 = dataRow2[field];
+                    var result = (value1 == value2) ?  0 : ((value1 > value2 ? 1 : -1)) * sign;
+                    return result;
+                });
+                grid.invalidate();
+                grid.render();
+            }
+
             grid = new Slick.Grid("#providerTable", data.dataset, columns, options);
 
             grid.onClick.subscribe(function (e) {
@@ -40,6 +52,17 @@ var provider;
                     activate_page("#provider_form");
                     Providerloadform(grid.getData()[cell.row]);
                 }
+            });
+
+            //These 2 lines will sort you data & update glyph while loading grid     
+            //columnField is field of column you want to sort initially, isAsc - true/false
+            gridSorter('name', true, grid, data.dataset);
+
+            //I had the columnField, columnId same else used columnId below
+            grid.setSortColumn('name', true); 
+
+            grid.onSort.subscribe(function(e, args) {
+                gridSorter(args.sortCol.field, args.sortAsc, grid, gridData);
             });
         };
 
@@ -300,4 +323,9 @@ var provider;
             alert('CPF Inválido');
             return false;
         }
+    }
+
+    function openFilterProvider() {
+        var myWindow = window.open("", "MsgWindow", "width=200, height=100");
+        myWindow.document.write($('#provider_filter'));        
     }
