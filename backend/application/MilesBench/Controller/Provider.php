@@ -35,9 +35,19 @@ class Provider {
            $CardsSubSQL = $CardsSubSQL .')';
         }
                 
-        $sql = "select bp FROM Businesspartner bp WHERE bp.partnerType = 'P'".$CardsSubSQL;
-//        echo $sql;die;
+        if (isset($dados['name'])) {
+           if ($dados['name'] != '') {
+              $CardsSubSQL = " AND bp.name like '".$dados['name']."%'".$CardsSubSQL;
+           } 
+        }
 
+        if (isset($dados['registration_code'])) {
+           if ($dados['registration_code'] != '') {
+               $CardsSubSQL = " AND bp.registrationCode = '".$dados['registration_code']."'".$CardsSubSQL;
+           } 
+        }
+
+        $sql = "select bp FROM Businesspartner bp WHERE bp.partnerType = 'P'".$CardsSubSQL;
         $query = $em->createQuery($sql);
         $BusinessPartner = $query->getResult();
 
