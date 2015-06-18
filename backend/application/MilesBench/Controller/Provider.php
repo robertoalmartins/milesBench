@@ -16,8 +16,30 @@ use MilesBench\Request\Response;
 class Provider {
 
     public function load(Request $request, Response $response) {
+        $dados = $request->getRow();
         $em = Application::getInstance()->getEntityManager();
-        $BusinessPartner = $em->getRepository('Businesspartner')->findBy(array('partnerType' => 'P'));
+
+        $CardsSubSQL = '';
+
+        if (($dados['pax'] != '')||($dados['flight_locator'] != '')||($dados['card_number'] != '')) {
+           $CardsSubSQL = " AND EXISTS (select c FROM Cards c WHERE c.businesspartner = bp.id";
+           if (isset($dados)&&($dados['card_number'] != '')) {
+              $CardsSubSQL = $CardsSubSQL . " AND c.cardNumber = '".$dados['card_number']."'";
+           }
+           if (isset($dados)&&($dados['pax'] != '')) {
+              $CardsSubSQL = $CardsSubSQL . " AND EXISTS (select s FROM Sale s JOIN s.pax b WHERE s.cards = c.id AND b.name like '".$dados['pax']."%')";
+           }
+           if (isset($dados)&&($dados['flight_locator'] != '')) {
+              $CardsSubSQL = $CardsSubSQL . " AND EXISTS (select s FROM Sale s WHERE s.cards = c.id AND s.flightLocator = '".$dados['flight_locator']."')";
+           }
+           $CardsSubSQL = $CardsSubSQL .')';
+        }
+                
+        $sql = "select bp FROM Businesspartner bp WHERE bp.partnerType = 'P'".$CardsSubSQL;
+//        echo $sql;die;
+
+        $query = $em->createQuery($sql);
+        $BusinessPartner = $query->getResult();
 
         $dataset = array();
         foreach($BusinessPartner as $Provider){

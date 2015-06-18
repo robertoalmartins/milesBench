@@ -4,13 +4,17 @@
 var providerRow;
 var cardsRow;
 var provider;
+var providerFilter;
 
     function loadProvider() {
+        if (typeof($providerFilter) == 'undefined') {
+            $providerFilter = {};
+        }
+
         var success = function(response) {
             var data = jQuery.parseJSON(response);
 
             activate_page("#provider");
-            loadProviderCards(data.dataset[0]);
 
             var columns = [
                 {id: "id", field: "id", name: "ID", width: 40}, 
@@ -29,18 +33,6 @@ var provider;
                 enableColumnReorder: false,
                 multiColumnSort: true
             };
-
-            var gridSorter = function(columnField, isAsc, grid, gridData) {
-                var sign = isAsc ? 1 : -1;
-                var field = columnField
-                gridData.sort(function (dataRow1, dataRow2) {
-                    var value1 = dataRow1[field], value2 = dataRow2[field];
-                    var result = (value1 == value2) ?  0 : ((value1 > value2 ? 1 : -1)) * sign;
-                    return result;
-                });
-                grid.invalidate();
-                grid.render();
-            }
 
             grid = new Slick.Grid("#providerTable", data.dataset, columns, options);
 
@@ -64,12 +56,14 @@ var provider;
             grid.onSort.subscribe(function(e, args) {
                 gridSorter(args.sortCol.field, args.sortAsc, grid, gridData);
             });
+            loadProviderCards(data.dataset[0]);
         };
 
         $.ajax({
             type: "POST",
             url: "../../backend/application/index.php?rota=/loadProvider",
-            success: success
+            success: success,
+            data: $providerFilter
         });
     }
 
@@ -210,7 +204,9 @@ var provider;
         $providerRow = datarow;
         var success = function(response) {
             var data = jQuery.parseJSON(response);
-            loadExtract(data.dataset[0]);
+            if (data.dataset[0] !== undefined) {
+                loadExtract(data.dataset[0]);
+            }
 
             var columns = [
                 {id: "id", field: "id", name: "ID", width: 40}, 
@@ -245,7 +241,7 @@ var provider;
             type: "POST",
             url: "../../backend/application/index.php?rota=/loadProviderCards",
             success: success,
-            data: $providerRow
+            data: {providerRow: $providerRow, providerFilter: $providerFilter}
         });
     }
 
@@ -275,7 +271,7 @@ var provider;
             type: "POST",
             url: "../../backend/application/index.php?rota=/loadExtractCards",
             success: success,
-            data: $cardsExtractRow
+            data: {cardsExtractRow: $cardsExtractRow, providerFilter: $providerFilter}
         });
     }
 
@@ -328,4 +324,22 @@ var provider;
     function openFilterProvider() {
         var myWindow = window.open("", "MsgWindow", "width=200, height=100");
         myWindow.document.write($('#provider_filter'));        
+    }
+
+    function setFilter(name, registration_code, card_number, pax, flight_locator){
+        $providerFilter = {};
+        $providerFilter.name = name;
+        $providerFilter.registration_code = registration_code;
+        $providerFilter.card_number = card_number;
+        $providerFilter.pax = pax;
+        $providerFilter.flight_locator = flight_locator;
+    }
+
+    function applyProviderFilter(){
+        setFilter($('#filter_provider_name')[0].value,
+                  $('#filter_provider_code')[0].value,
+                  $('#filter_provider_card_number')[0].value,
+                  $('#filter_provider_pax')[0].value,
+                  $('#filter_provider_fligthlocator')[0].value);
+        loadProvider();        
     }

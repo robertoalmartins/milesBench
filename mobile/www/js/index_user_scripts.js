@@ -121,6 +121,10 @@
             removeProvider();
         });
 
+        $(document).on("click", "#provider_filter_apply", function(evt){
+            applyProviderFilter();
+        });
+
         /****_________________________________________________________________________________________________****/
         $(document).on("click", "#mnu_agency", function(evt){
             uib_sb.toggle_sidebar($(".uib_w_6"));

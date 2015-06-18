@@ -38,26 +38,34 @@ class cards {
     
     public function loadProvider(Request $request, Response $response) {
         $dados = $request->getRow();
-        $em = Application::getInstance()->getEntityManager();
-        
-        $em = Application::getInstance()->getEntityManager();
-        $sql = "select m, c, a FROM Milesbench m JOIN m.cards c JOIN c.businesspartner b JOIN c.airline a WHERE b.registrationCode = '".$dados['registrationCode']."'";
-        $query = $em->createQuery($sql);
-        $Cards = $query->getResult();
-
-
         $dataset = array();
-        foreach($Cards as $card){
-            $dataset[] = array(
-                'id' => $card->getCards()->getId(),
-                'card_number' => $card->getCards()->getCardNumber(),
-                'airline' => $card->getCards()->getAirline()->getName(),
-                'card_number' => $card->getCards()->getCardNumber(),
-                'access_id' => $card->getCards()->getAccessId(),
-                'access_password' => $card->getCards()->getAccessPassword(),
-                'recovery_password' => $card->getCards()->getRecoveryPassword(),
-                'miles_leftover' => $card->getLeftover()
-            );
+
+        if (isset($dados['providerRow'])) {
+           $em = Application::getInstance()->getEntityManager();
+           $cardNumberSQL = '';
+          
+           if (isset($dados['providerFilter'])&&($dados['providerFilter']['card_number'] != '')) {
+              $cardNumberSQL = " AND c.cardNumber = '".$dados['providerFilter']['card_number']."'";
+           }
+
+           $sql = "select m, c, a FROM Milesbench m JOIN m.cards c JOIN c.businesspartner b JOIN c.airline a WHERE b.registrationCode = '".$dados['providerRow']['registrationCode']."'".$cardNumberSQL;
+           $query = $em->createQuery($sql);
+           $Cards = $query->getResult();
+
+
+           foreach($Cards as $card){
+               $dataset[] = array(
+                   'id' => $card->getCards()->getId(),
+                   'card_number' => $card->getCards()->getCardNumber(),
+                   'airline' => $card->getCards()->getAirline()->getName(),
+                   'card_number' => $card->getCards()->getCardNumber(),
+                   'access_id' => $card->getCards()->getAccessId(),
+                   'access_password' => $card->getCards()->getAccessPassword(),
+                   'recovery_password' => $card->getCards()->getRecoveryPassword(),
+                   'miles_leftover' => $card->getLeftover()
+               );
+           }
+            
         }
         $response->setDataset($dataset);
     }    	

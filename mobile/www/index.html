@@ -18,20 +18,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
         <style type="text/css">
             /* Prevent copy paste for all elements except text fields */
-            			*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
-            			input, textarea  { -webkit-user-select:text; }
+                        *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+                        input, textarea  { -webkit-user-select:text; }
         </style>
-        <script src="intelxdk.js"></script>
         <script src="src/util/functions.js"></script>
         <script type="text/javascript">
             /* Intel native bridge is available */
-            			var onDeviceReady=function(){
-            			//hide splash screen
-            			intel.xdk.device.hideSplashScreen();
-            			};
-            			document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+                        var onDeviceReady=function(){
+                        //hide splash screen
+                        intel.xdk.device.hideSplashScreen();
+                        };
+                        document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
         </script>
-        <script src="cordova.js"></script>
         <script type="application/javascript" src="js/jquery.min.js"></script>
         <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
         <script type="application/javascript" src="js/index_user_scripts.js"></script>
@@ -1663,8 +1661,6 @@
                 </div>
             </div>
         </div>
-        <!-- /uwrap -->
-
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
@@ -1686,15 +1682,15 @@
                         </div>
                         <div data-uib="twitter%20bootstrap/input" data-ver="0">
                             <label class="narrow-control label-top-left">Numero Fidelidade</label>
-                            <input class="wide-control form-control" type="text" id="filter_provider_card_number" onblur="checkCPFProvider()">
+                            <input class="wide-control form-control" type="text" id="filter_provider_card_number">
                         </div>
                         <div data-uib="twitter%20bootstrap/input" data-ver="0">
                             <label class="narrow-control label-top-left">Passageiro</label>
-                            <input class="wide-control form-control" type="text" id="filter_provider_pax" onblur="checkCPFProvider()">
+                            <input class="wide-control form-control" type="text" id="filter_provider_pax">
                         </div>
                         <div data-uib="twitter%20bootstrap/input" data-ver="0">
                             <label class="narrow-control label-top-left">Localizador</label>
-                            <input class="wide-control form-control" type="text" id="filter_provider_fligth_tag" onblur="checkCPFProvider()">
+                            <input class="wide-control form-control" type="text" id="filter_provider_fligthlocator">
                         </div>
                     </div>
 
@@ -1705,5 +1701,6 @@
 
             </div>
         </div>
+        <!-- /uwrap -->
     </body>
 </html>
