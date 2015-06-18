@@ -21,7 +21,7 @@ class Provider {
 
         $CardsSubSQL = '';
 
-        if (($dados['pax'] != '')||($dados['flight_locator'] != '')||($dados['card_number'] != '')) {
+        if (isset($dados['pax'] != '')||isset($dados['flight_locator'] != '')||isset($dados['card_number'] != '')) {
            $CardsSubSQL = " AND EXISTS (select c FROM Cards c WHERE c.businesspartner = bp.id";
            if (isset($dados)&&($dados['card_number'] != '')) {
               $CardsSubSQL = $CardsSubSQL . " AND c.cardNumber = '".$dados['card_number']."'";
